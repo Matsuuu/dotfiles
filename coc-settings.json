@@ -1,0 +1,17 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [
+        "css",
+        "json",
+        "markdown",
+        "html",
+        "js",
+        "ts",
+        "javascript",
+        "typescript"
+    ],
+    "eslint.enable": true,
+    "eslint.filetypes": [
+        "javascript",
+        "typescript"
+    ]
+}
