@@ -9,7 +9,7 @@
         "javascript",
         "typescript"
     ],
-    "eslint.enable": false,
+    "eslint.enable": true,
     "eslint.filetypes": [
         "javascript",
         "typescript"

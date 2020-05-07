@@ -39,17 +39,15 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sbdchd/neoformat'
-Plug 'leafgarland/typescript-vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'alvan/vim-closetag'
 "Plug 'dense-analysis/ale'
 " Can't get this shit to work properly smh
