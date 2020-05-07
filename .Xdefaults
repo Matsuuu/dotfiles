@@ -24,6 +24,13 @@ URxvt*shading: 50
 URxvt*inheritPixmap: False
 urxvt*metaSendsEscape: true
 
+! Resizing
+! git clone https://github.com/simmel/urxvt-resize-font ~/tmp/urxvt-resize-font
+! mv ~/tmp/urxvt-resize-font/resize-font ~/.urxvt/ext/
+urxvt.perl-ext-common: default,resize-font
+URxvt.resize-font.bigger: Meta-0x2b
+URxvt.resize-font.smaller: Meta-0x2d
+
 !URxvt.keysym.Control-Right: \033[1;5C
 !URxvt.keysym.Control-Left: \033[1;5D
 ! disable ctrl-shift

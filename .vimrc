@@ -21,6 +21,9 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 set cursorline
+set backupcopy=yes
+
+
 colorscheme zenburn
 autocmd ColorScheme * highlight LineNr ctermbg=NONE
 
@@ -85,3 +88,5 @@ nnoremap <leader>r :!%:p<Enter>
 nnoremap <C-n> :FZF<Enter>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap <C-l> <C-i>
+nnoremap <C-F> :Ag<CR>
