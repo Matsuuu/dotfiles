@@ -4,6 +4,20 @@ set updatetime=300
 set signcolumn=yes
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+"--- Extensions
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-sql', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-lit-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-java', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -39,6 +53,7 @@ nmap <leader><CR> <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 nmap <silent><C-b> <Plug>(coc-definition)
+nmap <silent><C-h> <Plug>(coc-definition) :wincmd s<CR> :wincmd w<CR> :resize 15<CR> 
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)

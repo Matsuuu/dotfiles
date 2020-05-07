@@ -47,7 +47,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'sbdchd/neoformat'
-Plug 'dense-analysis/ale'
+Plug 'leafgarland/typescript-vim'
+Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
+Plug 'alvan/vim-closetag'
+"Plug 'dense-analysis/ale'
 " Can't get this shit to work properly smh
 "Plug 'Valloric/YouCompleteMe', { 'do': 'python3.6 install.py' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -69,6 +73,18 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='zenburn'
 
 syntax on
+
+"--- LIT highlighting and autclosing
+let g:htl_css_templates = 1 
+let g:htl_all_templates = 1
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,typescript'
+let g:closetag_regions = {
+      \ 'typescript.tsx': 'jsxRegion,tsxRegion,litHtmlRegion',
+      \ 'javascript.jsx': 'jsxRegion,litHtmlRegion',
+      \ 'javascript':     'litHtmlRegion',
+      \ 'typescript':     'litHtmlRegion',
+      \ }
+
 "--- Sources
 source /home/matsu/.vim/rcfiles/javascript.vim
 source /home/matsu/.vim/rcfiles/java.vim
