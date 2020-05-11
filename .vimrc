@@ -26,6 +26,7 @@ set backupcopy=yes
 
 colorscheme zenburn
 autocmd ColorScheme * highlight LineNr ctermbg=NONE
+autocmd ColorScheme * highlight clear SignColumn
 
 set rtp+=~/.fzf
 
@@ -40,19 +41,19 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'sbdchd/neoformat'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'alvan/vim-closetag'
 "Plug 'dense-analysis/ale'
-" Can't get this shit to work properly smh
-"Plug 'Valloric/YouCompleteMe', { 'do': 'python3.6 install.py' }
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'tomasiser/vim-code-dark'
+"Plug 'hugolgst/vimsence'
 
 call plug#end()
 
@@ -69,6 +70,7 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 "-- Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='zenburn'
+let g:airline#extensions#tabline#enabled = 1
 
 syntax on
 

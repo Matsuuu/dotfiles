@@ -1,3 +1,4 @@
+source /home/matsu/.vim/rcfiles/coc-defaults.vim
  "--- COC
 set cmdheight=2
 set updatetime=300
@@ -70,7 +71,7 @@ function! s:show_documentation()
  endfunction
 
 
- vmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile

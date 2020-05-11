@@ -115,6 +115,7 @@ export PATH=/home/matsu/.pyenv/versions/3.7.2/bin:$PATH
 # Copy Terminal
 alias ct="urxvt -cd $(echo $PWD)"
 
+source ~/.ssh.bashrc
 source ~/terminalscripts/.bashscripts
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'

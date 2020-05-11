@@ -38,38 +38,39 @@ URxvt.resize-font.smaller: Meta-0x2d
 !URxvt.iso14755_52: False
 
 ! special
-*.foreground:   #d3d0c8
-*.background:   #2d2d2d
-*.cursorColor:  #d3d0c8
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
 
 ! black
-*.color0:       #2d2d2d
-*.color8:       #747369
+*.color0:       #1e2320
+*.color8:       #709080
 
 ! red
-*.color1:       #f2777a
-*.color9:       #f2777a
+*.color1:       #705050
+*.color9:       #dca3a3
 
 ! green
-*.color2:       #99cc99
-*.color10:      #99cc99
+*.color2:       #60b48a
+*.color10:      #c3bf9f
 
 ! yellow
-*.color3:       #ffcc66
-*.color11:      #ffcc66
+*.color3:       #dfaf8f
+*.color11:      #f0dfaf
 
 ! blue
-*.color4:       #6699cc
-*.color12:      #6699cc
+*.color4:       #506070
+*.color12:      #94bff3
 
 ! magenta
-*.color5:       #cc99cc
-*.color13:      #cc99cc
+*.color5:       #dc8cc3
+*.color13:      #ec93d3
 
 ! cyan
-*.color6:       #66cccc
-*.color14:      #66cccc
+*.color6:       #8cd0d3
+*.color14:      #93e0e3
 
 ! white
-*.color7:       #d3d0c8
-*.color15:      #f2f0ec
+*.color7:       #dcdccc
+*.color15:      #ffffff
+

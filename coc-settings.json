@@ -13,5 +13,6 @@
     "eslint.filetypes": [
         "javascript",
         "typescript"
-    ]
+    ],
+    "tsserver.npm": "/usr/bin/npm"
 }
