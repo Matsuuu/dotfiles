@@ -50,10 +50,14 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'alvan/vim-closetag'
-"Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'tomasiser/vim-code-dark'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'hugolgst/vimsence'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 
 call plug#end()
 
@@ -61,8 +65,9 @@ filetype plugin indent on    " required
 
 source ~/.fzf/plugin/fzf.vim
 
-
-" -- Open nerdtree on \t
+" -- Dev icons for nerdtree
+set encoding=UTF-8
+" -- Open nerdtree on leader t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 
 let g:nerdtree_tabs_open_on_console_startup = 0
@@ -84,6 +89,10 @@ let g:closetag_regions = {
       \ 'javascript':     'litHtmlRegion',
       \ 'typescript':     'litHtmlRegion',
       \ }
+
+"--- Vim Markdown settings
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_follow_anchor = 1
 
 "--- Sources
 source /home/matsu/.vim/rcfiles/javascript.vim

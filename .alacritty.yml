@@ -1,0 +1,57 @@
+# Font configuration (changes require restart)
+font:
+  size: 12
+  # Normal (roman) font face
+  normal:
+    family: FantasqueSansMono Nerd Font
+    # The `style` can be specified to pick a specific face.
+    style: Regular
+
+  # Bold font face
+  bold:
+    family: FantasqueSansMono Nerd Font
+    # The `style` can be specified to pick a specific face.
+    style: Bold
+
+  # Italic font face
+  italic:
+    family: FantasqueSansMono Nerd Font
+    # The `style` can be specified to pick a specific face.
+    style: Italic
+
+window:
+  dimensions:
+    columns: 100
+    lines: 24
+
+  padding:
+    x: 10
+    y: 10
+
+colors:
+# Default colors
+  primary:
+    background: '0x3a3a3a'
+    foreground: '0xffffff'
+
+  # Normal colors
+  normal:
+    black:   '0x1e2320'
+    red:     '0x705050'
+    green:   '0x60b48a'
+    yellow:  '0xdfaf8f'
+    blue:    '0x506070'
+    magenta: '0xdc8cc3'
+    cyan:    '0x8cd0d3'
+    white:   '0xdcdccc'
+
+  # Bright colors
+  bright:
+    black:   '0x709080'
+    red:     '0xdca3a3'
+    green:   '0xc3bf9f'
+    yellow:  '0xf0dfaf'
+    blue:    '0x94bff3'
+    magenta: '0xec93d3'
+    cyan:    '0x93e0e3'
+    white:   '0xffffff'

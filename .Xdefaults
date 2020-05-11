@@ -1,5 +1,6 @@
 !--------------------xdefauls
-URxvt.font: xft:FantasqueSansMono:size=13,Powerline:size=12
+!URxvt.font: xft:FantasqueSansMono:size=13,Powerline:size=12
+URxvt.font: xft:FantasqueSansMonoNerdFont:size=13,Powerline:size=12
 !urxvt*termName: rxvt
 URxvt*scrollBar: false
 urxvt*matcher.button: 1
