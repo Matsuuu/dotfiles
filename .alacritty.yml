@@ -28,6 +28,9 @@ window:
     x: 10
     y: 10
 
+
+background_opacity: 0.98
+
 colors:
 # Default colors
   primary:
@@ -55,3 +58,4 @@ colors:
     magenta: '0xec93d3'
     cyan:    '0x93e0e3'
     white:   '0xffffff'
+
