@@ -54,10 +54,10 @@ nmap <leader><CR> <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 nmap <silent><C-b> <Plug>(coc-definition)
-nmap <silent><C-h> <Plug>(coc-definition) :wincmd s<CR> :wincmd w<CR> :resize 15<CR> 
+nmap <silent><C-h> <Plug>(coc-definition) :wincmd s<CR> :wincmd w<CR> :resize 15<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent><C-r> <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

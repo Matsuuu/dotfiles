@@ -48,16 +48,23 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'tomasiser/vim-code-dark'
 Plug 'ryanoasis/vim-devicons'
 "Plug 'hugolgst/vimsence'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
+
+Plug 'herringtondarkholme/yats.vim'
+
+" Themes
+Plug 'sts10/vim-pink-moon'
+Plug 'sainnhe/gruvbox-material'
+Plug 'morhetz/gruvbox'
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
@@ -80,8 +87,8 @@ let g:airline#extensions#tabline#enabled = 1
 syntax on
 
 "--- LIT highlighting and autclosing
-let g:htl_css_templates = 1 
-let g:htl_all_templates = 1
+" This sometimes causes some highlighting bugs
+"let g:htl_css_templates = 1 
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,typescript'
 let g:closetag_regions = {
       \ 'typescript.tsx': 'jsxRegion,tsxRegion,litHtmlRegion',
@@ -98,20 +105,14 @@ let g:vim_markdown_follow_anchor = 1
 source /home/matsu/.vim/rcfiles/javascript.vim
 source /home/matsu/.vim/rcfiles/java.vim
 source /home/matsu/.vim/rcfiles/coc.vim
-"--- You complete me
-" Trying to map things like in IntelliJ
-" Couln't get this shit to work
-"nnoremap <silent> <C-b> :YcmCompleter GoTo<CR>
-"nnoremap <silent> <C-g> :YcmCompleter GoToReferences<CR>
-"nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ---- Remaps
 
 nnoremap <leader>r :!%:p<Enter>
-nnoremap <C-n> :FZF<Enter>
+"nnoremap <C-n> :FZF<Enter>
+nnoremap <C-n> :GFiles<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 nnoremap <C-l> <C-i>
-nnoremap <C-F> :Ag<CR>
+nnoremap <C-F> :Ag <CR>
+nnoremap <Leader>pf <C-^>

@@ -3,5 +3,4 @@
 "autocmd BufWritePre *.ts Neoformat
 
 
-"-- Autofills for things
-
+let g:javascript_plugin_jsdoc = 1
