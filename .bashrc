@@ -121,4 +121,4 @@ source ~/terminalscripts/.bashscripts
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin$
+#export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin$

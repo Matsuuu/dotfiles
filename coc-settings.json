@@ -1,18 +1,19 @@
 {
     "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
         "css",
-        "json",
         "markdown",
-        "html",
+        "typescript",
         "js",
         "ts",
-        "javascript",
-        "typescript"
+        "html",
+        "json"
     ],
+
+    "prettier.printWidth": 120,
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+
     "eslint.enable": true,
-    "eslint.filetypes": [
-        "javascript",
-        "typescript"
-    ],
-    "tsserver.npm": "/usr/bin/npm"
+    "eslint.filetypes": ["javascript", "typescript"]
 }
