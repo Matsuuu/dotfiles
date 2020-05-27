@@ -109,8 +109,8 @@ alias prettylog="git log --graph --decorate --oneline"
 alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
 
 
-export PATH="/home/matsu/.ebcli-virtual-env/executables:$PATH"
-export PATH=/home/matsu/.pyenv/versions/3.7.2/bin:$PATH
+export PATH="~/.ebcli-virtual-env/executables:$PATH"
+export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
 
 # Copy Terminal
 alias ct="alacritty &"

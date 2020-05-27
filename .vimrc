@@ -63,7 +63,7 @@ Plug 'herringtondarkholme/yats.vim'
 
 Plug 'tpope/vim-surround'
 
-source /home/matsu/.vim/rcfiles/coc.vim
+source ~/.vim/rcfiles/coc.vim
 
 " Themes
 "Plug 'sts10/vim-pink-moon'
@@ -109,8 +109,8 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_follow_anchor = 1
 
 "--- Sources
-source /home/matsu/.vim/rcfiles/javascript.vim
-source /home/matsu/.vim/rcfiles/java.vim
+source ~/.vim/rcfiles/javascript.vim
+source ~/.vim/rcfiles/java.vim
 
 " ---- Remaps
 
