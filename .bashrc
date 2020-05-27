@@ -113,7 +113,7 @@ export PATH="/home/matsu/.ebcli-virtual-env/executables:$PATH"
 export PATH=/home/matsu/.pyenv/versions/3.7.2/bin:$PATH
 
 # Copy Terminal
-alias ct="urxvt -cd $(echo $PWD)"
+alias ct="alacritty &"
 
 source ~/.ssh.bashrc
 source ~/terminalscripts/.bashscripts

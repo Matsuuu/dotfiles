@@ -15,5 +15,6 @@
     "prettier.singleQuote": true,
 
     "eslint.enable": true,
-    "eslint.filetypes": ["javascript", "typescript"]
+    "eslint.filetypes": ["javascript", "typescript"],
+    "tsserver.npm": "/usr/bin/npm"
 }

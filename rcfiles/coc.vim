@@ -17,7 +17,6 @@ Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
-Plug 'fannheyward/coc-markdownlint', {'do': 'yarn install --frozen-lockfile'}
 
 
 " Use tab for trigger completion with characters ahead and navigate.

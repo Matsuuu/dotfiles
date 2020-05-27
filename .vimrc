@@ -22,6 +22,7 @@ set softtabstop=4
 set expandtab
 set cursorline
 set backupcopy=yes
+set relativenumber
 
 let g:coc_start_at_startup = 1
 
@@ -60,13 +61,17 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 
 Plug 'herringtondarkholme/yats.vim'
 
+Plug 'tpope/vim-surround'
+
 source /home/matsu/.vim/rcfiles/coc.vim
 
 " Themes
 "Plug 'sts10/vim-pink-moon'
 "Plug 'sainnhe/gruvbox-material'
 "Plug 'morhetz/gruvbox'
-"Plug 'tomasiser/vim-code-dark'
+Plug 'tomasiser/vim-code-dark'
+
+Plug 'uiiaoo/java-syntax.vim'
 
 call plug#end()
 
