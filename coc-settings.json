@@ -7,7 +7,8 @@
         "js",
         "ts",
         "html",
-        "json"
+        "json",
+        "java"
     ],
 
     "prettier.printWidth": 120,
@@ -16,5 +17,6 @@
 
     "eslint.enable": true,
     "eslint.filetypes": ["javascript", "typescript"],
-    "tsserver.npm": "/usr/bin/npm"
+    "tsserver.npm": "/usr/bin/npm",
+    "java.format.enabled": true
 }

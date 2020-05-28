@@ -46,7 +46,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u【=◈◡◈=】\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈◡◈=】$(tput sgr0)\]\[\033[38;5;87m\]\h$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]\\$\[$(tput sgr0)\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -113,7 +113,7 @@ export PATH="~/.ebcli-virtual-env/executables:$PATH"
 export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
 
 # Copy Terminal
-alias ct="alacritty &"
+alias ct="alacritty & disown"
 
 source ~/.ssh.bashrc
 source ~/terminalscripts/.bashscripts
