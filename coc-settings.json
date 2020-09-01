@@ -1,22 +1,13 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "css",
-        "markdown",
-        "typescript",
-        "js",
-        "ts",
-        "html",
-        "json",
-        "java"
-    ],
+    "coc.preferences.formatOnSaveFiletypes": ["*"],
 
-    "prettier.printWidth": 120,
+    "prettier.printWidth": 100,
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
 
     "eslint.enable": true,
     "eslint.filetypes": ["javascript", "typescript"],
     "tsserver.npm": "/usr/bin/npm",
-    "java.format.enabled": true
+    "java.format.enabled": true,
+    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64"
 }

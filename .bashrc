@@ -46,7 +46,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈◡◈=】\[$(tput sgr0)\]\[\033[38;5;87m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]\$\[$(tput sgr0)\] '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈ ◡ ◈ =】\[$(tput sgr0)\]\[\033[38;5;87m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -121,4 +121,19 @@ source ~/terminalscripts/.bashscripts
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-#export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin$
+#export PATH="$HOME/Tools/graalvm-ce-java11-20.1.0/bin:$PATH"
+alias python=python3.8
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+alias vim="nvim"
+alias todo="vim ~/todo"
+alias cdvisma="cd projects/visma/Asiakirjatilaus-front/eTampuuri.Microfront.Asiakirjatilaus/Client/"
+
+alias startvpn="sudo systemctl start wg-quick@wg0"
+alias stopvpn="sudo systemctl stop wg-quick@wg0"
+alias filesize="du -sh"
+
+
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

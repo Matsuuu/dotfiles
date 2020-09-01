@@ -10,7 +10,6 @@ set nowrap
 set showcmd
 set incsearch
 set hlsearch
-filetype off                  " required
 set noswapfile
 set autoread
 set ignorecase
@@ -23,10 +22,10 @@ set expandtab
 set cursorline
 set backupcopy=yes
 set relativenumber
+hi LinrNr term=NONE
 
 let g:coc_start_at_startup = 1
 
-colorscheme zenburn
 autocmd ColorScheme * highlight LineNr ctermbg=NONE
 autocmd ColorScheme * highlight clear SignColumn
 
@@ -41,39 +40,42 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-"Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'jonsmithers/vim-html-template-literals'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
 Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-surround'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 
 Plug 'herringtondarkholme/yats.vim'
+Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color'
 
-Plug 'tpope/vim-surround'
+Plug 'uiiaoo/java-syntax.vim'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 source ~/.vim/rcfiles/coc.vim
 
 " Themes
-"Plug 'sts10/vim-pink-moon'
-"Plug 'sainnhe/gruvbox-material'
-"Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
+Plug 'hardcoreplayers/oceanic-material'
+Plug 'franbach/miramare'
+Plug 'junegunn/seoul256.vim'
 
-Plug 'uiiaoo/java-syntax.vim'
 
 call plug#end()
+
 
 filetype plugin indent on    " required
 
@@ -88,7 +90,7 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 
 "-- Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='zenburn'
+let g:airline_theme='miramare'
 let g:airline#extensions#tabline#enabled = 1
 
 syntax on
@@ -121,3 +123,6 @@ nnoremap <silent> <Leader>- :vertical resize -5<CR>
 nnoremap <C-l> <C-i>
 nnoremap <C-F> :Ag <CR>
 nnoremap <Leader>pf <C-^>
+
+let g:miramare_transparent_background=1
+colorscheme miramare
