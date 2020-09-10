@@ -79,7 +79,12 @@ call plug#end()
 
 filetype plugin indent on    " required
 
+" -- FZF
+
 source ~/.fzf/plugin/fzf.vim
+
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+
 
 " -- Dev icons for nerdtree
 set encoding=UTF-8
@@ -121,7 +126,8 @@ nnoremap <C-n> :Files<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 nnoremap <C-l> <C-i>
-nnoremap <C-F> :Ag <CR>
+nnoremap <C-F> :Rg <CR>
+
 nnoremap <Leader>pf <C-^>
 
 let g:miramare_transparent_background=1

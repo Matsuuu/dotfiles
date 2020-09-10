@@ -118,7 +118,7 @@ alias ct="alacritty & disown"
 source ~/.ssh.bashrc
 source ~/terminalscripts/.bashscripts
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea}"'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #export PATH="$HOME/Tools/graalvm-ce-java11-20.1.0/bin:$PATH"
