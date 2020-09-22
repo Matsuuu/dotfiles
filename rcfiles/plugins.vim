@@ -19,7 +19,6 @@ Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
