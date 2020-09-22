@@ -1,4 +1,4 @@
-source /home/matsu/.vim/rcfiles/coc-defaults.vim
+source ~/.vim/rcfiles/coc-defaults.vim
  "--- COC
 set cmdheight=2
 set updatetime=50
