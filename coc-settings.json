@@ -1,13 +1,13 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["*"],
-
-    "prettier.printWidth": 100,
+    "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "html", "css", "java", "json"],
+    "prettier.printWidth": 120,
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
-
     "eslint.enable": true,
     "eslint.filetypes": ["javascript", "typescript"],
     "tsserver.npm": "/usr/bin/npm",
+
     "java.format.enabled": true,
-    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64"
+    "java.home": "/usr/lib/jvm/java-11-openjdk-amd64",
+    "java.format.settings.url": "/home/matsu/dotfiles/java-eclipse-formatter.xml"
 }

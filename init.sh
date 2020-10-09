@@ -38,6 +38,7 @@ then
     ln -s "$PWD/.bashrc" ~
     ln -s "$PWD/coc-settings.json" ~/.vim/
     ln -s "$PWD/rcfiles" ~/.vim/
+    ln -s "$PWD/init.vim" ~/.config/nvim/
 fi
 
 
