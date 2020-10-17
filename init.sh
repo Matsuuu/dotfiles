@@ -9,6 +9,9 @@ read INSTALL_BAT
 echo Install node and yarn? y/n
 read INSTALL_NODE_AND_YARN
 
+echo Install miramare? y/n
+read INSTALL_MIRAMARE
+
 echo Symlink files? y/n
 read SYMLINK_FILES
 
@@ -30,15 +33,25 @@ then
     ./init-node-and-yarn.sh
 fi
 
+if [ $INSTALL_MIRAMARE = "y" ]
+then
+    git clone https://github.com/franbach/miramare.git ~/miramare
+    mkdir -p ~/.vim/colors/
+    mkdir -p ~/.vim/autoload/airline/themes
+    cp ~/miramare/colors/miramare.vim ~/.vim/colors/miramare.vim
+    cp ~/miramare/autoload/airline/themes/miramare.vim ~/.vim/autoload/airline/themes/miramare.vim
+fi
+
 if [ $SYMLINK_FILES  = "y" ]
 then
     echo "===== Symlinking settings and rc files ====="
     mkdir ~/.vim
-    ln -s "$PWD/.vimrc" ~
-    ln -s "$PWD/.bashrc" ~
-    ln -s "$PWD/coc-settings.json" ~/.vim/
-    ln -s "$PWD/rcfiles" ~/.vim/
-    ln -s "$PWD/init.vim" ~/.config/nvim/
+    ln -sf "$PWD/.vimrc" ~
+    ln -sf "$PWD/.bashrc" ~
+    ln -sf "$PWD/coc-settings.json" ~/.vim/
+    ln -sf "$PWD/rcfiles" ~/.vim/
+    mkdir ~/.config/nvim
+    ln -sf "$PWD/init.vim" ~/.config/nvim/
 fi
 
 
