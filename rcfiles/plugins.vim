@@ -44,9 +44,14 @@ Plug 'herringtondarkholme/yats.vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
+Plug 'sbdchd/neoformat'
 
 "--- Java
 Plug 'uiiaoo/java-syntax.vim'
+
+Plug 'sheerun/vim-polyglot'
+
+
 
 "--- Sources
 source ~/.vim/rcfiles/javascript.vim

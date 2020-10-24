@@ -118,7 +118,7 @@ alias ct="alacritty & disown"
 #source ~/.ssh.bashrc
 #source ~/terminalscripts/.bashscripts
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea}"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #export PATH="$HOME/Tools/graalvm-ce-java11-20.1.0/bin:$PATH"
@@ -135,3 +135,5 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 export GRAALVM_HOME=$HOME/Tools/graalvm/
+
+alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
