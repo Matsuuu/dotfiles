@@ -61,7 +61,15 @@ let g:vim_markdown_follow_anchor = 1
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_virtual_text_prefix = ' '
 
+call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "💡", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+
+""--- Lang servers
 lua << EOF
 local on_attach_vim = function(client)
     require'completion'.on_attach(client)
@@ -76,14 +84,17 @@ require'nvim_lsp'.cssls.setup{ on_attach=on_attach_vim }
 require'nvim_lsp'.clangd.setup{ on_attach=on_attach_vim }
 
 EOF
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_virtual_text_prefix = ' '
 
-call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "💡", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+"--- Formatting
+autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.md Neoformat
+autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.html Neoformat
 
+
+" ---- Remaps
+"
+nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -93,11 +104,12 @@ nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 
-" ---- Remaps
 
 nnoremap <C-n> :Files<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap <silent> <Leader>h+ :horizontal resize +5<CR>
+nnoremap <silent> <Leader>h- :horizontal resize -5<CR>
 nnoremap <C-F> :Rg <CR>
 nnoremap <Leader>pf <C-^>
 " Tabbing autocomplete

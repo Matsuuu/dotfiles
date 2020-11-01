@@ -36,7 +36,8 @@ fi
 
 if [ $INSTALL_NODE_AND_YARN = "y" ]
 then
-    ./init-node-and-yarn.sh
+    echo "===== Initializing nvm ==== "
+    ./init-node.sh
 fi
 
 if [ $INSTALL_MIRAMARE = "y" ]
@@ -54,7 +55,7 @@ then
     mkdir ~/.vim
     ln -sf "$PWD/.vimrc" ~
     ln -sf "$PWD/.bashrc" ~
-    ln -sf "$PWD/coc-settings.json" ~/.vim/
+    ln -sf "$PWD/.alacritty.yml" ~
     ln -sf "$PWD/rcfiles" ~/.vim/
     mkdir ~/.config/nvim
     ln -sf "$PWD/init.vim" ~/.config/nvim/

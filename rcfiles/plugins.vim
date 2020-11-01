@@ -11,7 +11,6 @@ call plug#begin('~/.vim/bundle')
 Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'franbach/miramare'
-Plug 'sts10/vim-pink-moon'
 
 "--- Functional
 Plug 'scrooloose/nerdtree'
@@ -22,7 +21,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -44,14 +42,19 @@ Plug 'herringtondarkholme/yats.vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
+Plug 'sbdchd/neoformat'
 
 "--- Java
 Plug 'uiiaoo/java-syntax.vim'
 
+"--- Other
+Plug 'sheerun/vim-polyglot'
+
+
+
 "--- Sources
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
-"source ~/.vim/rcfiles/coc.vim
 
 " -- FZF
 source ~/.fzf/plugin/fzf.vim
