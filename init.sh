@@ -15,6 +15,12 @@ read INSTALL_MIRAMARE
 echo Symlink files? y/n
 read SYMLINK_FILES
 
+echo Install NeoVim? y/n
+read INSTALL_NEOVIM
+
+echo Install Typescript / tsserver? y/n
+read INSTALL_TYPESCRIPT
+
 if [ $INSTALL_FZF = "y" ]
 then
     echo "===== Installing FZF ====="
@@ -54,5 +60,19 @@ then
     ln -sf "$PWD/init.vim" ~/.config/nvim/
 fi
 
+if [ $INSTALL_NEOVIM = "y" ]
+then
+    echo "===== Installing NeoVim ====="
+    wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -P ../
+    sudo ln -sf "$PWD/../nvim.appimage" /bin/nvim
+fi
 
+if [ $INSTALL_TYPESCRIPT = "y" ]
+then
+    echo "===== Installing typescript ====="
+    npm install -g typescript
+fi
+
+
+echo ""
 echo Finished. Remember to install the font Fantasque Sans mono. You can find it here https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FantasqueSansMono/Regular/complete
