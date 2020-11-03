@@ -6,6 +6,9 @@ read INSTALL_FZF
 echo Install Bat? y/n
 read INSTALL_BAT
 
+echo Install RipGrep? y/n
+read INSTALL_RIPGREP
+
 echo Install node and yarn? y/n
 read INSTALL_NODE_AND_YARN
 
@@ -34,6 +37,12 @@ then
     sudo apt install bat
 fi
 
+if [ $INSTALL_BAT = "y" ]
+then
+    echo "===== Install RipGrep ====="
+    sudo apt install ripgrep
+fi
+
 if [ $INSTALL_NODE_AND_YARN = "y" ]
 then
     echo "===== Initializing nvm ==== "
@@ -57,7 +66,7 @@ then
     ln -sf "$PWD/.bashrc" ~
     ln -sf "$PWD/.alacritty.yml" ~
     ln -sf "$PWD/rcfiles" ~/.vim/
-    mkdir ~/.config/nvim
+    mkdir -p ~/.config/nvim
     ln -sf "$PWD/init.vim" ~/.config/nvim/
 fi
 
@@ -65,7 +74,8 @@ if [ $INSTALL_NEOVIM = "y" ]
 then
     echo "===== Installing NeoVim ====="
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -P ../
-    sudo ln -sf "$PWD/../nvim.appimage" /bin/nvim
+    chmod +x ../nvim.appimage
+    sudo ln -sf "$PWD/../nvim.appimage" /usr/bin/nvim
 fi
 
 if [ $INSTALL_TYPESCRIPT = "y" ]
