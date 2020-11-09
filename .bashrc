@@ -115,8 +115,7 @@ export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
 # Copy Terminal
 alias ct="alacritty & disown"
 
-#source ~/.ssh.bashrc
-#source ~/terminalscripts/.bashscripts
+source ~/.ssh.bashrc
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
 

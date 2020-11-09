@@ -83,6 +83,7 @@ require'nvim_lsp'.jsonls.setup{ on_attach=on_attach_vim }
 require'nvim_lsp'.html.setup{ on_attach=on_attach_vim }
 require'nvim_lsp'.cssls.setup{ on_attach=on_attach_vim }
 require'nvim_lsp'.clangd.setup{ on_attach=on_attach_vim }
+require'nvim_lsp'.intelephense.setup{ on_attach=on_attach_vim }
 
 EOF
 
