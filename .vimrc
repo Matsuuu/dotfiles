@@ -39,7 +39,6 @@ colorscheme miramare
 "--- Load plugins
 source ~/.vim/rcfiles/plugins.vim
 
-"let g:coc_start_at_startup = 1
 set rtp+=~/.fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
@@ -119,3 +118,4 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+imap <silent> <c-p> <Plug>(completion_trigger)
