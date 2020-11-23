@@ -50,12 +50,18 @@ export EDITOR="$VISUAL"
 
 
 # ALIASES
+# Software overrides
 alias python=python3.8
 alias vim="nvim"
-alias todo="vim ~/todo"
+#
+# I forget about how to do stuff aliases
 alias filesize="du -sh"
-alias cpdir="pwd | xclip -selection clipboard"
-alias prettylog="git log --graph --decorate --oneline"
 alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
+#
+# Git aliases
+alias prettylog="git log --graph --decorate --oneline"
+alias whathaveibeenupto="git log --author=\"$(git config user.email)\" --pretty=format:\"%an, %ar : %s\" --no-merges"
+#
+# I'm a lazy shit aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
-
+#
