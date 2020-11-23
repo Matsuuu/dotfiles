@@ -60,7 +60,7 @@ alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
 #
 # Git aliases
 alias prettylog="git log --graph --decorate --oneline"
-alias whathaveibeenupto="git log --author=\"$(git config user.email)\" --pretty=format:\"%an, %ar : %s\" --no-merges"
+alias whathaveibeenupto="git log --author=\"$(git config user.email)\" --pretty=format:\"%C(magenta)%an%Creset %C(green)%<(20)%ar%Creset  %C(blue) %s %Creset\" --no-merges"
 #
 # I'm a lazy shit aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
