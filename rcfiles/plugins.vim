@@ -11,6 +11,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'franbach/miramare'
+Plug 'connorholyday/vim-snazzy'
 
 "--- Functional
 Plug 'scrooloose/nerdtree'
@@ -24,7 +25,6 @@ Plug 'tpope/vim-surround'
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 
 "--- Theming
 Plug 'ryanoasis/vim-devicons'

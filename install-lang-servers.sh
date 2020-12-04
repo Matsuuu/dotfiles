@@ -4,4 +4,5 @@ nvim \
     -c "LspInstall html" \
     -c "LspInstall cssls" \
     -c "LspInstall jdtls" \
-    -c "LspInstall jsonls"
+    -c "LspInstall jsonls" \
+    -c "LspInstall intelephense

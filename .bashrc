@@ -2,6 +2,16 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -40,6 +50,7 @@ export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
 # EXPORTS
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
+#export JAVA_HOME=/usr/lib/jvm/java-14-openjdk-amd64
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8

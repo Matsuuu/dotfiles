@@ -47,6 +47,7 @@ set encoding=UTF-8
 " -- Open nerdtree on leader t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup = 0
+let NERDTreeShowHidden=1
 
 "-- Airline
 let g:airline_powerline_fonts = 1
@@ -64,25 +65,28 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_virtual_text_prefix = ' '
 
-call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "💡", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+"call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsSignError", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
+"call sign_define("LspDiagnosticsWarningSign", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsSignWarning", {"text" : "⚠", "texthl" : "LspDiagnosticsWarning"})
+"call sign_define("LspDiagnosticsInformationSign", {"text" : "💡", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsSignInformation", {"text" : "💡", "texthl" : "LspDiagnosticsInformation"})
+"call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
+call sign_define("LspDiagnosticsSignHint", {"text" : "H", "texthl" : "LspDiagnosticsHint"})
 
 ""--- Lang servers
 lua << EOF
 local on_attach_vim = function(client)
     require'completion'.on_attach(client)
-    require'diagnostic'.on_attach(client)
 end
 
-require'nvim_lsp'.tsserver.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.jdtls.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.jsonls.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.html.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.cssls.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.clangd.setup{ on_attach=on_attach_vim }
-require'nvim_lsp'.intelephense.setup{ on_attach=on_attach_vim }
+require'lspconfig'.tsserver.setup{ on_attach=on_attach_vim }
+require'lspconfig'.jsonls.setup{ on_attach=on_attach_vim }
+require'lspconfig'.html.setup{ on_attach=on_attach_vim }
+require'lspconfig'.jdtls.setup{ on_attach=on_attach_vim }
+require'lspconfig'.cssls.setup{ on_attach=on_attach_vim }
+require'lspconfig'.clangd.setup{ on_attach=on_attach_vim }
+require'lspconfig'.intelephense.setup{ on_attach=on_attach_vim }
 
 EOF
 
