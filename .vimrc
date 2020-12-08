@@ -46,13 +46,117 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 set encoding=UTF-8
 " -- Open nerdtree on leader t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup = 0
+"let g:nerdtree_tabs_open_on_console_startup = 0
 let NERDTreeShowHidden=1
 
 "-- Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='miramare'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#left_sep = ""
+let g:airline#extensions#tabline#right_sep = ""
+let g:airline_left_sep = "  "
+let g:airline_right_sep = "  "
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+let g:airline_disable_statusline = 1
+
+" Change airline positions
+function! AirlineInit()
+  "let g:airline_section_b = airline#section#create(['branch'])
+  let g:airline_section_a = "aaaa"
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+" ------ Statusline
+
+let left = ''
+let right = ''
+
+set laststatus=2
+
+set statusline=
+set statusline=%9*
+set statusline+=%=
+"Status
+
+hi StatusBarColor guibg=#2f3337 guifg=white
+hi StatusBalloonColor guifg=#273337
+au InsertEnter * hi StatusBarColor guibg=#e68183 guifg=#2a2426
+au InsertEnter * hi StatusBalloonColor guifg=#e68183
+au InsertLeave * hi StatusBarColor guibg=#2f3337 guifg=white
+au InsertLeave * hi StatusBalloonColor guifg=#273337
+
+set statusline+=%#StatusBalloonColor#
+set statusline+=%{left}
+set statusline+=%#StatusBarColor#
+set statusline+=\ \ 
+set statusline+=%{StatuslineMode()}
+set statusline+=\ \ 
+set statusline+=%#StatusBalloonColor#
+
+set statusline+=%{right}%9*
+set statusline+=%=
+
+"Git
+set statusline+=%4*%{left}%2*\ \ 
+set statusline+=%{FugitiveHead()}
+set statusline+=\ %4*%{right}%9*
+set statusline+=%=
+"Filename
+set statusline+=%4*%{left}%2*\ \ 
+set statusline+=%.20F
+set statusline+=\ \ 
+set statusline+=%3*
+set statusline+=\ \ 
+"Lines
+set statusline+=%l/%L
+"Column
+set statusline+=\|
+set statusline+=%c
+set statusline+=\ \ %5*%{right}%9*
+set statusline+=%=
+set statusline+=%4*%{left}%2*\ 
+"Filetype
+set statusline+=%y
+set statusline+=\ %4*%{right}%9*
+set statusline+=%=
+
+hi User1 guibg=green guifg=white
+" Balloon
+hi User2 guibg=#2f3337 guifg=white
+" Alt balloon
+hi User3 guibg=#3e4347 guifg=white
+" For rounders
+hi User4 guifg=#2f3337 
+" Alt rounders
+hi User5 guifg=#3e4347 
+" Clear
+hi User9 guifg=white 
+
+function! StatuslineMode()
+  let l:mode=mode()
+  if l:mode==#"n"
+    return "NORMAL"
+  elseif l:mode==?"v"
+    return "VISUAL"
+  elseif l:mode==#"i"
+    return "INSERT"
+  elseif l:mode==#"R"
+    return "REPLACE"
+  elseif l:mode==?"s"
+    return "SELECT"
+  elseif l:mode==#"t"
+    return "TERMINAL"
+  elseif l:mode==#"c"
+    return "COMMAND"
+  elseif l:mode==#"!"
+    return "SHELL"
+  endif
+endfunction
 
 "--- Vim Markdown settings
 let g:vim_markdown_folding_disabled = 1
@@ -99,7 +203,7 @@ autocmd BufWritePre *.html Neoformat
 
 " ---- Remaps
 "
-nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent>ff    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
