@@ -12,4 +12,4 @@ Here be dragons
 
 ### Example
 
-![Pic](unixpr_1.png)
+![Pic](unixpr_3.png)
