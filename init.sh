@@ -12,9 +12,6 @@ read INSTALL_RIPGREP
 echo Install node and yarn? y/n
 read INSTALL_NODE_AND_YARN
 
-echo Install miramare? y/n
-read INSTALL_MIRAMARE
-
 echo Symlink files? y/n
 read SYMLINK_FILES
 
@@ -47,15 +44,6 @@ if [ $INSTALL_NODE_AND_YARN = "y" ]
 then
     echo "===== Initializing nvm ==== "
     ./init-node.sh
-fi
-
-if [ $INSTALL_MIRAMARE = "y" ]
-then
-    git clone https://github.com/franbach/miramare.git ~/miramare
-    mkdir -p ~/.vim/colors/
-    mkdir -p ~/.vim/autoload/airline/themes
-    cp ~/miramare/colors/miramare.vim ~/.vim/colors/miramare.vim
-    cp ~/miramare/autoload/airline/themes/miramare.vim ~/.vim/autoload/airline/themes/miramare.vim
 fi
 
 if [ $SYMLINK_FILES  = "y" ]
