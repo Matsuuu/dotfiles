@@ -22,8 +22,6 @@ font:
     offset:
       y: 1
 
-    scale_with_dpi: 1
-
 
 window:
     dimensions:

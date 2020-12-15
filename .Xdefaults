@@ -1,0 +1,9 @@
+!--------------------xdefauls
+!URxvt.font: xft:FantasqueSansMono:size=13,Powerline:size=12
+Xft.dpi: 86
+Xft*antialias: true
+Xft*hinting: true
+Xft*hintstyle: hintfull
+URxvt*cursorUnderline: true
+URxvt.cursorBlink: true
+Xft*rgba: rgb
