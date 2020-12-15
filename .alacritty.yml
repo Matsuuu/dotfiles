@@ -1,6 +1,6 @@
 # Font configuration (changes require restart)
 font:
-    size: 12
+    size: 11
     # Normal (roman) font face
     normal:
         family: FantasqueSansMono Nerd Font
@@ -19,41 +19,51 @@ font:
         # The `style` can be specified to pick a specific face.
         style: Italic
 
+    offset:
+      y: 1
+
+    scale_with_dpi: 1
+
+
 window:
     dimensions:
         columns: 100
-        lines: 24
+        lines: 36
+
+    position:
+      x: 1050
+      y: 250
 
     padding:
-        x: 0
-        y: 0
+        x: 10
+        y: 10
 
-background_opacity: 0.98
+background_opacity: 1
 colors:
   # Default colors
   primary:
-    background: '0x2a2426'
-    foreground: '0xe6d6ac'
+    background: '0x202330'
+    foreground: '0xfae8b6'
 
   # Normal colors
   normal:
-    black:   '0x2a2426'
-    red:     '0xe68183'
-    green:   '0xa7c080'
-    yellow:  '0xd9bb80'
-    blue:    '0x7d7d7d'
-    magenta: '0x659ba8'
+    black:   '0x202330'
+    red:     '0xe6a0a9'
+    green:   '0x9cd162'
+    yellow:  '0xffc85b'
+    blue:    '0xa2c2eb'
+    magenta: '0xf2448b'
     cyan:    '0x87c095'
-    white:   '0xa7c080'
+    white:   '0xfae8b6'
 
   # Bright colors
   bright:
-    black:   '0x2a2426'
-    red:     '0xe68183'
-    green:   '0xa7c080'
-    yellow:  '0xd9bb80'
-    blue:    '0x7d7d7d'
-    magenta: '0x659ba8'
+    black:   '0x202330'
+    red:     '0xe6a0a9'
+    green:   '0x9cd162'
+    yellow:  '0xffc85b'
+    blue:    '0xa2c2eb'
+    magenta: '0xf2448b'
     cyan:    '0x87c095'
-    white:   '0xa7c080'
+    white:   '0xfae8b6'
 

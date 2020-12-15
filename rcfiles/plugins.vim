@@ -12,6 +12,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
 Plug 'franbach/miramare'
 Plug 'connorholyday/vim-snazzy'
+Plug 'matsuuu/pinkmare'
 
 "--- Functional
 Plug 'scrooloose/nerdtree'
@@ -25,11 +26,15 @@ Plug 'tpope/vim-surround'
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'ojroques/nvim-lspfuzzy'
+
+"--- Experimental
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
 
 "--- Theming
 Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "--- Markdown
@@ -38,9 +43,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 
 "--- Webdev
-Plug 'herringtondarkholme/yats.vim'
+"Plug 'herringtondarkholme/yats.vim'
 Plug 'jonsmithers/vim-html-template-literals'
-Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 
