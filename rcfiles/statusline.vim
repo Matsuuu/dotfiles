@@ -20,6 +20,7 @@ set statusline+=%{left}
 set statusline+=%#StatusBarColor#
 set statusline+=\ \ 
 set statusline+=%{StatuslineMode()}
+set statusline+=%m
 set statusline+=\ \ 
 set statusline+=%#StatusBalloonColor#
 

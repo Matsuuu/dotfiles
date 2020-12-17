@@ -1,0 +1,193 @@
+# i3 config file (v4)
+set $sup Mod4
+set $mod Mod1
+set $ctrl Control
+
+set $inner 20
+set $outerTop 0
+set $outerBottom 30
+set $radius 6
+
+set $borderSize 3
+set $focusBorder #FE7C8E
+set $unFocusBorder #472541
+set $bg #ed6f81
+set $fg #FFFFFF
+
+font pango:monospace 8
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+exec --no-startup-id nm-applet
+
+set $refresh_i3status killall -SIGUSR1 i3status
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
+# KDE
+bindsym XF86AudioRaiseVolume exec qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
+bindsym XF86AudioLowerVolume exec qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
+bindsym XF86AudioMute exec qdbus org.kde.kglobalaccel /component/kmix invodeShortcut "mute"
+
+set $up k
+set $down j
+set $left h
+set $right l
+
+# use Mouse+$sup to drag floating windows to their wanted position
+floating_modifier $mod
+
+# kill focused window
+bindsym $sup+Shift+q kill
+#TODO: Fix
+#bindsym $sup+x  xkill
+
+# change focus
+bindsym $sup+$left focus left
+bindsym $sup+$down focus down
+bindsym $sup+$up focus up
+bindsym $sup+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $sup+Left focus left
+bindsym $sup+Down focus down
+bindsym $sup+Up focus up
+bindsym $sup+Right focus right
+
+# move focused window
+bindsym $sup+Shift+$left move left
+bindsym $sup+Shift+$down move down
+bindsym $sup+Shift+$up move up
+bindsym $sup+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $sup+Shift+Left move left
+bindsym $sup+Shift+Down move down
+bindsym $sup+Shift+Up move up
+bindsym $sup+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $sup+b split h
+
+# split in vertical orientation
+bindsym $sup+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $sup+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $sup+s layout stacking
+bindsym $sup+w layout tabbed
+bindsym $sup+e layout toggle split
+
+# toggle tiling / floating
+bindsym $sup+d floating toggle
+
+# change focus between tiling / floating windows
+bindsym $sup+space focus mode_toggle
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $ctrl+1 workspace number $ws1
+bindsym $ctrl+2 workspace number $ws2
+bindsym $ctrl+3 workspace number $ws3
+bindsym $ctrl+4 workspace number $ws4
+bindsym $ctrl+5 workspace number $ws5
+bindsym $ctrl+6 workspace number $ws6
+bindsym $ctrl+7 workspace number $ws7
+bindsym $ctrl+8 workspace number $ws8
+bindsym $ctrl+9 workspace number $ws9
+bindsym $ctrl+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $ctrl+Shift+1 move container to workspace number $ws1
+bindsym $ctrl+Shift+2 move container to workspace number $ws2
+bindsym $ctrl+Shift+3 move container to workspace number $ws3
+bindsym $ctrl+Shift+4 move container to workspace number $ws4
+bindsym $ctrl+Shift+5 move container to workspace number $ws5
+bindsym $ctrl+Shift+6 move container to workspace number $ws6
+bindsym $ctrl+Shift+7 move container to workspace number $ws7
+bindsym $ctrl+Shift+8 move container to workspace number $ws8
+bindsym $ctrl+Shift+9 move container to workspace number $ws9
+bindsym $ctrl+Shift+0 move container to workspace number $ws10
+
+# reload the configuration file
+bindsym $sup+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $sup+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $sup+$ctrl+h    resize shrink width 5 px or 5 ppt
+bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
+bindsym $sup+$ctrl+k    resize grow height 5 px or 5 ppt
+bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
+
+# >>> Plasma Integration <<<
+
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace
+# and hides everythiing)
+exec --no-startup-id wmctrl -c Plasma
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="Albert"] border none
+
+# Avoid tiling popups, dropdown windows from plasma
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable
+for_window [class="krunner"] floating enable
+for_window [class="Kmix"] floating enable
+for_window [class="Klipper"] floating enable
+for_window [class="Plasmoidviewer"] floating enable
+
+# >>> Window Rules <<<
+
+# >>> Avoid tiling for non-Plasma stuff <<<
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable 
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+no_focus [class=”plasmashell”]
+
+exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
+exec_always --no-startup-id ~/dotfiles/polybar/start
+
+#End of mandatory stuff
+
+gaps inner $inner
+gaps top $outerTop
+gaps bottom $outerBottom
+
+focus_follows_mouse no
+
+# Remove title
+for_window [class="^.*"] border pixel $borderSize
+
+# Borders
+# CLASS                 BORDER                  BACK            TEXT            INDICATOR
+client.focused          $focusBorder            $focusBorder    $focusBorder    $bg
+client.focused_inactive $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
+client.unfocused        $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
+client.urgent           $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
+
+smart_borders on
+border_radius $radius
+
+# Shortcuts
+bindsym $mod+space exec albert show
