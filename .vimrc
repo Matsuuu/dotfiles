@@ -69,7 +69,15 @@ call sign_define("LspDiagnosticsSignWarning", {"text" : "🚧", "texthl" : "LspD
 call sign_define("LspDiagnosticsSignInformation", {"text" : "👷", "texthl" : "LspDiagnosticsInformation"})
 call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiagnosticsHint"})
 
-""--- Lang servers
+"  _    _       _         _                   _          __  __ 
+" | |  | |     | |       | |                 | |        / _|/ _|
+" | |  | | __ _| |_   _  | |_   _  __ _   ___| |_ _   _| |_| |_ 
+" | |  | |/ _` | | | | | | | | | |/ _` | / __| __| | | |  _|  _|
+" | |__| | (_| | | |_| | | | |_| | (_| | \__ \ |_| |_| | | | |  
+"  \____/ \__, |_|\__, | |_|\__,_|\__,_| |___/\__|\__,_|_| |_|  
+"          __/ |   __/ |                                        
+"         |___/   |___/                                         
+
 if has('nvim')
 lua << EOF
 require('lspfuzzy').setup {}
@@ -105,14 +113,30 @@ require'lspconfig'.intelephense.setup{ on_attach=on_attach_vim }
 
 EOF
 end
-"--- Formatting
+
+"  ______                         _   _   _             
+" |  ____|                       | | | | (_)            
+" | |__ ___  _ __ _ __ ___   __ _| |_| |_ _ _ __   __ _ 
+" |  __/ _ \| '__| '_ ` _ \ / _` | __| __| | '_ \ / _` |
+" | | | (_) | |  | | | | | | (_| | |_| |_| | | | | (_| |
+" |_|  \___/|_|  |_| |_| |_|\__,_|\__|\__|_|_| |_|\__, |
+"                                                  __/ |
+"                                                 |___/
+
 autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.md Neoformat
 autocmd BufWritePre *.js Neoformat
 autocmd BufWritePre *.html Neoformat
 
 
-" ---- Remaps
+"  _____                                
+" |  __ \                               
+" | |__) |___ _ __ ___   __ _ _ __  ___ 
+" |  _  // _ \ '_ ` _ \ / _` | '_ \/ __|
+" | | \ \  __/ | | | | | (_| | |_) \__ \
+" |_|  \_\___|_| |_| |_|\__,_| .__/|___/
+"                            | |        
+"                            |_|
 "
 nnoremap <silent>ff    <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
