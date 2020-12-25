@@ -29,11 +29,11 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/workspace]
-bottom=true
+bottom=false
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 10%
+width = 15%
 height = 35
-offset-x = 5%
+offset-x = 1.1%
 offset-y = 0.5%
 override-redirect = true
 radius = 6.0
@@ -58,12 +58,18 @@ modules-left = i3
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/main]
-bottom=true
+tray-position = right
+tray-padding = 4
+tray-background = ${colors.background}
+tray-scale = 1.0
+tray-maxsize = 16
 
-width = 20%
+[bar/main]
+bottom=false
+
+width = 19%
 height = 35
-offset-x = 65%
+offset-x = 79.75%
 offset-y = 0.5%
 override-redirect = true
 radius = 8
@@ -88,21 +94,14 @@ font-0 = Fantasque Sans Mono Nerd Font:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left =  xkeyboard wlan battery 
+modules-left =  xkeyboard wlan battery pulseaudio
 modules-center =
 modules-right = date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-tray-position = center
-tray-padding = 2
-tray-background = ${colors.primary}
-tray-scale = 1.0
-tray-maxsize = 16
-
 enable-ipc = true
-
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -228,6 +227,49 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-5 = 
 animation-charging-6 = 
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels%
+label-muted =  muted
+label-muted-foreground = #666
+
+ramp-volume-0 =  
+ramp-volume-1 =  
+ramp-volume-2 =   
+
+click-right = pavucontrol-qt
 
 [settings]
 screenchange-reload = true
