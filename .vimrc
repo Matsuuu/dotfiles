@@ -84,7 +84,6 @@ require('lspfuzzy').setup {}
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 
 local lsp_status = require('lsp-status')
-lsp_status.register_progress()
 lsp_status.config({
   kind_labels = vim.g.completion_customize_lsp_label,
   current_function = false,
@@ -96,11 +95,12 @@ lsp_status.config({
   indicator_ok = '✅',
   spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
 })
+lsp_status.register_progress()
 
 local on_attach_vim = function(client)
     require'completion'.on_attach(client)
     lsp_status.on_attach(client)
-    capabilities = lsp_stats.capabilities
+    capabilities = lsp_status.capabilities
 end
 
 require'lspconfig'.tsserver.setup{ on_attach=on_attach_vim }
