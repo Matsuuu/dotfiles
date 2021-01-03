@@ -17,7 +17,7 @@ border_radius $radius
 
 set $borderSize 3
 set $focusBorder #FE7C8E
-set $unFocusBorder #472541
+set $unFocusBorder #7658a8
 set $bg #ed6f81
 set $fg #FFFFFF
 
