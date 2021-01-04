@@ -13,15 +13,15 @@ gaps top $outerTop
 gaps bottom $outerBottom
 focus_follows_mouse no
 smart_borders on
-border_radius $radius
+#border_radius $radius
 
-set $borderSize 3
+#set $borderSize 3
+set $borderSize 0
 set $focusBorder #FE7C8E
 set $unFocusBorder #7658a8
 set $bg #ed6f81
 set $fg #FFFFFF
 
-# Remove title
 for_window [class="^.*"] border pixel $borderSize
 
 # Borders
@@ -189,6 +189,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
 exec_always --no-startup-id ~/dotfiles/polybar/start
+exec_always --no-startup-id picom
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  

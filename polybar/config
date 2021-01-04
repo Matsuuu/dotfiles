@@ -31,11 +31,11 @@ alert = #bd2c40
 [bar/workspace]
 bottom=false
 ;monitor = ${env:MONITOR:HDMI-1}
+override-redirect = true
 width = 15%
 height = 35
 offset-x = 1.1%
 offset-y = 0.5%
-override-redirect = true
 radius = 6.0
 fixed-center = false
 
