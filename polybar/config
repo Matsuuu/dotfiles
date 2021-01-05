@@ -67,9 +67,9 @@ tray-maxsize = 16
 [bar/main]
 bottom=false
 
-width = 19%
+width = 23%
 height = 35
-offset-x = 79.75%
+offset-x = 75.75%
 offset-y = 0.5%
 override-redirect = true
 radius = 8
