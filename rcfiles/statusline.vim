@@ -71,12 +71,12 @@ hi link User1 FancyTextColorThreeFG
 " Clear
 hi User9 guifg=white 
 
-hi FancyTextColor guifg=#ffc85b guibg=#444444
-hi FancyTextColorTwo guifg=#fff0f5 guibg=#444444
+hi FancyTextColor guifg=#cec09a guibg=#2d2f42
+hi FancyTextColorTwo guifg=#fff0f5 guibg=#2d2f42
 hi FancyTextColorThree guifg=#f39305 guibg=#242021
 hi FancyTextColorThreeFG guifg=#242021 
-hi NormalColor guifg=#fff0f5 guibg=#444444
-hi NormalColorFG guifg=#444444
+hi NormalColor guifg=#fff0f5 guibg=#2d2f42
+hi NormalColorFG guifg=#2d2f42
 hi NormalAlt guibg=#fe7c8e guifg=#000000
 hi NormalAltFG guifg=#fe7c8e
 hi VisualColor guibg=#fff0f5 guifg=#202330
