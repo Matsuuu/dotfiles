@@ -26,6 +26,8 @@ set cursorline
 set backupcopy=yes
 set relativenumber
 set signcolumn=yes
+set scrolloff=8
+set hidden
 hi LinrNr term=NONE
 filetype plugin indent on
 let g:loaded_matchparen=1

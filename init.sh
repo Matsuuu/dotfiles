@@ -56,7 +56,6 @@ then
     ln -sf "$PWD/rcfiles" ~/.vim/
     mkdir -p ~/.config/nvim
     ln -sf "$PWD/init.vim" ~/.config/nvim/
-    ln -sf "$PWD/compton.conf" ~/.config/compton.conf
 fi
 
 if [ $INSTALL_NEOVIM = "y" ]
