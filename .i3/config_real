@@ -199,5 +199,3 @@ exec_always --no-startup-id picom
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
 bindsym $sup+r [title="Desktop - Plasma] kill
-bindsym $mod+space exec albert show
-for_window [title="Defragmentation - Game"] floating enable

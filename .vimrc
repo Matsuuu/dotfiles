@@ -113,6 +113,7 @@ require'lspconfig'.cssls.setup{ on_attach=on_attach_vim }
 require'lspconfig'.clangd.setup{ on_attach=on_attach_vim }
 require'lspconfig'.intelephense.setup{ on_attach=on_attach_vim }
 
+
 EOF
 end
 
@@ -128,8 +129,8 @@ end
 autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.md Neoformat
 autocmd BufWritePre *.js Neoformat
+autocmd BufWritePre *.ts Neoformat
 autocmd BufWritePre *.html Neoformat
-
 
 "  _____                                
 " |  __ \                               

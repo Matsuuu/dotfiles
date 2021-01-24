@@ -39,9 +39,8 @@ alias l='ls -CF'
 
 bind 'set show-all-if-ambiguous on'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # PATHS
 export PATH="~/.ebcli-virtual-env/executables:$PATH"
@@ -50,14 +49,15 @@ export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
 # EXPORTS
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
-#export JAVA_HOME=/usr/lib/jvm/java-14-openjdk-amd64
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export GRAALVM_HOME=$HOME/Tools/graalvm/
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export NPM_PACKAGES="${HOME}/.npm-packages"
+export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/"
+#export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/"
 
 
 # ALIASES
@@ -73,6 +73,9 @@ alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
 alias prettylog="git log --graph --decorate --oneline"
 alias whathaveibeenupto="git log --author=\"$(git config user.email)\" --pretty=format:\"%C(magenta)%an%Creset %C(green)%<(20)%ar%Creset  %C(blue) %s %Creset\" --no-merges"
 #
+# Dev aliases
+alias devserver="npx @web/dev-server --node-resolve --watch --open"
 # I'm a lazy shit aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 #
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

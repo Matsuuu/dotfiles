@@ -45,6 +45,7 @@ Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 "--- Webdev
 "Plug 'herringtondarkholme/yats.vim'
 Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 

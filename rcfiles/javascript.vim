@@ -1,5 +1,4 @@
-"let g:javascript_plugin_jsdoc = 1
-
+let g:javascript_plugin_jsdoc = 1
 "--- LIT highlighting and autclosing
 let g:htl_css_templates = 1
 let g:htl_all_templates = 1

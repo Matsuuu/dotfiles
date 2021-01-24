@@ -15,33 +15,6 @@ focus_follows_mouse no
 smart_borders on
 #border_radius $radius
 
-#set $borderSize 3
-set $borderSize 0
-set $focusBorder #FE7C8E
-set $unFocusBorder #7658a8
-set $bg #ed6f81
-set $fg #FFFFFF
-
-for_window [class="^.*"] border pixel $borderSize
-
-# Borders
-# CLASS                 BORDER                  BACK            TEXT            INDICATOR
-client.focused          $focusBorder            $focusBorder    $focusBorder    $bg
-client.focused_inactive $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-client.unfocused        $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-client.urgent           $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-
-font pango:monospace 8
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
-
-# KDE Audio
-#bindsym XF86AudioRaiseVolume exec qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"
-#bindsym XF86AudioLowerVolume exec qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"
-#bindsym XF86AudioMute exec qdbus org.kde.kglobalaccel /component/kmix invodeShortcut "mute"
-
 set $up k
 set $down j
 set $left h
@@ -148,34 +121,6 @@ bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
 bindsym $sup+$ctrl+k    resize grow height 5 px or 5 ppt
 bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
 
-# >>> Plasma Integration <<<
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace
-# and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [class="Albert"] border none
-
-# Avoid tiling popups, dropdown windows from plasma
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable
-for_window [class="krunner"] floating enable
-for_window [class="Kmix"] floating enable
-for_window [class="Klipper"] floating enable
-for_window [class="Plasmoidviewer"] floating enable
-
-# >>> Window Rules <<<
-
-# >>> Avoid tiling for non-Plasma stuff <<<
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="About"] floating enable 
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-
-#no_focus [class=”plasmashell”]
-
 #  ________   ________ _____ 
 # |  ____\ \ / /  ____/ ____|
 # | |__   \ V /| |__ | |     
@@ -185,12 +130,6 @@ for_window [window_type="menu"] floating enable
 #                                                        
 
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
-exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
-exec_always --no-startup-id ~/dotfiles/polybar/start
-exec_always --no-startup-id picom
-
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
 # | (___ | |__   ___  _ __| |_ ___ _   _| |_ 
@@ -198,6 +137,5 @@ exec_always --no-startup-id picom
 #  ____) | | | | (_) | |  | || (__| |_| | |_ 
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
-bindsym $sup+r [title="Desktop - Plasma] kill
+#
 bindsym $mod+space exec albert show
-for_window [title="Defragmentation - Game"] floating enable
