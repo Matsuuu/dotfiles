@@ -151,8 +151,8 @@ bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
 # >>> Plasma Integration <<<
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace
 # and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
+exec_always --no-startup-id wmctrl -c Plasma
+#for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [class="Albert"] border none
 
 # Avoid tiling popups, dropdown windows from plasma
@@ -199,3 +199,5 @@ exec_always --no-startup-id picom
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
 bindsym $sup+r [title="Desktop - Plasma] kill
+bindsym $mod+space exec albert show
+for_window [title="Defragmentation - Game"] floating enable

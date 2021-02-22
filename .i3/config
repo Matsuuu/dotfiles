@@ -153,6 +153,7 @@ bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
 # and hides everythiing)
 exec_always --no-startup-id wmctrl -c Plasma
 #for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [title="Desktop — Plasma"] kill
 for_window [class="Albert"] border none
 
 # Avoid tiling popups, dropdown windows from plasma

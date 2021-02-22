@@ -10,8 +10,6 @@ call plug#begin('~/.vim/bundle')
 "--- Themes
 Plug 'gruvbox-community/gruvbox'
 Plug 'tomasiser/vim-code-dark'
-Plug 'franbach/miramare'
-Plug 'connorholyday/vim-snazzy'
 Plug 'matsuuu/pinkmare'
 
 "--- Functional
@@ -22,6 +20,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
@@ -51,6 +50,9 @@ Plug 'sbdchd/neoformat'
 
 "--- Java
 Plug 'uiiaoo/java-syntax.vim'
+
+"--- Clojure
+Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 
 "--- Other
 Plug 'sheerun/vim-polyglot'

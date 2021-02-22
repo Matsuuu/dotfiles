@@ -1,18 +1,20 @@
 " --General ---
 " Space is king
 let mapleader = " "
+let maplocalleader = " "
 
+set exrc
 set shortmess+=W
 set termguicolors
 syntax on
 set backspace=indent,eol,start
-set nocompatible              
+set nocompatible
+set nohlsearch
 set ruler
 set number
 set nowrap
 set showcmd
 set incsearch
-set hlsearch
 set noswapfile
 set autoread
 set ignorecase
@@ -81,9 +83,11 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 "         |___/   |___/                                         
 
 if has('nvim')
-lua << EOF
+lua << END
 require('lspfuzzy').setup {}
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+
+vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -105,17 +109,19 @@ local on_attach_vim = function(client)
     capabilities = lsp_status.capabilities
 end
 
-require'lspconfig'.tsserver.setup{ on_attach=on_attach_vim }
-require'lspconfig'.jsonls.setup{ on_attach=on_attach_vim }
-require'lspconfig'.html.setup{ on_attach=on_attach_vim }
-require'lspconfig'.jdtls.setup{ on_attach=on_attach_vim }
-require'lspconfig'.cssls.setup{ on_attach=on_attach_vim }
-require'lspconfig'.clangd.setup{ on_attach=on_attach_vim }
-require'lspconfig'.intelephense.setup{ on_attach=on_attach_vim }
+local lspconfig = require('lspconfig')
+
+lspconfig.tsserver.setup{ on_attach=on_attach_vim }
+lspconfig.jsonls.setup{ on_attach=on_attach_vim }
+lspconfig.html.setup{ on_attach=on_attach_vim }
+lspconfig.jdtls.setup{ on_attach=on_attach_vim }
+lspconfig.cssls.setup{ on_attach=on_attach_vim }
+lspconfig.intelephense.setup{ on_attach=on_attach_vim }
+lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
 
 
-EOF
-end
+END
+endif
 
 "  ______                         _   _   _             
 " |  ____|                       | | | | (_)            
@@ -165,5 +171,8 @@ nnoremap <Leader>pf <C-^>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+"terminal remap
+tnoremap <Esc> <C-\><C-n>
 
 imap <silent> <c-p> <Plug>(completion_trigger)

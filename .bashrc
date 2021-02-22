@@ -42,10 +42,6 @@ bind 'set show-all-if-ambiguous on'
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# PATHS
-export PATH="~/.ebcli-virtual-env/executables:$PATH"
-export PATH=~/.pyenv/versions/3.7.2/bin:$PATH
-
 # EXPORTS
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
@@ -57,7 +53,21 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/"
-#export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/"
+
+
+# PATHS
+export PATH="$PATH:$HOME/.ebcli-virtual-env/executables"
+export PATH="$PATH:$HOME/.pyenv/versions/3.7.2/bin"
+export PATH="$PATH:$HOME/Tools/go/bin"
+export PATH="$PATH:$HOME/neovim/bin"
+export PATH="$PATH:$HOME/Tools/clojure-lsp"
+export PATH="$PATH:$JAVA_HOME/bin"
+
+#jdtl support for nvim
+export JAR=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.0.v20200915-1508.jar
+export JDTLS_CONFIG=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux
+export GRADLE_HOME=$HOME/gradle
+export WORKSPACE=$HOME/workspace
 
 
 # ALIASES
