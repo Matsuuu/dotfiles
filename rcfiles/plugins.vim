@@ -20,17 +20,13 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'ojroques/nvim-lspfuzzy'
-
-"--- Experimental
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
 
 "--- Theming
 Plug 'ryanoasis/vim-devicons'

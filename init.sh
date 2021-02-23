@@ -53,6 +53,7 @@ then
     ln -sf "$PWD/.vimrc" ~
     ln -sf "$PWD/.bashrc" ~
     ln -sf "$PWD/.alacritty.yml" ~
+    ln -sf "$PWD/.tmux.conf" ~
     ln -sf "$PWD/rcfiles" ~/.vim/
     mkdir -p ~/.config/nvim
     ln -sf "$PWD/init.vim" ~/.config/nvim/

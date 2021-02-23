@@ -45,7 +45,8 @@ colorscheme pinkmare
 
 "--- Source statusline
 source ~/.vim/rcfiles/statusline.vim
-
+"--- Source tabline
+source ~/.vim/rcfiles/tabline.vim
 
 set rtp+=~/.fzf
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
@@ -64,6 +65,8 @@ let g:vim_markdown_follow_anchor = 1
 "--- Nvim lsp settings
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:completion_trigger_on_delete = 1
+let g:completion_trigger_keyword_length = 1
 
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_virtual_text_prefix = ' '
@@ -85,7 +88,7 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 if has('nvim')
 lua << END
 require('lspfuzzy').setup {}
-vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+--vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 
 vim.lsp.set_log_level("trace")
 
@@ -163,6 +166,9 @@ nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 nnoremap <silent> <Leader>h+ :horizontal resize +5<CR>
 nnoremap <silent> <Leader>h- :horizontal resize -5<CR>
+
+" Search
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 nnoremap <C-F> :Rg <CR>
 nnoremap <C-B> :Buffers <CR>
 nnoremap <C-H> :History <CR>

@@ -1,4 +1,7 @@
 # Font configuration (changes require restart)
+shell:
+  program: /bin/bash
+
 font:
     size: 11
     # Normal (roman) font face
