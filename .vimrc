@@ -88,7 +88,6 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 if has('nvim')
 lua << END
 require('lspfuzzy').setup {}
---vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 
 vim.lsp.set_log_level("trace")
 
@@ -122,6 +121,7 @@ lspconfig.cssls.setup{ on_attach=on_attach_vim }
 lspconfig.intelephense.setup{ on_attach=on_attach_vim }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
 
+require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 END
 endif
@@ -136,9 +136,12 @@ endif
 "                                                 |___/
 
 autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.md Neoformat
-autocmd BufWritePre *.js Neoformat
-autocmd BufWritePre *.ts Neoformat
+autocmd BufWritePre *.md lua vim.lsp.buf.formatting_sync(nil, 1000)
+"autocmd BufWritePre *.md Neoformat
+"autocmd BufWritePre *.js Neoformat
+"autocmd BufWritePre *.ts Neoformat
+autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html Neoformat
 
 "  _____                                
@@ -150,12 +153,15 @@ autocmd BufWritePre *.html Neoformat
 "                            | |        
 "                            |_|
 "
-nnoremap <silent>ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent>ff    <cmd>Neoformat<CR>
 nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader><CR>  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <Leader>ee    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <Leader>se    <cmd>lua vim.lsp.diagnostic.goto_next { wrap = true }<CR>
 
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
