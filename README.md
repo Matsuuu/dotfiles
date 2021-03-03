@@ -9,6 +9,10 @@ Here be dragons
 - Fzf
 - Alacritty
 - Albert
+- Polybar
+- Picom
+- Tmux
+- i3
 
 ### Example
 
