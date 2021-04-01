@@ -90,8 +90,6 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 
 if has('nvim')
 lua << END
-require('lspfuzzy').setup {}
-
 vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
@@ -125,6 +123,31 @@ lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
 lspconfig.gopls.setup { on_attach=on_attach_vim }
 
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+local actions = require('telescope.actions')
+require('telescope').setup{
+    defaults = {
+        vimgrep_arguments = {
+            'rg',
+            '--column',
+            '--line-number',
+            '--no-heading',
+            '--color=always',
+            '--smart-case',
+            '--ignore',
+            '--hidden',
+            '--files'
+        },
+        prompt_prefix = "🔎 ",
+        mappings = {
+            i = {
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<esc>"] = actions.close
+            }
+        }
+    }
+}
 
 END
 endif
@@ -163,7 +186,8 @@ nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <Leader><CR>  <cmd>lua vim.lsp.buf.code_action()<CR>
+" Moved to telescope
+"nnoremap <Leader><CR>  <cmd>lua vim.lsp.buf.code_action()<CR>
 "ReName
 nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
 "Explain error
@@ -182,10 +206,46 @@ nnoremap <silent> <Leader>h+ :horizontal resize +5<CR>
 nnoremap <silent> <Leader>h- :horizontal resize -5<CR>
 
 " Search
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-nnoremap <C-F> :Rg <CR>
-nnoremap <C-B> :Buffers <CR>
-nnoremap <C-H> :History <CR>
+" Let's keep em here in case telescope shits the bed
+"command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+"nnoremap <C-F> :Rg <CR>
+"nnoremap <C-B> :Buffers <CR>
+"nnoremap <C-H> :History <CR>
+"
+"             _
+"           /(_))
+"         _/   /
+"        //   /
+"       //   /
+"       /\__/
+"       \O_/=-.
+"   _  / || \  ^o
+"   \\/ ()_) \.
+"    ^^ <__> \()
+"      //||\\
+"     //_||_\\  ds
+"    // \||/ \\
+"   //   ||   \\
+"  \/    |/    \/
+"  /     |      \
+" /      |       \
+"        |
+"
+nnoremap <C-F> <cmd>Telescope live_grep<CR>
+nnoremap <C-B> <cmd>Telescope buffers<CR>
+nnoremap <C-N> <cmd>Telescope find_files<CR>
+nnoremap <C-H> <cmd>Telescope oldfiles<CR>
+nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>
+" Show diagnostics
+nnoremap <Leader>sd <cmd>Telescope lsp_workspace_diagnostics<CR>
+
+
+" Telly colors not really working for me
+highlight TelescopeSelection guifg=#FF38A2 gui=bold
+highlight TelescopeMatching guifg=#d9bcef
+
+"----------------------------
+
 nnoremap <Leader>pf <C-^>
 " Tabbing autocomplete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

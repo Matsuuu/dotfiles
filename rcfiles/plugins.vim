@@ -18,8 +18,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 
@@ -27,7 +25,11 @@ Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
-Plug 'ojroques/nvim-lspfuzzy'
+
+"--- Tellyscope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 "--- Theming
 Plug 'ryanoasis/vim-devicons'
