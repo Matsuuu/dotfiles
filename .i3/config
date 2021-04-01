@@ -201,4 +201,5 @@ exec_always --no-startup-id picom
 #                                            
 bindsym $sup+r [title="Desktop - Plasma] kill
 bindsym $mod+space exec albert show
+bindsym $mod+p exec ~/dotfiles/polybar/start
 for_window [title="Defragmentation - Game"] floating enable

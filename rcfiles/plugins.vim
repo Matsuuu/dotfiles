@@ -8,11 +8,9 @@ endif
 call plug#begin('~/.vim/bundle')
 
 "--- Themes
-Plug 'gruvbox-community/gruvbox'
-Plug 'tomasiser/vim-code-dark'
 Plug 'matsuuu/pinkmare'
 
-"--- Lemme sit in that tree
+"--- Trees n shit
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
 
@@ -36,25 +34,15 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "--- Markdown
-"Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
 
 "--- Webdev
-"Plug 'herringtondarkholme/yats.vim'
-"Plug 'jonsmithers/vim-html-template-literals'
-"Plug 'pangloss/vim-javascript'
+Plug 'jonsmithers/vim-html-template-literals'
 Plug 'ap/vim-css-color'
 Plug 'sbdchd/neoformat'
 
-"--- Java
-"Plug 'uiiaoo/java-syntax.vim'
-
 "--- Clojure
 Plug 'Olical/conjure', {'tag': 'v4.14.1'}
-
-"--- Other
-"Plug 'sheerun/vim-polyglot'
 
 
 

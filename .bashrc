@@ -59,6 +59,7 @@ export JAVA_HOME="/usr/lib/jvm/adoptopenjdk-11-hotspot-amd64/"
 export PATH="$PATH:$HOME/.ebcli-virtual-env/executables"
 export PATH="$PATH:$HOME/.pyenv/versions/3.7.2/bin"
 export PATH="$PATH:$HOME/Tools/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/neovim/bin"
 export PATH="$PATH:$HOME/Tools/clojure-lsp"
 export PATH="$PATH:$JAVA_HOME/bin"
@@ -92,3 +93,4 @@ alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
 #
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

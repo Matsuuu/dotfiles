@@ -32,7 +32,7 @@ set scrolloff=8
 set hidden
 hi LinrNr term=NONE
 filetype plugin indent on
-let g:loaded_matchparen=1
+"let g:loaded_matchparen=1
 
 
 "--- Load plugins
@@ -41,7 +41,11 @@ source ~/.vim/rcfiles/plugins.vim
 "--- Theming
 autocmd ColorScheme * highlight LineNr ctermbg=NONE
 autocmd ColorScheme * highlight clear SignColumn
+
+" Pinkmare by me btw
 colorscheme pinkmare
+
+hi! MatchParen cterm=NONE,bold gui=NONE,bold  guibg=#87c095 guifg=NONE
 
 "--- Source statusline
 source ~/.vim/rcfiles/statusline.vim
@@ -55,7 +59,6 @@ let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 set encoding=UTF-8
 " -- Open nerdtree on leader t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-"let g:nerdtree_tabs_open_on_console_startup = 0
 let NERDTreeShowHidden=1
 
 "--- Vim Markdown settings
@@ -118,8 +121,8 @@ lspconfig.jsonls.setup{ on_attach=on_attach_vim }
 lspconfig.html.setup{ on_attach=on_attach_vim }
 lspconfig.jdtls.setup{ on_attach=on_attach_vim }
 lspconfig.cssls.setup{ on_attach=on_attach_vim }
-lspconfig.intelephense.setup{ on_attach=on_attach_vim }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
+lspconfig.gopls.setup { on_attach=on_attach_vim }
 
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
@@ -137,11 +140,10 @@ endif
 
 autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.md lua vim.lsp.buf.formatting_sync(nil, 1000)
-"autocmd BufWritePre *.md Neoformat
-"autocmd BufWritePre *.js Neoformat
-"autocmd BufWritePre *.ts Neoformat
 autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.clj lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.html Neoformat
 
 "  _____                                
@@ -153,14 +155,20 @@ autocmd BufWritePre *.html Neoformat
 "                            | |        
 "                            |_|
 "
+"Format, fucker
 nnoremap <silent>ff    <cmd>Neoformat<CR>
+"Go to Ref
 nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
+"Go to Def
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader><CR>  <cmd>lua vim.lsp.buf.code_action()<CR>
+"ReName
 nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
+"Explain error
 nnoremap <Leader>ee    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+"Show error
 nnoremap <Leader>se    <cmd>lua vim.lsp.diagnostic.goto_next { wrap = true }<CR>
 
 nnoremap <Leader>bn :bn<CR>
