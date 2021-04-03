@@ -127,17 +127,6 @@ require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 local actions = require('telescope.actions')
 require('telescope').setup{
     defaults = {
-        vimgrep_arguments = {
-            'rg',
-            '--column',
-            '--line-number',
-            '--no-heading',
-            '--color=always',
-            '--smart-case',
-            '--ignore',
-            '--hidden',
-            '--files'
-        },
         prompt_prefix = "🔎 ",
         mappings = {
             i = {
@@ -151,6 +140,19 @@ require('telescope').setup{
 
 END
 endif
+
+" Dunno why this breaks C-F
+"        vimgrep_arguments = {
+"            'rg',
+"            '--column',
+"            '--line-number',
+"            '--no-heading',
+"            '--color=always',
+"            '--smart-case',
+"            '--ignore',
+"            '--hidden',
+"            '--files'
+"        },
 
 "  ______                         _   _   _             
 " |  ____|                       | | | | (_)            
@@ -181,7 +183,8 @@ autocmd BufWritePre *.html Neoformat
 "Format, fucker
 nnoremap <silent>ff    <cmd>Neoformat<CR>
 "Go to Ref
-nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
+"nnoremap <silent>gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
 "Go to Def
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
