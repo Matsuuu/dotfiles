@@ -48,7 +48,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modul
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export GRAALVM_HOME=$HOME/Tools/graalvm/
+export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.0.0.2
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
@@ -63,6 +63,7 @@ export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/neovim/bin"
 export PATH="$PATH:$HOME/Tools/clojure-lsp"
 export PATH="$PATH:$JAVA_HOME/bin"
+export PATH="$PATH:$GRAALVM_HOME/bin"
 
 #jdtl support for nvim
 export JAR=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.0.v20200915-1508.jar
