@@ -4,7 +4,7 @@ set $mod Mod1
 set $ctrl Control
 
 set $inner 20
-set $outerTop 30
+set $outerTop 0
 set $outerBottom 0
 set $radius 6
 
@@ -166,14 +166,19 @@ for_window [class="Plasmoidviewer"] floating enable
 
 # >>> Window Rules <<<
 
-# >>> Avoid tiling for non-Plasma stuff <<<
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="bubble"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_role="About"] floating enable 
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
+# From wiki https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"]
 
 #no_focus [class=”plasmashell”]
 
@@ -186,10 +191,10 @@ for_window [window_type="menu"] floating enable
 #                                                        
 
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id nm-applet
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
-exec_always --no-startup-id ~/dotfiles/polybar/start
+#exec_always --no-startup-id ~/dotfiles/polybar/start
 exec_always --no-startup-id picom
 
 #   _____ _                _             _   
@@ -202,4 +207,5 @@ exec_always --no-startup-id picom
 bindsym $sup+r [title="Desktop - Plasma] kill
 bindsym $mod+space exec albert show
 bindsym $mod+p exec ~/dotfiles/polybar/start
+bindsym $sup+Return exec alacritty
 for_window [title="Defragmentation - Game"] floating enable

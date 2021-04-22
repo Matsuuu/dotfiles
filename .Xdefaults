@@ -1,6 +1,6 @@
-!--------------------xdefauls
+!--------------------xdefaults
 !URxvt.font: xft:FantasqueSansMono:size=13,Powerline:size=12
-Xft.dpi: 86
+Xft.dpi: 120
 Xft*antialias: true
 Xft*hinting: true
 Xft*hintstyle: hintfull
