@@ -217,7 +217,10 @@ autocmd BufWritePre *.html Neoformat
 nnoremap <silent>ff    <cmd>Neoformat<CR><Esc>:w<CR>
 "Go to Def
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
+" Docs pls
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
+" Params pls
+inoremap <silent><C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 "ReName
 nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
 "Explain error
