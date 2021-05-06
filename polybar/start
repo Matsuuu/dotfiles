@@ -1,8 +1,0 @@
-#!/bin/bash
-
-killall -q polybar
-#killall xembedsniproxy
-
-polybar sound & disown
-polybar main & disown
-polybar workspace & disown

@@ -66,7 +66,14 @@ let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_follow_anchor = 1
 
 "--- Nvim lsp settings
-set completeopt=menuone,noinsert,noselect
+"set completeopt=menuone,noinsert,noselect
+set completeopt=menuone,noselect
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_trigger_on_delete = 1
 let g:completion_trigger_keyword_length = 1
@@ -107,7 +114,7 @@ lsp_status.config({
 lsp_status.register_progress()
 
 local on_attach_vim = function(client)
-    require'completion'.on_attach(client)
+    --require'completion'.on_attach(client)
     lsp_status.on_attach(client)
     capabilities = lsp_status.capabilities
 end
@@ -153,6 +160,30 @@ require('telescope').setup{
     }
 }
 
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = true;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+  };
+}
+
 END
 endif
 
@@ -183,7 +214,7 @@ autocmd BufWritePre *.html Neoformat
 "                            |_|
 "
 "Format, fucker
-nnoremap <silent>ff    <cmd>Neoformat<CR>
+nnoremap <silent>ff    <cmd>Neoformat<CR><Esc>:w<CR>
 "Go to Def
 nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -240,11 +271,12 @@ highlight TelescopeMatching guifg=#d9bcef
 
 "----------------------------
 
+" Previous file
 nnoremap <Leader>pf <C-^>
 " Tabbing autocomplete
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "terminal remap
 tnoremap <Esc> <C-\><C-n>
