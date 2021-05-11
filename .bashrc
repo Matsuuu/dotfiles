@@ -69,6 +69,10 @@ export GRADLE_HOME=$HOME/gradle
 export WORKSPACE=$HOME/workspace
 
 
+function catclip() {
+    cat $1 | xclip -selection clipboard $OUTPUT
+}
+
 # ALIASES
 # Software overrides
 alias python=python3.8
