@@ -23,7 +23,6 @@ Plug 'tpope/vim-surround'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
-"Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
 

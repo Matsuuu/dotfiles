@@ -74,9 +74,9 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_trigger_on_delete = 1
-let g:completion_trigger_keyword_length = 1
+"let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+"let g:completion_trigger_on_delete = 1
+"let g:completion_trigger_keyword_length = 1
 
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_virtual_text_prefix = ' '
@@ -97,7 +97,7 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 
 if has('nvim')
 lua << END
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -266,7 +266,6 @@ nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>
 nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
 " Show diagnostics
 nnoremap <Leader>sd <cmd>Telescope lsp_workspace_diagnostics<CR>
-
 
 " Telly colors not really working for me
 highlight TelescopeSelection guifg=#FF38A2 gui=bold
