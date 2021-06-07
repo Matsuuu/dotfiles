@@ -54,6 +54,7 @@ export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export JAVA_HOME="/usr/lib/jvm/java-11-adoptopenjdk/"
 export TERM=xterm-256color
+export BROWSER=/usr/bin/google-chrome-stable
 
 
 # PATHS

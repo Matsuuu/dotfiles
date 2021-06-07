@@ -25,6 +25,7 @@ Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'onsails/lspkind-nvim'
 
 "--- Tellyscope
 Plug 'nvim-lua/popup.nvim'
