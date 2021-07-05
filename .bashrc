@@ -91,7 +91,7 @@ alias tmus="tmux"
 #
 # Dev aliases
 alias devserver="npx @web/dev-server --node-resolve --watch"
-alist installanalyzer="npm i -D @custom-elements-manifest/analyzer"
+alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 # I'm a lazy shit aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
