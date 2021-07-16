@@ -74,6 +74,11 @@ function catclip() {
     cat $1 | xclip -selection clipboard $OUTPUT
 }
 
+# Tmux on startup
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
 # ALIASES
 # Software overrides
 alias python=python3.8
