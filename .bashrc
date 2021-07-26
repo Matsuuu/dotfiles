@@ -74,6 +74,10 @@ function catclip() {
     cat $1 | xclip -selection clipboard $OUTPUT
 }
 
+function mp4towebp() {
+    ffmpeg -i "$1" -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -loop 0 -preset ${2:-default} -an -compression_level 6 -vsync 0 "${1/mp4/webp}"
+}
+
 # Tmux on startup
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
@@ -100,6 +104,8 @@ alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 # I'm a lazy shit aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
+
+
 #
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
