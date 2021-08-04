@@ -313,6 +313,19 @@ highlight TelescopeMatching guifg=#d9bcef
 
 "----------------------------
 
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap : :<c-g>u
+inoremap ; ;<c-g>u
+inoremap ; ;<c-g>u
+
+" Jumplist mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
 " Previous file
 nnoremap <Leader>pf <C-^>
 " Tabbing autocomplete
