@@ -32,7 +32,6 @@ set scrolloff=8
 set hidden
 hi LinrNr term=NONE
 filetype plugin indent on
-"let g:loaded_matchparen=1
 
 
 "--- Load plugins
@@ -121,10 +120,6 @@ nnoremap <Leader>bp :bp<CR>
 
 
 nnoremap <C-n> :Files<CR>
-nnoremap <silent> <Leader>+ :vertical resize +5<CR>
-nnoremap <silent> <Leader>- :vertical resize -5<CR>
-nnoremap <silent> <Leader>h+ :horizontal resize +5<CR>
-nnoremap <silent> <Leader>h- :horizontal resize -5<CR>
 
 "
 "             _

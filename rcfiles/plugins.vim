@@ -53,7 +53,4 @@ Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
 
-" -- FZF
-source ~/.fzf/plugin/fzf.vim
-
 call plug#end()
