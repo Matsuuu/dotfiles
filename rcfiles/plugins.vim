@@ -47,8 +47,7 @@ Plug 'sbdchd/neoformat'
 "--- Clojure
 Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 Plug 'jiangmiao/auto-pairs'
-
-
+" Disable by default
 au Filetype * let b:autopairs_loaded = 1
 
 "--- Sources
