@@ -33,7 +33,6 @@ set hidden
 hi LinrNr term=NONE
 filetype plugin indent on
 
-
 "--- Load plugins
 source ~/.vim/rcfiles/plugins.vim
 
@@ -52,6 +51,7 @@ source ~/.vim/rcfiles/statusline.vim
 source ~/.vim/rcfiles/tabline.vim
 "--- Source nvim stuff
 source ~/.vim/rcfiles/nvim.vim
+
 
 
 " -- Dev icons for nerdtree
@@ -90,6 +90,7 @@ if useformatting
     autocmd BufWritePre *.html Neoformat
 
 endif
+
 
 "  _____                                
 " |  __ \                               

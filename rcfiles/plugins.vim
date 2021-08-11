@@ -46,11 +46,13 @@ Plug 'sbdchd/neoformat'
 
 "--- Clojure
 Plug 'Olical/conjure', {'tag': 'v4.14.1'}
+Plug 'jiangmiao/auto-pairs'
 
 
 
 "--- Sources
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
+source ~/.vim/rcfiles/clojure.vim
 
 call plug#end()
