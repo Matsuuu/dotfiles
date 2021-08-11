@@ -49,6 +49,7 @@ Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 Plug 'jiangmiao/auto-pairs'
 
 
+au Filetype * let b:autopairs_loaded = 1
 
 "--- Sources
 source ~/.vim/rcfiles/javascript.vim
@@ -56,3 +57,4 @@ source ~/.vim/rcfiles/java.vim
 source ~/.vim/rcfiles/clojure.vim
 
 call plug#end()
+au BufEnter let b:autopairs_enabled=0

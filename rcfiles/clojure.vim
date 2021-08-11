@@ -1,2 +1,1 @@
-au Filetype clj let b:autopairs_enabled = 1
-
+autocmd Filetype clojure call AutoPairsInit()
