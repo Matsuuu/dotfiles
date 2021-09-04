@@ -1,1 +1,1 @@
-autocmd Filetype clojure call AutoPairsInit()
+"autocmd Filetype clojure call AutoPairsInit()

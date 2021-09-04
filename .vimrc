@@ -186,3 +186,4 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 tnoremap <Esc> <C-\><C-n>
 
 imap <silent> <c-p> <Plug>(completion_trigger)
+
