@@ -159,6 +159,9 @@ highlight TelescopeMatching guifg=#d9bcef
 
 "----------------------------
 
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
+
 " Undo break points
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
