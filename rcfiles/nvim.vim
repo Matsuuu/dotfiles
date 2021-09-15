@@ -26,7 +26,7 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 "         |___/   |___/                                         
 
 lua << END
---vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("debug")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({

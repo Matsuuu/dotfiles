@@ -52,7 +52,7 @@ export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.1.0
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
-export JAVA_HOME="/usr/lib/jvm/java-11-adoptopenjdk/"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk/"
 export TERM=xterm-256color
 export BROWSER=/usr/bin/google-chrome-stable
 
@@ -64,9 +64,10 @@ export PATH="$PATH:$JAVA_HOME/bin"
 export PATH="$PATH:$GRAALVM_HOME/bin"
 
 #jdtl support for nvim
-export JAR=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.100.v20201223-0822.jar
-export JDTLS_CONFIG=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux
-export GRADLE_HOME=$HOME/gradle
+export JDTLS_HOME=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository
+#export JAR=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.200.v20210416-2027.jar
+#export JDTLS_CONFIG=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux
+#export GRADLE_HOME=$HOME/gradle
 export WORKSPACE=$HOME/workspace
 
 

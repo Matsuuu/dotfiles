@@ -144,7 +144,7 @@ nnoremap <C-n> :Files<CR>
 "
 nnoremap <C-F> <cmd>Telescope live_grep<CR>
 " God damn tmux taking the C-B bind
-nnoremap <C-M> <cmd>Telescope buffers<CR>
+nnoremap <C-L> <cmd>Telescope buffers<CR>
 nnoremap <C-N> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 nnoremap <C-H> <cmd>Telescope oldfiles<CR>
 nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>

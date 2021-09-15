@@ -48,6 +48,9 @@ Plug 'sbdchd/neoformat'
 Plug 'Olical/conjure', {'tag': 'v4.14.1'}
 Plug 'jiangmiao/auto-pairs'
 
+let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutBackInsert = '<M-0>'
+
 "--- Sources
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
