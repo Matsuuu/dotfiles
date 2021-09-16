@@ -65,9 +65,6 @@ export PATH="$PATH:$GRAALVM_HOME/bin"
 
 #jdtl support for nvim
 export JDTLS_HOME=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository
-#export JAR=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_1.6.200.v20210416-2027.jar
-#export JDTLS_CONFIG=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/config_linux
-#export GRADLE_HOME=$HOME/gradle
 export WORKSPACE=$HOME/workspace
 
 

@@ -181,7 +181,6 @@ nnoremap <C-F> <cmd>Telescope live_grep<CR>
 nnoremap <C-L> <cmd>Telescope buffers<CR>
 nnoremap <C-N> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 nnoremap <C-H> <cmd>Telescope oldfiles<CR>
-nnoremap <C-n> :Files<CR>
 nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>
 nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
 nnoremap <Leader>gs    <cmd>Telescope git_status<CR>
