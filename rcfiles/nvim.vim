@@ -86,6 +86,14 @@ require('telescope').setup{
                 ["<esc>"] = actions.close
             }
         }
+    },
+    pickers = {
+        lsp_code_actions = {
+            theme = "cursor"
+        },
+        lsp_workspace_diagnostics = {
+            theme = "dropdown"
+        }
     }
 }
 
