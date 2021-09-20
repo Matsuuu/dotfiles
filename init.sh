@@ -52,6 +52,7 @@ then
     mkdir ~/.vim
     ln -sf "$PWD/.vimrc" ~
     ln -sf "$PWD/.bashrc" ~
+    ln -sf "$PWD/.env" ~
     ln -sf "$PWD/.alacritty.yml" ~
     ln -sf "$PWD/.tmux.conf" ~
     ln -sf "$PWD/.npm_completion" ~

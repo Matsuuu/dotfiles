@@ -48,25 +48,13 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modul
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.1.0
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk/"
 export TERM=xterm-256color
-export BROWSER=/usr/bin/google-chrome-stable
+export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.1.0
 
-
-# PATHS
-export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/Tools/clojure-lsp"
-export PATH="$PATH:$JAVA_HOME/bin"
-export PATH="$PATH:$GRAALVM_HOME/bin"
-
-#jdtl support for nvim
-export JDTLS_HOME=$HOME/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository
-export WORKSPACE=$HOME/workspace
-
+source ~/.env
 
 function catclip() {
     cat $1 | xclip -selection clipboard $OUTPUT
