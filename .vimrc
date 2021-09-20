@@ -81,16 +81,16 @@ function DoFormat()
 endfunction
 
 if useformatting
-
     autocmd BufWritePre *.java  call DoFormat()
     autocmd BufWritePre *.md call DoFormat()
     autocmd BufWritePre *.js call DoFormat()
     autocmd BufWritePre *.ts call DoFormat()
     autocmd BufWritePre *.clj call DoFormat()
     autocmd BufWritePre *.html Neoformat
-
 endif
 
+
+command! ToggleFormatting let useformatting = (useformatting == 0 ? 1 : 0) 
 
 "  _____                                
 " |  __ \                               
