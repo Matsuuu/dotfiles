@@ -34,7 +34,7 @@ then
     sudo apt install bat
 fi
 
-if [ $INSTALL_BAT = "y" ]
+if [ $INSTALL_RIPGREP = "y" ]
 then
     echo "===== Install RipGrep ====="
     sudo apt install ripgrep
