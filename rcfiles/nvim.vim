@@ -26,7 +26,7 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 "         |___/   |___/                                         
 
 lua << END
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -57,6 +57,15 @@ lspconfig.jdtls.setup{ on_attach=on_attach_vim }
 lspconfig.cssls.setup{ on_attach=on_attach_vim }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
 lspconfig.gopls.setup { on_attach=on_attach_vim }
+
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+parser_configs.http = {
+  install_info = {
+    url = "https://github.com/NTBBloodbath/tree-sitter-http",
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+}
 
 require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
@@ -161,6 +170,20 @@ require('lspkind').init({
     },
 })
 
+require("rest-nvim").setup({
+      -- Open request results in a horizontal split
+      result_split_horizontal = false,
+      -- Skip SSL verification, useful for unknown certificates
+      skip_ssl_verification = false,
+      -- Highlight request on run
+      highlight = {
+        enabled = true,
+        timeout = 150,
+      },
+      -- Jump to request line on run
+      jump_to_request = false,
+    })
+
 END
 
 
@@ -200,3 +223,5 @@ highlight TelescopeSelection guifg=#FF38A2 gui=bold
 highlight TelescopeMatching guifg=#d9bcef
 
 "----------------------------
+"
+nmap <leader>rr     <cmd> lua require "rest-nvim".run()<CR>

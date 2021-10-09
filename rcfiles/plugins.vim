@@ -51,7 +51,13 @@ Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsShortcutToggle = ''
 let g:AutoPairsShortcutBackInsert = '<M-0>'
 
-"--- Sources
+"--- HTTP
+Plug 'NTBBloodbath/rest.nvim'
+
+"---Random
+Plug 'dbeniamine/cheat.sh-vim'
+
+""--- Sources
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
 source ~/.vim/rcfiles/clojure.vim
