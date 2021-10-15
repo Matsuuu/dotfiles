@@ -36,10 +36,6 @@ filetype plugin indent on
 "--- Load plugins
 source ~/.vim/rcfiles/plugins.vim
 
-"--- Theming
-autocmd ColorScheme * highlight LineNr ctermbg=NONE
-autocmd ColorScheme * highlight clear SignColumn
-
 " Pinkmare by me btw
 colorscheme pinkmare
 

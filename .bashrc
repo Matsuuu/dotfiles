@@ -72,6 +72,7 @@ fi
 # ALIASES
 # Software overrides
 alias python=python3.8
+alias realvim="vim"
 alias vim="nvim"
 #
 # I forget about how to do stuff aliases
