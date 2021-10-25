@@ -37,7 +37,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "--- Markdown
-Plug 'iamcco/markdown-preview.nvim', {'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 "--- Webdev
 Plug 'jonsmithers/vim-html-template-literals'
@@ -56,6 +56,7 @@ Plug 'NTBBloodbath/rest.nvim'
 
 "---Random
 Plug 'dbeniamine/cheat.sh-vim'
+
 
 ""--- Sources
 source ~/.vim/rcfiles/javascript.vim

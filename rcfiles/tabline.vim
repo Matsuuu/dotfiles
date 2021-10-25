@@ -8,14 +8,13 @@ function! TabLine()
             let bufnr = buflist[winnr - 1]
             let bufname = fnamemodify(bufname(bufnr), ':t')
 
-            let s .= '%' . tabnr . 'T'
+            let s .= '%#TabLineFill# | '
             let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-            let s .= ' ' . tabnr
 
-            let n = tabpagewinnr(tabnr,'$')
+            let n = '' 
             if n > 1 | let s .= ':' . n | endif
 
-            let s .= empty(bufname) ? ' [No Name] ' : ' ' . bufname . ' '
+            let s .= empty(bufname) ? ' [No Name] ' : WebDevIconsGetFileTypeSymbol() . ' ' . bufname . ' '
 
             let bufmodified = getbufvar(bufnr, "&mod")
             if bufmodified | let s .= '+ ' | endif

@@ -119,7 +119,11 @@ function! CheckFT(filetype)
     if a:filetype == ''
         return '-'
     else 
-        return tolower(a:filetype)
+        let s = WebDevIconsGetFileTypeSymbol()
+        let s .= " "
+        let s .= tolower(a:filetype)
+        return s
+        "return tolower(a:filetype)
     endif
 endfunction
 
