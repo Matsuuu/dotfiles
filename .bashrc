@@ -33,9 +33,17 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+if command -v logo-ls &> /dev/null 
+then
+    alias ll='logo-ls -al'
+    alias la='logo-ls -A'
+    alias l='logo-ls'
+    alias ls='logo-ls'
+else
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
 
 bind 'set show-all-if-ambiguous on'
 
