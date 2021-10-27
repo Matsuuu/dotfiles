@@ -14,7 +14,7 @@ function! TabLine()
             let n = '' 
             if n > 1 | let s .= ':' . n | endif
 
-            let s .= empty(bufname) ? ' [No Name] ' : WebDevIconsGetFileTypeSymbol() . ' ' . bufname . ' '
+            let s .= empty(bufname) ? ' [No Name] ' : WebDevIconsGetFileTypeSymbol(bufname) . ' ' . bufname . ' '
 
             let bufmodified = getbufvar(bufnr, "&mod")
             if bufmodified | let s .= '+ ' | endif
