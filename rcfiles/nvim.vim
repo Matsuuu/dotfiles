@@ -222,6 +222,12 @@ nnoremap <Leader>sd <cmd>Telescope lsp_workspace_diagnostics<CR>
 highlight TelescopeSelection guifg=#FF38A2 gui=bold
 highlight TelescopeMatching guifg=#d9bcef
 
-"----------------------------
-"
-nmap <leader>rr     <cmd> lua require "rest-nvim".run()<CR>
+" neovim rest
+function! DoRest() 
+    lua require "rest-nvim".run()
+    redraw
+    sleep 100m
+    vertical resize 50
+endfunction
+"nmap <leader>rr     <cmd> lua require "rest-nvim".run()<CR>:vertical resize 50<CR>
+nmap <leader>rr     :call DoRest()<CR>
