@@ -30,6 +30,7 @@ set relativenumber
 set signcolumn=yes
 set scrolloff=8
 set hidden
+set splitright
 hi LinrNr term=NONE
 filetype plugin indent on
 
@@ -77,7 +78,7 @@ function DoFormat()
 endfunction
 
 if useformatting
-    autocmd BufWritePre *.java  call DoFormat()
+    "autocmd BufWritePre *.java  call DoFormat()
     autocmd BufWritePre *.md call DoFormat()
     autocmd BufWritePre *.js call DoFormat()
     autocmd BufWritePre *.ts call DoFormat()
