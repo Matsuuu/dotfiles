@@ -26,6 +26,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug 'mfussenegger/nvim-jdtls'
 
 "--- Tellyscope
 Plug 'nvim-lua/popup.nvim'
