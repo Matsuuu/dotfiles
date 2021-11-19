@@ -62,6 +62,5 @@ Plug 'dbeniamine/cheat.sh-vim'
 ""--- Sources
 source ~/.vim/rcfiles/javascript.vim
 source ~/.vim/rcfiles/java.vim
-source ~/.vim/rcfiles/clojure.vim
 
 call plug#end()
