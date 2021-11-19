@@ -13,3 +13,13 @@ require("rest-nvim").setup({
       jump_to_request = false,
     })
 END
+
+" neovim rest
+function! DoRest() 
+    lua require "rest-nvim".run()
+    redraw
+    sleep 100m
+    vertical resize 50
+endfunction
+"nmap <leader>rr     <cmd> lua require "rest-nvim".run()<CR>:vertical resize 50<CR>
+nmap <leader>rr     :call DoRest()<CR>
