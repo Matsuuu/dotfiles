@@ -57,6 +57,7 @@ then
     ln -sf "$PWD/.tmux.conf" ~
     ln -sf "$PWD/.npm_completion" ~
     ln -sf "$PWD/rcfiles" ~/.vim/
+    ln -sf "$PWD/ftplugin" ~/.vim/
     mkdir -p ~/.config/nvim
     ln -sf "$PWD/init.vim" ~/.config/nvim/
 fi
