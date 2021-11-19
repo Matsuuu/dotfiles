@@ -69,10 +69,10 @@ local pickers = require'telescope.pickers'
 local action_state = require'telescope.actions.state'
 
 require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
-local opts = {
-    }
+  local opts = {
+      theme = "cursor";
+  }
   pickers.new(opts, {
-    theme = "cursor",
     prompt_title = prompt,
     finder    = finders.new_table {
       results = items,
