@@ -61,25 +61,40 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
 
+-- Custom picker for jdtls
 
 local finders = require'telescope.finders'
 local sorters = require'telescope.sorters'
 local actions = require'telescope.actions'
 local pickers = require'telescope.pickers'
 local action_state = require'telescope.actions.state'
+local cursor_theme = require'telescope.themes'.get_cursor
+
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
 
 require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
-  local opts = {
-      theme = "cursor";
-  }
+  local opts = cursor_theme{}
+  local iterator = 0
   pickers.new(opts, {
     prompt_title = prompt,
     finder    = finders.new_table {
       results = items,
       entry_maker = function(entry)
+        iterator = iterator + 1
         return {
           value = entry,
-          display = label_fn(entry),
+          display = tostring(iterator) .. ": " .. label_fn(entry),
           ordinal = label_fn(entry),
         }
       end,
@@ -108,4 +123,4 @@ command! -buffer JdtJshell lua require('jdtls').jshell()
 
 "" Remaps for jdtls
 
-nnoremap <Leader><CR> <Cmd>lua require('jdtls').code_action()<CR>
+noremap <Leader><CR> <Cmd>lua require('jdtls').code_action()<CR>
