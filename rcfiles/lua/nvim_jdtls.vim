@@ -124,3 +124,5 @@ command! -buffer JdtJshell lua require('jdtls').jshell()
 "" Remaps for jdtls
 
 noremap <Leader><CR> <Cmd>lua require('jdtls').code_action()<CR>
+nnoremap <Leader>oi  <Cmd>lua require'jdtls'.organize_imports()<CR>
+vnoremap <Leader>em  <Esc><Cmd>lua require('jdtls').extract_method(true)<CR> 
