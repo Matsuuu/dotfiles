@@ -57,6 +57,7 @@ Plug 'NTBBloodbath/rest.nvim'
 
 "---Random
 Plug 'dbeniamine/cheat.sh-vim'
+Plug 'tpope/vim-commentary'
 
 
 ""--- Sources
