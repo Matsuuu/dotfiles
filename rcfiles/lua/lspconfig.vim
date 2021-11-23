@@ -7,6 +7,9 @@ call sign_define("LspDiagnosticsSignInformation", {"text" : "👷", "texthl" : "
 call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiagnosticsHint"})
 
 lua << END
+
+vim.lsp.set_log_level("debug")
+
 local lsp_status = require('lsp-status')
 lsp_status.config({
   kind_labels = vim.g.completion_customize_lsp_label,

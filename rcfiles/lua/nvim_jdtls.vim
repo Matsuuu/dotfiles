@@ -22,8 +22,8 @@ local config = {
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-    '--add-modules', 'jdk.incubator.foreign',
-    '--add-modules', 'jdk.incubator.vector',
+    --'--add-modules', 'jdk.incubator.foreign',
+    --'--add-modules', 'jdk.incubator.vector',
 
     -- 💀
     '-jar', vim.fn.glob('/home/matsu/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar'),
