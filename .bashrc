@@ -64,6 +64,8 @@ export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.1.0
 
 source ~/.env
 
+# Helper functions
+
 function catclip() {
     cat $1 | xclip -selection clipboard $OUTPUT
 }
@@ -71,6 +73,8 @@ function catclip() {
 function mp4towebp() {
     ffmpeg -i "$1" -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -loop 0 -preset ${2:-default} -an -compression_level 6 -vsync 0 "${1/mp4/webp}"
 }
+
+###
 
 # Tmux on startup
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
@@ -96,7 +100,7 @@ alias tmus="tmux"
 # Dev aliases
 alias devserver="npx @web/dev-server --node-resolve --watch"
 alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
-# I'm a lazy shit aliases
+# Vim aliases
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
 
