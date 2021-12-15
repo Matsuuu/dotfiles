@@ -60,7 +60,4 @@ Plug 'dbeniamine/cheat.sh-vim'
 Plug 'tpope/vim-commentary'
 
 
-""--- Sources
-source ~/.vim/rcfiles/javascript.vim
-
 call plug#end()
