@@ -1,3 +1,4 @@
+" VSCode like Pictograms on completion items
 lua << END
 require('lspkind').init({
     -- enables text annotations

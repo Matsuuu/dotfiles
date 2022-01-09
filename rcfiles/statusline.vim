@@ -123,7 +123,6 @@ function! CheckFT(filetype)
         let s .= " "
         let s .= tolower(a:filetype)
         return s
-        "return tolower(a:filetype)
     endif
 endfunction
 
