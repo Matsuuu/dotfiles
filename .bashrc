@@ -60,7 +60,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export TERM=xterm-256color
-export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java11-21.1.0
+export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java17-21.3.0
 
 source ~/.env
 
