@@ -55,7 +55,13 @@ local config = {
   settings = {
     java = {
     }
-  }
+  },
+
+  on_attach = function(client, bufnr) 
+    local jdtls = require('jdtls')
+    jdtls.setup_dap({ hotcodereplace = 'auto' }) 
+    jdtls.setup.add_commands()
+  end
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.

@@ -151,3 +151,5 @@ let g:mkdp_markdown_css = expand('~/dotfiles/markdown.css')
 " commentary
 noremap <Leader>cc :Commentary<CR>
 noremap <Leader>cs {v}:Commentary<CR>
+" Maximizer
+nnoremap <Leader>fs :MaximizerToggle<CR>

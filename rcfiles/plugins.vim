@@ -20,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
+Plug 'szw/vim-maximizer'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
@@ -27,6 +28,9 @@ Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'mfussenegger/nvim-jdtls'
+
+"--- Debugging
+Plug 'mfussenegger/nvim-dap'
 
 "--- Tellyscope
 Plug 'nvim-lua/popup.nvim'
