@@ -104,6 +104,9 @@ alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
 
+# Screenkey
+alias screenkeystream="screenkey -s small --window --timeout 0.4"
+
 # Caps is esc
 setxkbmap -option caps:escape
 
