@@ -55,7 +55,13 @@ local config = {
   settings = {
     java = {
     }
-  }
+  },
+
+  on_attach = function(client, bufnr) 
+    local jdtls = require('jdtls')
+    jdtls.setup_dap({ hotcodereplace = 'auto' }) 
+    jdtls.setup.add_commands()
+  end
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
@@ -69,19 +75,6 @@ local actions = require'telescope.actions'
 local pickers = require'telescope.pickers'
 local action_state = require'telescope.actions.state'
 local cursor_theme = require'telescope.themes'.get_cursor
-
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
 
 require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
   local opts = cursor_theme{}
@@ -123,6 +116,10 @@ command! -buffer JdtJshell lua require('jdtls').jshell()
 
 "" Remaps for jdtls
 
-noremap <Leader><CR> <Cmd>lua require('jdtls').code_action()<CR>
+noremap  <Leader><CR> <Cmd>lua require('jdtls').code_action()<CR>
 nnoremap <Leader>oi  <Cmd>lua require'jdtls'.organize_imports()<CR>
 vnoremap <Leader>em  <Esc><Cmd>lua require('jdtls').extract_method(true)<CR> 
+nnoremap <Leader>ev  <Esc><Cmd>lua require('jdtls').extract_variable()<CR> 
+vnoremap <Leader>ev  <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR> 
+nnoremap <Leader>ec  <Cmd>lua require('jdtls').extract_constant()<CR>
+vnoremap <Leader>ec  <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>

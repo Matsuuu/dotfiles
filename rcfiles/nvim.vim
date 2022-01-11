@@ -6,3 +6,4 @@ source ~/.vim/rcfiles/lua/lspkind.vim
 source ~/.vim/rcfiles/lua/rest-nvim.vim
 source ~/.vim/rcfiles/lua/telescope.vim
 source ~/.vim/rcfiles/lua/treesitter.vim
+source ~/.vim/rcfiles/lua/nvim_dap.vim
