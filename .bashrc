@@ -114,8 +114,6 @@ setxkbmap -option caps:escape
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source ~/.npm_completion
 
-setxkbmap -option caps:escape
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/matsu/google-cloud-sdk/path.bash.inc' ]; then . '/home/matsu/google-cloud-sdk/path.bash.inc'; fi
 
