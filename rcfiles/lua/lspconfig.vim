@@ -8,7 +8,7 @@ call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiag
 
 lua << END
 
---vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -39,4 +39,5 @@ lspconfig.html.setup{ on_attach=on_attach_vim }
 lspconfig.cssls.setup{ on_attach=on_attach_vim }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
 lspconfig.gopls.setup { on_attach=on_attach_vim }
+lspconfig.sumneko_lua.setup { on_attach=on_attach_vim }
 END
