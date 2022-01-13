@@ -4,6 +4,34 @@ lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
 
+  kind_icons = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "ﴯ",
+    Interface = "",
+    Module = "",
+    Property = "ﰠ",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+  }
+
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -11,6 +39,24 @@ lua <<EOF
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       end,
     },
+
+    formatting = {
+        fields = { "kind", "abbr" },
+        format = function(entry, vim_item)
+          -- Kind icons
+          vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+          -- Source
+          vim_item.menu = ({
+            buffer = "[Buffer]",
+            nvim_lsp = "",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[LaTeX]",
+          })[entry.source.name]
+          return vim_item
+        end
+    },
+
     mapping = {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
