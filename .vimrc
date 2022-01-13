@@ -137,8 +137,8 @@ nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 " Previous file
 nnoremap <Leader>pf <C-^>
 " Tabbing autocomplete
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "terminal remap
 "tnoremap <Esc> <C-\><C-n>

@@ -4,6 +4,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
 local workspace_dir = '/home/matsu/workspace/' .. project_name
 --                                               ^^
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -56,18 +57,18 @@ local config = {
     java = {
     }
   },
-init_options = {
-  bundles = {
-    "/home/matsu/Tools/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.34.0.jar"
-  }
-},
+  init_options = {
+    bundles = {
+      "/home/matsu/Tools/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.34.0.jar"
+    }
+  },
 
 
   on_attach = function(client, bufnr) 
     local jdtls = require('jdtls')
     jdtls.setup_dap({ hotcodereplace = 'auto' }) 
     jdtls.setup.add_commands()
-  end
+  end,
 
 }
 

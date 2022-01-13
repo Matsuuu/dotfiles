@@ -12,7 +12,17 @@ local signs = {
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
-vim.lsp.set_log_level("trace")
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+	border = "rounded",
+})
+
+
+--vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -28,6 +38,7 @@ lsp_status.config({
 })
 lsp_status.register_progress()
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach_vim = function(client)
     --require'completion'.on_attach(client)
     lsp_status.on_attach(client)
@@ -36,12 +47,12 @@ end
 
 local lspconfig = require('lspconfig')
 
-lspconfig.tsserver.setup{ on_attach=on_attach_vim }
-lspconfig.jsonls.setup{ on_attach=on_attach_vim }
-lspconfig.html.setup{ on_attach=on_attach_vim }
+lspconfig.tsserver.setup{ on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.jsonls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.html.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 --lspconfig.jdtls.setup{ on_attach=on_attach_vim }
-lspconfig.cssls.setup{ on_attach=on_attach_vim }
-lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim }
-lspconfig.gopls.setup { on_attach=on_attach_vim }
-lspconfig.sumneko_lua.setup { on_attach=on_attach_vim }
+lspconfig.cssls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.gopls.setup { on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.sumneko_lua.setup { on_attach=on_attach_vim, capabilities = capabilities }
 END

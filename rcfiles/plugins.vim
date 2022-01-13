@@ -24,10 +24,20 @@ Plug 'szw/vim-maximizer'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+"Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'onsails/lspkind-nvim'
 Plug 'mfussenegger/nvim-jdtls'
+
+"--- Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 "--- Debugging
 Plug 'mfussenegger/nvim-dap'
