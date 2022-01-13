@@ -1,13 +1,17 @@
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_virtual_text_prefix = ' '
 
-call sign_define("LspDiagnosticsSignError", {"text" : "🔥", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsSignWarning", {"text" : "🚧", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsSignInformation", {"text" : "👷", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsSignHint", {"text" : "🙋", "texthl" : "LspDiagnosticsHint"})
-
 lua << END
+local signs = {
+	{ name = "DiagnosticSignError", text = "🔥" },
+	{ name = "DiagnosticSignWarn", text = "🚧" },
+	{ name = "DiagnosticSignHint", text = "👷" },
+	{ name = "DiagnosticSignInfo", text = "🙋" },
+}
 
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
 vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
@@ -17,8 +21,8 @@ lsp_status.config({
   status_symbol = '💬: ',
   indicator_errors = '🔥 ',
   indicator_warnings = '🚧 ',
-  indicator_info = '👷 ',
-  indicator_hint = '🙋 ',
+  indicator_info = '🙋 ',
+  indicator_hint = '👷 ',
   indicator_ok = '✅',
   spinner_frames = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' },
 })
