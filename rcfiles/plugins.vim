@@ -31,6 +31,7 @@ Plug 'mfussenegger/nvim-jdtls'
 
 "--- Debugging
 Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 "--- Tellyscope
 Plug 'nvim-lua/popup.nvim'
