@@ -41,18 +41,20 @@ lua <<EOF
     },
 
     formatting = {
-        fields = { "kind", "abbr" },
+        fields = { "abbr", "kind", "menu" },
         format = function(entry, vim_item)
+          -- Kind Text
+          --vim_item.menu = vim_item.kind
           -- Kind icons
           vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
           -- Source
-          vim_item.menu = ({
-            buffer = "[Buffer]",
-            nvim_lsp = "",
-            luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
-            latex_symbols = "[LaTeX]",
-          })[entry.source.name]
+          --vim_item.menu = ({
+          --  buffer = "[Buffer]",
+          --  nvim_lsp = "",
+          --  luasnip = "[LuaSnip]",
+          --  nvim_lua = "[Lua]",
+          --  latex_symbols = "[LaTeX]",
+          --})[entry.source.name]
           return vim_item
         end
     },
