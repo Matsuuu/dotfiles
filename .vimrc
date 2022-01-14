@@ -115,7 +115,8 @@ nnoremap <Leader>se    <cmd>lua vim.lsp.diagnostic.goto_next { wrap = true }<CR>
 
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
-
+nnoremap <Leader>bl :bn<CR>
+nnoremap <Leader>bh :bp<CR>
 
 
 nnoremap <Leader>+ :vertical resize +5<CR>
