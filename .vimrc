@@ -57,6 +57,13 @@ set encoding=UTF-8
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
 
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
 "--- Vim Markdown settings
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_follow_anchor = 1

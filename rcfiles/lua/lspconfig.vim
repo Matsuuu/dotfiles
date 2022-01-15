@@ -46,7 +46,6 @@ local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.jsonls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.html.setup{ on_attach=on_attach_vim, capabilities = capabilities }
---lspconfig.jdtls.setup{ on_attach=on_attach_vim }
 lspconfig.cssls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.gopls.setup { on_attach=on_attach_vim, capabilities = capabilities }

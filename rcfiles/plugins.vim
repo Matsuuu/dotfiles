@@ -24,9 +24,7 @@ Plug 'szw/vim-maximizer'
 
 "--- LSP
 Plug 'neovim/nvim-lspconfig'
-"Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/lsp-status.nvim'
-Plug 'onsails/lspkind-nvim'
 Plug 'mfussenegger/nvim-jdtls'
 
 "--- Completion
@@ -71,7 +69,6 @@ let g:AutoPairsShortcutBackInsert = '<M-0>'
 Plug 'NTBBloodbath/rest.nvim'
 
 "---Random
-Plug 'dbeniamine/cheat.sh-vim'
 Plug 'tpope/vim-commentary'
 
 

@@ -68,7 +68,7 @@ nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>
 nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
 nnoremap <Leader>gs    <cmd>Telescope git_status<CR>
 " Show diagnostics
-nnoremap <Leader>sd <cmd>Telescope lsp_workspace_diagnostics<CR>
+nnoremap <Leader>sd <cmd>Telescope diagnostics<CR>
 
 " Telly colors not really working for me
 highlight TelescopeSelection guifg=#FF38A2 gui=bold
