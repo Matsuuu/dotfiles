@@ -115,7 +115,7 @@ setxkbmap -option caps:escape
 source ~/.npm_completion
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/matsu/google-cloud-sdk/path.bash.inc' ]; then . '/home/matsu/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/home/matsu/Tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/matsu/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
