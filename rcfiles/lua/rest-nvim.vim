@@ -19,4 +19,4 @@ function! DoRest()
     lua require "rest-nvim".run()
     redraw
 endfunction
-nmap <leader>rr     :call DoRest()<CR>
+nmap rr     :call DoRest()<CR>
