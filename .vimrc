@@ -116,9 +116,9 @@ inoremap <silent><C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 "ReName
 nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
 "Explain error
-nnoremap <Leader>ee    <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <Leader>ee    <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
 "Show error
-nnoremap <Leader>se    <cmd>lua vim.lsp.diagnostic.goto_next { wrap = true }<CR>
+nnoremap <Leader>se    <cmd>lua vim.diagnostic.goto_next { wrap = true }<CR>
 
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
