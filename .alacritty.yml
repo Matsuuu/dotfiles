@@ -36,7 +36,8 @@ window:
         x: 25
         y: 25
 
-background_opacity: 1
+    opacity: 1
+
 colors:
   # Default colors
   primary:
