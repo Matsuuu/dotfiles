@@ -83,5 +83,4 @@ nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
 
 nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <leader>do :lua require'dapui'.open()<CR>
-"nnoremap <silent> <leader>dx :lua require'dapui'.close()<CR> :lua require'dap'.terminate()<CR>
 nnoremap <silent> <leader>dx :lua require'dap'.terminate()<CR>
