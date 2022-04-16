@@ -36,7 +36,6 @@ lsp_status.register_progress()
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach_vim = function(client)
-    --require'completion'.on_attach(client)
     lsp_status.on_attach(client)
     capabilities = lsp_status.capabilities
 end

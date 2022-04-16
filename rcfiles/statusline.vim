@@ -22,7 +22,7 @@ set statusline+=%=
 
 "Filename
 set statusline+=%6*\ \ 
-set statusline+=%.50F
+set statusline+=%.60F
 set statusline+=%6*\ \ 
 "Column
 set statusline+=%=
