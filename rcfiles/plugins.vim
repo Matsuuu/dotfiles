@@ -45,6 +45,7 @@ Plug 'rcarriga/nvim-dap-ui'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
 
 "--- Theming
 Plug 'ryanoasis/vim-devicons'

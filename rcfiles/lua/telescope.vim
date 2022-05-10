@@ -30,11 +30,36 @@ require('telescope').setup{
         lsp_code_actions = {
             theme = "cursor"
         },
+        code_action = {
+            theme = "cursor"
+        },
         lsp_workspace_diagnostics = {
             theme = "dropdown"
         }
+    },
+    extensions = {
+        ["ui-select"] = {
+            require("telescope.themes").get_cursor {
+            -- even more opts
+            }
+
+      -- pseudo code / specification for writing custom displays, like the one
+      -- for "codeactions"
+      -- specific_opts = {
+      --   [kind] = {
+      --     make_indexed = function(items) -> indexed_items, width,
+      --     make_displayer = function(widths) -> displayer
+      --     make_display = function(displayer) -> function(e)
+      --     make_ordinal = function(e) -> string
+      --   },
+      --   -- for example to disable the custom builtin "codeactions" display
+      --      do the following
+      --   codeactions = false,
+      -- }
+        }
     }
 }
+require("telescope").load_extension("ui-select")
 
 END
 
@@ -64,7 +89,7 @@ nnoremap <C-F> <cmd>Telescope live_grep<CR>
 nnoremap <C-L> <cmd>Telescope buffers<CR>
 nnoremap <C-N> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
 nnoremap <C-H> <cmd>Telescope oldfiles<CR>
-nnoremap <Leader><CR> <cmd>Telescope lsp_code_actions<CR>
+nnoremap <Leader><CR> <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
 nnoremap <Leader>gs    <cmd>Telescope git_status<CR>
 " Show diagnostics
