@@ -143,3 +143,6 @@ vnoremap <Leader>ev  <Esc><Cmd>lua require'jdtls'.extract_variable(true)<CR>
 nnoremap <Leader>ec  <Cmd>lua require'jdtls'.extract_constant()<CR>
 vnoremap <Leader>ec  <Esc><Cmd>lua require'jdtls'.extract_constant(true)<CR>
 nnoremap <Leader>uj  <Esc><Cmd>lua require('jdtls').update_project_config()<CR>
+nnoremap <Leader>tm  <Esc><Cmd>lua require('jdtls').test_nearest_method()<CR>
+nnoremap <Leader>tc  <Esc><Cmd>lua require('jdtls').test_class()<CR>
+
