@@ -59,7 +59,6 @@ local config = {
   },
   init_options = {
     bundles = {
-      "/home/matsu/Tools/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.34.0.jar"
     }
   },
 
@@ -71,6 +70,18 @@ local config = {
   end,
 
 }
+
+local bundles = {
+    "/home/matsu/Tools/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.34.0.jar"
+}
+
+-- vim.fn.glob("/home/matsu/Tools/vscode-java-test/server/*.jar")
+vim.list_extend(bundles, vim.split(vim.fn.glob("/home/matsu/Tools/vscode-java-test/server/*.jar"), "\n"))
+config['init_options'] = {
+  bundles = bundles;
+}
+
+
 
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
