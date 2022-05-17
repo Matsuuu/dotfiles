@@ -38,7 +38,7 @@ require("dapui").setup({
     position = "right", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = {  },
+    elements = { "repl" },
     size = 10,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
   },
@@ -82,5 +82,5 @@ nnoremap <silent> <leader>dsi :lua require'dap'.step_into()<CR>
 nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
 
 nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <leader>do :lua require'dapui'.open()<CR>
+nnoremap <silent> <leader>do :lua require'dapui'.toggle()<CR>
 nnoremap <silent> <leader>dx :lua require'dap'.terminate()<CR>
