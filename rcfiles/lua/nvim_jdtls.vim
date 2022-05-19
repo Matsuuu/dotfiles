@@ -55,6 +55,23 @@ local config = {
   -- for a list of options
   settings = {
     java = {
+        completion = {
+            favoriteStaticMembers = {
+                "org.hamcrest.MatcherAssert.assertThat",
+                "org.hamcrest.Matchers.*",
+                "org.hamcrest.CoreMatchers.*",
+                "org.junit.jupiter.api.Assertions.*",
+                "java.util.Objects.requireNonNull",
+                "java.util.Objects.requireNonNullElse",
+                "org.mockito.Mockito.*"
+            },
+            filteredTypes = {
+                "com.sun.*",
+                "java.awt.*",
+                "jdk.*",
+                "sun.*",
+            },
+        };
     }
   },
   init_options = {
