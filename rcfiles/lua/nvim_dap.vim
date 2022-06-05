@@ -12,6 +12,10 @@ dap.configurations.java = {
   },
 }
 
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='🚫', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='➡️', texthl='', linehl='DebugBreakpointLine', numhl=''})
+
 require("dapui").setup({
   icons = { expanded = "▾", collapsed = "▸" },
   mappings = {
@@ -21,24 +25,28 @@ require("dapui").setup({
     remove = "d",
     edit = "e",
     repl = "r",
+    toggle = "t",
   },
+  -- Expand lines larger than the window
+  -- Requires >= 0.7
+  expand_lines = vim.fn.has("nvim-0.7"),
   sidebar = {
     -- You can change the order of elements in the sidebar
     elements = {
       -- Provide as ID strings or tables with "id" and "size" keys
       {
         id = "scopes",
-        size = 0.75, -- Can be float or integer > 1
+        size = 0.25, -- Can be float or integer > 1
       },
-      --{ id = "breakpoints", size = 0.25 },
+      { id = "breakpoints", size = 0.25 },
       { id = "stacks", size = 0.25 },
-      --{ id = "watches", size = 00.25 },
+      { id = "watches", size = 00.25 },
     },
-    size = 60,
-    position = "right", -- Can be "left", "right", "top", "bottom"
+    size = 40,
+    position = "left", -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = { "repl" },
+    elements = { "repl", "console" },
     size = 10,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
   },
@@ -51,6 +59,9 @@ require("dapui").setup({
     },
   },
   windows = { indent = 1 },
+  render = { 
+    max_type_length = nil, -- Can be integer or nil.
+  }
 })
 
 local dap, dapui = require("dap"), require("dapui")
