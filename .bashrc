@@ -105,7 +105,7 @@ alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
 alias vimrc="vim ~/.vimrc"
 
 # Screenkey
-alias screenkeystream="screenkey -s small --window --timeout 0.4"
+alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+80%+120% -p fixed"
 
 # Caps is esc
 setxkbmap -option caps:escape
