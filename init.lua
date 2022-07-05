@@ -117,9 +117,6 @@ vim.cmd([[
 
     imap <silent> <c-p> <Plug>(completion_trigger)
 
-    " Markdown preview
-    nmap <Leader>mp <Plug>MarkdownPreview
-    let g:mkdp_markdown_css = expand('~/dotfiles/markdown.css')
     " commentary
     noremap <Leader>cc :Commentary<CR>
     noremap <Leader>cs {v}:Commentary<CR>
