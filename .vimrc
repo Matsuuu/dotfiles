@@ -35,7 +35,7 @@ hi LinrNr term=NONE
 filetype plugin indent on
 
 "--- Load plugins
-source ~/.vim/rcfiles/plugins.vim
+" source ~/.vim/rcfiles/plugins.vim
 
 " Pinkmare by me btw
 colorscheme pinkmare
@@ -64,9 +64,8 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
-"--- Vim Markdown settings
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_follow_anchor = 1
+let g:AutoPairsShortcutToggle = ''
+let g:AutoPairsShortcutBackInsert = '<M-0>'
 
 
 "  ______                         _   _   _             
