@@ -87,7 +87,7 @@ vim.cmd([[
       elseif l:mode==#"c"
         hi link StatusBarColor CommandColor
         hi link StatusBalloonColor CommandColorFG
-        return "CMMAND"
+        return "COMMAND"
       elseif l:mode==#"!"
         return "SHELL"
       endif

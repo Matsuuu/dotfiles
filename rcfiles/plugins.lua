@@ -56,7 +56,8 @@ return require('packer').startup(function(use)
     use 'sbdchd/neoformat'
 
     -- Clojure
-    use 'Olical/conjure'
+    -- Find out why this is being enabled in lua files
+    --use 'Olical/conjure'
     use 'jiangmiao/auto-pairs'
 
     -- HTTP

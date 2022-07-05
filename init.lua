@@ -7,47 +7,14 @@ require 'rcfiles.plugins.treesitter-settings'
 require 'rcfiles.plugins.nvim_dap-settings'
 
 require 'rcfiles.statusline'
-require 'rcfiles.tabline'
+require 'rcfiles.tabline'.Setup()
+require 'rcfiles.opts'
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 vim.cmd([[
 " TODO: VimScript to Lua
-    " --General ---
-    " Space is king
-    let mapleader = " "
-    let maplocalleader = " "
-
-    set exrc
-    set shortmess+=W
-    set termguicolors
-    syntax on
-    set backspace=indent,eol,start
-    set nocompatible
-    set nohlsearch
-    set ruler
-    set number
-    set nowrap
-    set showcmd
-    set incsearch
-    set noswapfile
-    set autoread
-    set ignorecase
-    set smartcase
-    set noerrorbells
-    set shiftwidth=4
-    set tabstop=4
-    set softtabstop=4
-    set expandtab
-    set cursorline
-    set backupcopy=yes
-    set relativenumber
-    set signcolumn=yes
-    set scrolloff=8
-    set hidden
-    set splitright
     hi LinrNr term=NONE
     filetype plugin indent on
 
@@ -150,9 +117,6 @@ vim.cmd([[
 
     imap <silent> <c-p> <Plug>(completion_trigger)
 
-    " Markdown preview
-    nmap <Leader>mp <Plug>MarkdownPreview
-    let g:mkdp_markdown_css = expand('~/dotfiles/markdown.css')
     " commentary
     noremap <Leader>cc :Commentary<CR>
     noremap <Leader>cs {v}:Commentary<CR>
