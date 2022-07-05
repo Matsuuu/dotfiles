@@ -1,10 +1,9 @@
-set completeopt=menu,menuone,noselect
+vim.o.completeopt="menu,menuone,noselect"
 
-lua <<EOF
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
+-- Setup nvim-cmp.
+local cmp = require'cmp'
 
-  kind_icons = {
+kind_icons = {
     Text = "",
     Method = "",
     Function = "",
@@ -30,9 +29,9 @@ lua <<EOF
     Event = "",
     Operator = "",
     TypeParameter = "",
-  }
+}
 
-  cmp.setup({
+cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -68,22 +67,21 @@ lua <<EOF
     }, {
       { name = 'buffer' },
     })
-  })
+})
 
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' }
     }
-  })
+})
 
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
     })
-  })
+})
 
-EOF

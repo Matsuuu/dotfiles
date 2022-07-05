@@ -1,5 +1,3 @@
-lua << END
-
 local dap = require('dap')
 
 dap.configurations.java = {
@@ -30,7 +28,7 @@ require("dapui").setup({
   -- Expand lines larger than the window
   -- Requires >= 0.7
   expand_lines = vim.fn.has("nvim-0.7"),
-  sidebar = {
+  --[[sidebar = {
     -- You can change the order of elements in the sidebar
     elements = {
       -- Provide as ID strings or tables with "id" and "size" keys
@@ -49,6 +47,26 @@ require("dapui").setup({
     elements = { "repl", "console" },
     size = 10,
     position = "bottom", -- Can be "left", "right", "top", "bottom"
+  },--]]
+  layouts = {
+    {
+      elements = {
+        'scopes',
+        'breakpoints',
+        'stacks',
+        'watches',
+      },
+      size = 40,
+      position = 'left',
+    },
+    {
+      elements = {
+        'repl',
+        'console',
+      },
+      size = 10,
+      position = 'bottom',
+    },
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -79,20 +97,20 @@ local dap = require('dap')
 local api = vim.api
 local keymap_restore = {}
 
+vim.api.nvim_set_keymap("n", "<silent>F4", ":lua require'dap'.run({ type = 'java', request = 'attach', name = 'Debug (Attach) - Remote', hostName = '127.0.0.1', port = 5005 })<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ds", ":lua require'dap'.run({ type = 'java', request = 'attach', name = 'Debug (Attach) - Remote', hostName = '127.0.0.1', port = 5005 })<CR>", { noremap = true })
 
-END
+vim.api.nvim_set_keymap("n", "<silent>F5", ":lua require'dap'.continue()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>dc", ":lua require'dap'.continue()<CR>", { noremap = true })
 
+vim.api.nvim_set_keymap("n", "<silent>F10", ":lua require'dap'.step_over()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>dso", ":lua require'dap'.step_over()<CR>", { noremap = true })
 
-nnoremap <silent> <F4> :lua require'dap'.run({ type = 'java', request = 'attach', name = 'Debug (Attach) - Remote', hostName = '127.0.0.1', port = 5005 })<CR>
-nnoremap <silent> <leader>ds :lua require'dap'.run({ type = 'java', request = 'attach', name = 'Debug (Attach) - Remote', hostName = '127.0.0.1', port = 5005 })<CR>
-nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
-nnoremap <silent> <leader>dc :lua require'dap'.continue()<CR>
-nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
-nnoremap <silent> <leader>dso :lua require'dap'.step_over()<CR>
-nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
-nnoremap <silent> <leader>dsi :lua require'dap'.step_into()<CR>
-nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+vim.api.nvim_set_keymap("n", "<silent>F11", ":lua require'dap'.step_into()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>dsi", ":lua require'dap'.step_into()<CR>", { noremap = true })
 
-nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <leader>do :lua require'dapui'.toggle()<CR>
-nnoremap <silent> <leader>dx :lua require'dap'.terminate()<CR>
+vim.api.nvim_set_keymap("n", "<silent>F12", ":lua require'dap'.step_out()<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>do", ":lua require'dap'.toggle()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>dx", ":lua require'dap'.terminate()<CR>", { noremap = true })
