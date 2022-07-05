@@ -1,4 +1,3 @@
-
 function TabLine()
     local tabLine = ""
     for i = 1, vim.fn.tabpagenr("$"), 1 do
