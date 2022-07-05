@@ -7,7 +7,7 @@ require 'rcfiles.plugins.treesitter-settings'
 require 'rcfiles.plugins.nvim_dap-settings'
 
 require 'rcfiles.statusline'
-require 'rcfiles.tabline'
+require 'rcfiles.tabline'.Setup()
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
