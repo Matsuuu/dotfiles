@@ -1,4 +1,3 @@
-lua << END
 -- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 
@@ -143,23 +142,28 @@ require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
     end,
   }):find()
 end
-END
 
-command! -buffer JdtCompile lua require('jdtls').compile()
-command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
-command! -buffer JdtJol lua require('jdtls').jol()
-command! -buffer JdtBytecode lua require('jdtls').javap()
-command! -buffer JdtJshell lua require('jdtls').jshell()
+vim.cmd([[
+    command! -buffer JdtCompile lua require('jdtls').compile()
+    command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
+    command! -buffer JdtJol lua require('jdtls').jol()
+    command! -buffer JdtBytecode lua require('jdtls').javap()
+    command! -buffer JdtJshell lua require('jdtls').jshell()
+]])
 
-"" Remaps for jdtls
+-- Remaps for jdtls
+--
+vim.api.nvim_set_keymap("n", "<Leader>oi", "<cmd>lua require'jdtls'.organize_imports()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>em", "<cmd>lua require'jdtls'.extract_method(true)<CR>", { noremap = true })
 
-nnoremap <Leader>oi  <Cmd>lua require'jdtls'.organize_imports()<CR>
-vnoremap <Leader>em  <Esc><Cmd>lua require'jdtls'.extract_method(true)<CR> 
-nnoremap <Leader>ev  <Esc><Cmd>lua require'jdtls'.extract_variable()<CR> 
-vnoremap <Leader>ev  <Esc><Cmd>lua require'jdtls'.extract_variable(true)<CR> 
-nnoremap <Leader>ec  <Cmd>lua require'jdtls'.extract_constant()<CR>
-vnoremap <Leader>ec  <Esc><Cmd>lua require'jdtls'.extract_constant(true)<CR>
-nnoremap <Leader>uj  <Esc><Cmd>lua require('jdtls').update_project_config()<CR>
-nnoremap <Leader>tm  <Esc><Cmd>lua require('jdtls').test_nearest_method()<CR>
-nnoremap <Leader>tc  <Esc><Cmd>lua require('jdtls').test_class()<CR>
+vim.api.nvim_set_keymap("n", "<Leader>ev", "<cmd>lua require'jdtls'.extract_variable(<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>ev", "<cmd>lua require'jdtls'.extract_variable(true)<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>ec", "<cmd>lua require'jdtls'.extract_constant()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>ec", "<cmd>lua require'jdtls'.extract_constant(true)<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>uj", "<cmd>lua require'jdtls'.update_project_config()<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>tm", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>tc", "<cmd>lua require'jdtls'.test_class()<CR>", { noremap = true })
 

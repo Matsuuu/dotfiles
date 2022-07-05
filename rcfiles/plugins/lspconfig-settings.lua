@@ -1,7 +1,6 @@
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_virtual_text_prefix = ' '
+vim.gdiagnostic_enable_virtual_text = 1
+vim.g.diagnostic_virtual_text_prefix = ' '
 
-lua << END
 local signs = {
 	{ name = "DiagnosticSignError", text = "🔥" },
 	{ name = "DiagnosticSignWarn", text = "🚧" },
@@ -49,4 +48,3 @@ lspconfig.cssls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.gopls.setup { on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.sumneko_lua.setup { on_attach=on_attach_vim, capabilities = capabilities }
-END
