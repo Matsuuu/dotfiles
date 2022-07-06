@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 
 require 'rcfiles.plugins'
 require 'rcfiles.plugins.compe'
+require 'rcfiles.plugins.snippets'
 require 'rcfiles.plugins.lspconfig-settings'
 require 'rcfiles.plugins.rest-nvim-settings'
 require 'rcfiles.plugins.telescope-settings'
