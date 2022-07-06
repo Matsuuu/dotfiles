@@ -97,6 +97,7 @@ vim.cmd([[
         if a:filetype == ''
             return '-'
         else 
+            "TODO: When this is lua, we can use nvim-web-devicons
             "let s = WebDevIconsGetFileTypeSymbol()
             let s = ""
             let s .= " "
