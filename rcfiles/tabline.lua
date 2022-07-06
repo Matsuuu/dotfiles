@@ -6,7 +6,7 @@ function TabLine()
 
         local bufferNumber = bufferList[windowNumber]
         local bufferName = vim.fn.fnamemodify(vim.fn.bufname(bufferNumber), ":t")
-        local filetype = vim.bo.filetype
+        local filetype = vim.fn.getbufvar(bufferNumber, '&filetype')
 
         tabLine = tabLine .. "%#TabLineFill# | "
         tabLine = tabLine .. (i == vim.fn.tabpagenr() and "%#TabLineSel#" or "%#TabLine#")
@@ -14,9 +14,11 @@ function TabLine()
         if string.len(bufferName) <= 0 then
             tabLine = tabLine .. "[No Name]"
         else
-            local icon = require'nvim-web-devicons'.get_icon(bufferName, filetype) or ""
-            tabLine = tabLine ..  icon .. " " .. bufferName
-            tabLine = tabLine .. " " .. bufferName
+            local icon = require'nvim-web-devicons'.get_icon(bufferName, filetype, { default = true })
+            if icon then
+                tabLine = tabLine ..  icon .. " "
+            end
+            tabLine = tabLine .. bufferName
         end
 
         local modified = vim.fn.getbufvar(bufferNumber, "&mod")
