@@ -1,3 +1,6 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require 'rcfiles.plugins'
 require 'rcfiles.plugins.compe'
 require 'rcfiles.plugins.lspconfig-settings'
@@ -10,9 +13,6 @@ require 'rcfiles.plugins.nvim-tree-settings'
 require 'rcfiles.statusline'
 require 'rcfiles.tabline'.Setup()
 require 'rcfiles.opts'
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 vim.cmd([[
 " TODO: VimScript to Lua

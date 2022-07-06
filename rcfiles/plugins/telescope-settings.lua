@@ -57,17 +57,6 @@ vim.api.nvim_set_keymap("n", "<Leader>gs", "<cmd>Telescope git_status<CR>", { no
 
 vim.api.nvim_set_keymap("n", "<Leader>sd", "<cmd>Telescope diagnostics<CR>", { noremap = true })
 
---nnoremap <C-F> <cmd>Telescope live_grep<CR>
---" God damn tmux taking the C-B bind
---nnoremap <C-L> <cmd>Telescope buffers<CR>
---nnoremap <C-N> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<CR>
---nnoremap <C-H> <cmd>Telescope oldfiles<CR>
---nnoremap <Leader><CR> <cmd>lua vim.lsp.buf.code_action()<CR>
---nnoremap <silent>gr    <cmd>Telescope lsp_references<CR>
---nnoremap <Leader>gs    <cmd>Telescope git_status<CR>
---" Show diagnostics
---nnoremap <Leader>sd <cmd>Telescope diagnostics<CR>
--- 
 vim.cmd([[
   highlight TelescopeSelection guifg=#FF38A2 gui=bold
   highlight TelescopeMatching guifg=#d9bcef
