@@ -13,7 +13,8 @@ function TabLine()
         if string.len(bufferName) <= 0 then
             tabLine = tabLine .. "[No Name]"
         else
-            tabLine = tabLine ..  vim.fn.WebDevIconsGetFileTypeSymbol(bufferName) .. " " .. bufferName
+            --tabLine = tabLine ..  vim.fn.WebDevIconsGetFileTypeSymbol(bufferName) .. " " .. bufferName
+            tabLine = tabLine .. " " .. bufferName
         end
 
         local modified = vim.fn.getbufvar(bufferNumber, "&mod")

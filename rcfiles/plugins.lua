@@ -14,9 +14,7 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/playground'
 
     -- Functional
-    use 'scrooloose/nerdtree'
     use 'tpope/vim-fugitive'
-    use 'jistr/vim-nerdtree-tabs'
     use 'alvan/vim-closetag'
     use 'tpope/vim-surround'
     use 'szw/vim-maximizer'
@@ -47,8 +45,9 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-ui-select.nvim'
 
     -- Theming
-    use 'ryanoasis/vim-devicons'
-    use 'tiagofumo/vim-nerdtree-syntax-highlight'
+    -- use 'ryanoasis/vim-devicons'
+    use 'kyazdani42/nvim-web-devicons'
+    use 'kyazdani42/nvim-tree.lua'
 
     -- Webdev
     use 'jonsmithers/vim-html-template-literals'

@@ -5,6 +5,7 @@ require 'rcfiles.plugins.rest-nvim-settings'
 require 'rcfiles.plugins.telescope-settings'
 require 'rcfiles.plugins.treesitter-settings'
 require 'rcfiles.plugins.nvim_dap-settings'
+require 'rcfiles.plugins.nvim-tree-settings'
 
 require 'rcfiles.statusline'
 require 'rcfiles.tabline'.Setup()
@@ -22,18 +23,7 @@ vim.cmd([[
 
     hi! MatchParen cterm=NONE,bold gui=NONE,bold  guibg=#87c095 guifg=NONE
 
-    " -- Dev icons for nerdtree
     set encoding=UTF-8
-    " -- Open nerdtree on leader t
-    nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-    let NERDTreeShowHidden=1
-
-    let g:NERDTreeFileExtensionHighlightFullName = 1
-    let g:NERDTreeExactMatchHighlightFullName = 1
-    let g:NERDTreePatternMatchHighlightFullName = 1
-
-    let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-    let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
     let g:AutoPairsShortcutToggle = ''
     let g:AutoPairsShortcutBackInsert = '<M-0>'
@@ -122,6 +112,4 @@ vim.cmd([[
     noremap <Leader>cs {v}:Commentary<CR>
     " Maximizer
     nnoremap <Leader>fs :MaximizerToggle<CR>
-    " Nerdtree
-    nnoremap <Leader>ntf :NERDTreeFind<CR>
 ]])

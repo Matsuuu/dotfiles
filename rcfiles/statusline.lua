@@ -97,7 +97,8 @@ vim.cmd([[
         if a:filetype == ''
             return '-'
         else 
-            let s = WebDevIconsGetFileTypeSymbol()
+            "let s = WebDevIconsGetFileTypeSymbol()
+            let s = ""
             let s .= " "
             let s .= tolower(a:filetype)
             return s
