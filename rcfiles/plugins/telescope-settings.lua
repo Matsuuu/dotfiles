@@ -52,7 +52,7 @@ vim.api.nvim_set_keymap("n", "<C-N>", "<cmd>Telescope find_files find_command=rg
 vim.api.nvim_set_keymap("n", "<C-H>", "<cmd>Telescope oldfiles <CR>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "<Leader><CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<silent>gr", "<cmd>Telescope lsp_references<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>gs", "<cmd>Telescope git_status<CR>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "<Leader>sd", "<cmd>Telescope diagnostics<CR>", { noremap = true })
