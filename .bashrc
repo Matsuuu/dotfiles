@@ -101,8 +101,8 @@ alias tmus="tmux"
 alias devserver="npx @web/dev-server --node-resolve --watch"
 alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 # Vim aliases
-alias vimplugins="vim ~/.vim/rcfiles/plugins.vim"
-alias vimrc="vim ~/.vimrc"
+alias vimplugins="vim ~/.config/nvim/rcfiles/plugins.lua"
+alias vimrc="vim ~/dotfiles/init.lua"
 
 # Screenkey
 alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+80%+120% -p fixed"
