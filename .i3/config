@@ -188,10 +188,7 @@ no_focus [class="plasmashell" window_type="notification"]
 #                                                        
 
 
-#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-#exec --no-startup-id nm-applet
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
-#exec_always --no-startup-id ~/dotfiles/polybar/start
 exec_always --no-startup-id picom
 
 #   _____ _                _             _   
@@ -203,6 +200,4 @@ exec_always --no-startup-id picom
 #                                            
 bindsym $sup+r [title="Desktop - Plasma] kill
 bindsym $mod+space exec albert show
-bindsym $mod+p exec ~/dotfiles/polybar/start
 bindsym $sup+Return exec alacritty
-for_window [title="Defragmentation - Game"] floating enable

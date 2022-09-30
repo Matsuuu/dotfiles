@@ -10,7 +10,10 @@
                 "path": "./snippets/java.json"
             },
             {
-                "language": "javascript",
+                "language": [
+                    "javascript",
+                    "typescript"
+                ],
                 "path": "./snippets/javascript.json"
             },
             {
