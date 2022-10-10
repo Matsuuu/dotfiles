@@ -73,7 +73,7 @@ vim.cmd([[
     " Docs pls
     nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
     " Params pls
-    inoremap <silent><C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+    inoremap <silent><C-p> <cmd>lua vim.lsp.buf.signature_help()<CR>
     "ReName
     nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
     "Explain error
