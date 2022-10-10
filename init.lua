@@ -39,7 +39,7 @@ vim.cmd([[
     "                                                  __/ |
     "                                                 |___/
     let useformatting=1
-    function DoFormat() 
+    function! DoFormat()
         if has("nvim") && g:useformatting
             lua vim.lsp.buf.formatting_sync(nil, 1000)
         endif
@@ -102,6 +102,12 @@ vim.cmd([[
     " Jumplist mutations
     nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
     nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+    " Jumping is fun now
+    nnoremap <C-d> <C-d>zz
+    nnoremap <C-u> <C-u>zz
+    nnoremap n nzzzv
+    nnoremap N Nzzzv
 
     " Previous file
     nnoremap <Leader>pf <C-^>
