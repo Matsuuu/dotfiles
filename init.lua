@@ -66,19 +66,21 @@ vim.cmd([[
     "                            | |        
     "                            |_|
     "
-    "Format, fucker
+    " Format, fucker
     nnoremap <silent>ff    <cmd>Neoformat<CR><Esc>:w<CR>
-    "Go to Def
+    " Go to Def
     nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
+    " Go to type def
+    nnoremap <silent>gy    <cmd>lua vim.lsp.buf.type_definition()<CR>
     " Docs pls
     nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
     " Params pls
     inoremap <silent><C-p> <cmd>lua vim.lsp.buf.signature_help()<CR>
-    "ReName
+    " ReName
     nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
-    "Explain error
+    " Explain error
     nnoremap <Leader>ee    <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
-    "Show error
+    " Show error
     nnoremap <Leader>se    <cmd>lua vim.diagnostic.goto_next { wrap = true }<CR>
 
     nnoremap <Leader>bn :bn<CR>
