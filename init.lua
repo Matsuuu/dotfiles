@@ -79,7 +79,7 @@ vim.cmd([[
     " ReName
     nnoremap <Leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
     " Explain error
-    nnoremap <Leader>ee    <cmd>lua vim.diagnostic.show_line_diagnostics()<CR>
+    nnoremap <Leader>ee    <cmd>lua vim.diagnostic.open_float()<CR>
     " Show error
     nnoremap <Leader>se    <cmd>lua vim.diagnostic.goto_next { wrap = true }<CR>
 
@@ -113,8 +113,6 @@ vim.cmd([[
 
     " Previous file
     nnoremap <Leader>pf <C-^>
-
-    imap <silent> <c-p> <Plug>(completion_trigger)
 
     " commentary
     noremap <Leader>cc :Commentary<CR>
