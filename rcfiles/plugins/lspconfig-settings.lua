@@ -33,7 +33,7 @@ lsp_status.config({
 })
 lsp_status.register_progress()
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local on_attach_vim = function(client)
     lsp_status.on_attach(client)
     capabilities = lsp_status.capabilities

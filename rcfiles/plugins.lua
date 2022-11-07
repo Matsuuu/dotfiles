@@ -9,9 +9,13 @@ return require('packer').startup(function(use)
     -- Trees n shit
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        commit = '730efb4'
     }
     use 'nvim-treesitter/playground'
+
+    -- Refactoring
+    use 'ThePrimeagen/refactoring.nvim'
 
     -- Functional
     use 'tpope/vim-fugitive'
