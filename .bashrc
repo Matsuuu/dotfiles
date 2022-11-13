@@ -119,3 +119,7 @@ if [ -f '/home/matsu/Tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/mats
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
+
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
