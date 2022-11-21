@@ -104,6 +104,8 @@ alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 alias vimplugins="vim ~/.config/nvim/rcfiles/plugins.lua"
 alias vimrc="vim ~/dotfiles/init.lua"
 
+alias nrb="npm run build"
+
 # Screenkey
 alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+60%+120% -p fixed"
 
