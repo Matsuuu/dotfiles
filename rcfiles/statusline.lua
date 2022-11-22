@@ -1,10 +1,6 @@
 vim.cmd([[
     " ------ Statusline
 
-    " Cheers https://gist.github.com/tasmo for the unicodes
-    let left = ''
-    let right = ''
-
     set noshowmode
 
     set laststatus=2
@@ -32,6 +28,10 @@ vim.cmd([[
     set statusline+=%{LspStatus()}
     set statusline+=%2*\ 
     set statusline+=%{CheckFT(&filetype)}
+    set statusline+=%2*\ 
+    set statusline+=%l
+    set statusline+=:
+    set statusline+=%L
     set statusline+=\ \ 
 
     " Balloon
@@ -98,7 +98,7 @@ vim.cmd([[
             return '-'
         else 
             "TODO: When this is lua, we can use nvim-web-devicons
-            "let s = WebDevIconsGetFileTypeSymbol()
+            ""let s = %{WebDevIconsGetFileTypeSymbol()}
             let s = ""
             let s .= " "
             let s .= tolower(a:filetype)

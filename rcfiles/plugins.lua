@@ -14,6 +14,9 @@ return require('packer').startup(function(use)
     }
     use 'nvim-treesitter/playground'
 
+    -- Refactoring
+    use 'ThePrimeagen/refactoring.nvim'
+
     -- Functional
     use 'tpope/vim-fugitive'
     use 'alvan/vim-closetag'

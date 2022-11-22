@@ -104,8 +104,10 @@ alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
 alias vimplugins="vim ~/.config/nvim/rcfiles/plugins.lua"
 alias vimrc="vim ~/dotfiles/init.lua"
 
+alias nrb="npm run build"
+
 # Screenkey
-alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+80%+120% -p fixed"
+alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+60%+120% -p fixed"
 
 # Caps is esc
 setxkbmap -option caps:escape
@@ -119,3 +121,7 @@ if [ -f '/home/matsu/Tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/mats
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
+
+# Add JBang to environment
+alias j!=jbang
+export PATH="$HOME/.jbang/bin:$PATH"
