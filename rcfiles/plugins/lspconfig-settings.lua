@@ -58,3 +58,4 @@ lspconfig.sumneko_lua.setup {
         }
     }
 }
+-- lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }

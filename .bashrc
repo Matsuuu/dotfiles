@@ -107,7 +107,7 @@ alias vimrc="vim ~/dotfiles/init.lua"
 alias nrb="npm run build"
 
 # Screenkey
-alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+60%+120% -p fixed"
+alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+50%+120% -p fixed"
 
 # Caps is esc
 setxkbmap -option caps:escape
