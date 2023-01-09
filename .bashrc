@@ -125,3 +125,4 @@ if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/hom
 # Add JBang to environment
 alias j!=jbang
 export PATH="$HOME/.jbang/bin:$PATH"
+. "$HOME/.cargo/env"
