@@ -26,6 +26,7 @@ vim.cmd([[
     set statusline+=%6*\ 
     "Filetype
     set statusline+=%{LspStatus()}
+    set statusline+=%6*\ 
     set statusline+=%2*\ 
     set statusline+=%{CheckFT(&filetype)}
     set statusline+=%2*\ 

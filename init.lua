@@ -13,7 +13,6 @@ require 'rcfiles.plugins.nvim-tree-settings'
 
 require 'rcfiles.tabline'.Setup()
 require 'rcfiles.opts'
-require 'rcfiles.statusline'
 
 vim.cmd([[
 " TODO: VimScript to Lua
@@ -120,3 +119,4 @@ vim.cmd([[
     " Maximizer
     nnoremap <Leader>fs :MaximizerToggle<CR>
 ]])
+require 'rcfiles.statusline'
