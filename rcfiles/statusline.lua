@@ -29,9 +29,15 @@ vim.cmd([[
     set statusline+=%2*\ 
     set statusline+=%{CheckFT(&filetype)}
     set statusline+=%2*\ 
+    set statusline+=\|
+    set statusline+=%2*\ 
     set statusline+=%l
     set statusline+=:
     set statusline+=%L
+    set statusline+=%2*\ 
+    set statusline+=\|
+    set statusline+=%2*\ 
+    set statusline+=%c
     set statusline+=\ \ 
 
     " Balloon

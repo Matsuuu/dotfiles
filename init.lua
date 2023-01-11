@@ -11,9 +11,9 @@ require 'rcfiles.plugins.treesitter-settings'
 require 'rcfiles.plugins.nvim_dap-settings'
 require 'rcfiles.plugins.nvim-tree-settings'
 
-require 'rcfiles.statusline'
 require 'rcfiles.tabline'.Setup()
 require 'rcfiles.opts'
+require 'rcfiles.statusline'
 
 vim.cmd([[
 " TODO: VimScript to Lua
