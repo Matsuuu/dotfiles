@@ -53,7 +53,11 @@ cmp.setup({
           return vim_item
         end
     },
-
+    window = {
+        completion = {
+            scrollbar = true
+        }
+    },
     mapping = {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
