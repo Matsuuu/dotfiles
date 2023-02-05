@@ -60,7 +60,6 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export TERM=xterm-256color
-export GRAALVM_HOME=$HOME/Tools/graalvm/graalvm-ce-java17-21.3.0
 
 source ~/.env
 
@@ -124,5 +123,3 @@ if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/hom
 
 # Add JBang to environment
 alias j!=jbang
-export PATH="$HOME/.jbang/bin:$PATH"
-. "$HOME/.cargo/env"
