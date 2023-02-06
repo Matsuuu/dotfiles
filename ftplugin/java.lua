@@ -190,3 +190,5 @@ vim.api.nvim_set_keymap("n", "<Leader>uj", "<cmd>lua require'jdtls'.update_proje
 vim.api.nvim_set_keymap("n", "<Leader>tm", "<cmd>lua require'jdtls'.test_nearest_method()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<Leader>tc", "<cmd>lua require'jdtls'.test_class()<CR>", { noremap = true })
 
+vim.api.nvim_set_keymap("n", "<Leader>jb", "<cmd>!jbang %<CR>", { noremap = true })
+
