@@ -84,6 +84,7 @@ bindsym $sup+v split v
 bindsym $sup+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+bindsym $sup+u layout stacking
 bindsym $sup+s layout stacking
 bindsym $sup+w layout tabbed
 bindsym $sup+e layout toggle split

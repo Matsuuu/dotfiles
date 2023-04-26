@@ -17,7 +17,7 @@ end
 --vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 
---vim.lsp.set_log_level("trace")
+vim.lsp.set_log_level("trace")
 
 local lsp_status = require('lsp-status')
 lsp_status.config({
@@ -47,7 +47,7 @@ lspconfig.html.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.cssls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.clojure_lsp.setup{ on_attach=on_attach_vim, capabilities = capabilities }
 lspconfig.gopls.setup { on_attach=on_attach_vim, capabilities = capabilities }
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     on_attach=on_attach_vim,
     capabilities = capabilities,
     settings = {
@@ -59,4 +59,4 @@ lspconfig.sumneko_lua.setup {
     }
 }
 lspconfig.rust_analyzer.setup{ on_attach=on_attach_vim, capabilities = capabilities }
--- lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }
