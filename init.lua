@@ -118,5 +118,8 @@ vim.cmd([[
     noremap <Leader>cs {v}:Commentary<CR>
     " Maximizer
     nnoremap <Leader>fs :MaximizerToggle<CR>
+
+    " Since I can't learn other than ISO layout
+    nnoremap ' %
 ]])
 require 'rcfiles.statusline'

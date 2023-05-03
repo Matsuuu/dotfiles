@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        commit = '3096e637c8d78fd9e9078f752dce2da2cc6d531e'
+        --commit = '3096e637c8d78fd9e9078f752dce2da2cc6d531e'
     }
     use 'nvim-treesitter/playground'
 
@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
 
     -- Clojure
     -- Find out why this is being enabled in lua files
-    --use 'Olical/conjure'
+    use 'Olical/conjure'
     use 'jiangmiao/auto-pairs'
 
     -- HTTP
@@ -68,5 +68,6 @@ return require('packer').startup(function(use)
     --Random
     use 'tpope/vim-commentary'
 
+    -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
 end)
