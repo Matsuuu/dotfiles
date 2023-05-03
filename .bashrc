@@ -105,6 +105,8 @@ alias vimrc="vim ~/dotfiles/init.lua"
 
 alias nrb="npm run build"
 
+alias fixkdebar="cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/plasma-org.kde.plasma.desktop-appletsrc.backup"
+
 # Screenkey
 alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+50%+120% -p fixed"
 
