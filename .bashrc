@@ -3,6 +3,13 @@ case $- in
       *) return;;
 esac
 
+
+SESSION_TYPE=local
+
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    SESSION_TYPE=remote/ssh
+fi
+
 # enable bash completion in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -22,7 +29,13 @@ HISTFILESIZE=10000
 shopt -s histappend
 shopt -s checkwinsize
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈ ◡ ◈ =】\[$(tput sgr0)\]\[\033[38;5;87m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]\$ '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈ ◡ ◈ =】\[$(tput sgr0)\]\[\033[38;5;87m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]'
+
+if [ "$SESSION_TYPE" != "local" ]; then
+    PS1="$PS1 \033[38;5;216m\][$SESSION_TYPE]$(tput sgr0)"
+fi
+
+PS1="$PS1\$ "
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -61,8 +74,6 @@ export EDITOR="$VISUAL"
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export TERM=xterm-256color
 
-source ~/.env
-
 # Helper functions
 
 function catclip() {
@@ -73,12 +84,30 @@ function mp4towebp() {
     ffmpeg -i "$1" -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -loop 0 -preset ${2:-default} -an -compression_level 6 -vsync 0 "${1/mp4/webp}"
 }
 
-###
+### IF SSH START
 
-# Tmux on startup
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
+if [ "$SESSION_TYPE" != "remote/ssh" ]; then
+    # Tmux on startup
+    if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+        tmux attach -t default || tmux new -s default
+    fi
+
+    # Caps is esc
+    setxkbmap -option caps:escape
+
+    source ~/.env
+    #
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    source ~/.npm_completion
+
+    # The next line updates PATH for the Google Cloud SDK.
+    if [ -f '/home/matsu/Tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/path.bash.inc'; fi
+
+    # The next line enables shell command completion for gcloud.
+    if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
 fi
+
+## IF SSH END
 
 # ALIASES
 # Software overrides
@@ -110,18 +139,6 @@ alias fixkdebar="cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/
 # Screenkey
 alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+50%+120% -p fixed"
 
-# Caps is esc
-setxkbmap -option caps:escape
-
-#
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source ~/.npm_completion
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/matsu/Tools/google-cloud-sdk/path.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
 
 # Add JBang to environment
 alias j!=jbang
