@@ -179,8 +179,11 @@ vim.cmd([[
 vim.api.nvim_set_keymap("n", "<Leader>oi", "<cmd>lua require'jdtls'.organize_imports()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>em", "<cmd>lua require'jdtls'.extract_method(true)<CR>", { noremap = true })
 
-vim.api.nvim_set_keymap("n", "<Leader>ev", "<cmd>lua require'jdtls'.extract_variable(<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ev", "<cmd>lua require'jdtls'.extract_variable()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>ev", "<cmd>lua require'jdtls'.extract_variable(true)<CR>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<Leader>ea", "<cmd>lua require'jdtls'.extract_variable_all()<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<Leader>ea", "<cmd>lua require'jdtls'.extract_variable_all(true)<CR>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "<Leader>ec", "<cmd>lua require'jdtls'.extract_constant()<CR>", { noremap = true })
 vim.api.nvim_set_keymap("v", "<Leader>ec", "<cmd>lua require'jdtls'.extract_constant(true)<CR>", { noremap = true })
