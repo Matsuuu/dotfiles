@@ -160,6 +160,7 @@ for_window [class="krunner"] floating enable
 for_window [class="Kmix"] floating enable
 for_window [class="Klipper"] floating enable
 for_window [class="Plasmoidviewer"] floating enable
+for_window [class="spectacle"] floating enable
 
 # >>> Window Rules <<<
 

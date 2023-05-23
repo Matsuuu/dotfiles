@@ -47,7 +47,6 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope-ui-select.nvim'
 
     -- Theming
-    -- use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
 
@@ -66,6 +65,26 @@ return require('packer').startup(function(use)
 
     --Random
     use 'tpope/vim-commentary'
+    use {
+      "folke/zen-mode.nvim",
+      config = function()
+        require("zen-mode").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+          window = {
+              backdrop = 1,
+              width = 200,
+          },
+          plugins = {
+              alacritty = {
+                  enabled = false,
+                  font = "20", -- font size
+              },
+          }
+        }
+      end
+    }
 
     -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
