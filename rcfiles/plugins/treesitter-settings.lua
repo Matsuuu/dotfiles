@@ -11,3 +11,6 @@ require'nvim-treesitter.configs'.setup {
         end,
     }
 }
+
+
+require("nvim-treesitter.install").prefer_git = true

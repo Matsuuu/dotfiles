@@ -128,6 +128,8 @@ alias tmus="tmux"
 # Dev aliases
 alias devserver="npx @web/dev-server --node-resolve --watch"
 alias installanalyzer="npm i -D @custom-elements-manifest/analyzer"
+alias gentypes="tsc --declaration --emitDeclarationOnly --allowJs"
+
 # Vim aliases
 alias vimplugins="vim ~/.config/nvim/rcfiles/plugins.lua"
 alias vimrc="vim ~/dotfiles/init.lua"
