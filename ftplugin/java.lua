@@ -15,9 +15,10 @@ local config = {
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
 
-      '/usr/bin/jdtls'
+    -- '/usr/bin/jdtls'
+    '/home/matsu/Tools/jdtls/bin/jdtls'
 
-    --'java', -- or '/path/to/java11_or_newer/bin/java'
+    -- 'java', -- or '/path/to/java11_or_newer/bin/java'
     --        -- depends on if `java` is in your $PATH env variable and if it points to the right version.
 
     --'-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -33,7 +34,7 @@ local config = {
     ----'--add-modules', 'jdk.incubator.vector',
 
     ---- 💀
-    ---- '-jar', vim.fn.glob('/home/matsu/Tools/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar'),
+    -- '-jar', vim.fn.glob('/home/matsu/Tools/jdtls/org.eclipse.jdt.ls.product/target/repository/plugins/org.eclipse.equinox.launcher_*.jar'),
     --     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                                       ^^^^^^^^^^^^^^
     --     -- Must point to the                                                     Change this to
     --     -- eclipse.jdt.ls installation                                           the actual version
