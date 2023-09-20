@@ -144,3 +144,7 @@ alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100
 
 # Add JBang to environment
 alias j!=jbang
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
