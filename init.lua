@@ -40,7 +40,7 @@ vim.cmd([[
     let useformatting=1
     function! DoFormat()
         if has("nvim") && g:useformatting
-            lua vim.lsp.buf.formatting_sync(nil, 1000)
+            lua vim.lsp.buf.format(nil, 1000)
         endif
     endfunction
 

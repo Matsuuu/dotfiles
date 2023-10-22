@@ -35,6 +35,10 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'rafamadriz/friendly-snippets'
     use 'saadparwaiz1/cmp_luasnip'
+    use {
+      'kkoomen/vim-doge',
+      run = ':call doge#install()'
+    }
 
     -- Debugging
     use 'mfussenegger/nvim-dap'

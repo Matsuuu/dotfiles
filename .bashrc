@@ -144,3 +144,6 @@ alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100
 
 # Add JBang to environment
 alias j!=jbang
+
+# Types 
+alias tsctypes="npx -p typescript tsc --declaration --allowJs --emitDeclarationOnly --outDir types "
