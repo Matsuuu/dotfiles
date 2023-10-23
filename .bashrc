@@ -146,7 +146,7 @@ alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100
 alias j!=jbang
 
 # Types 
-alias tsctypes="npx -p typescript tsc --declaration --allowJs --emitDeclarationOnly --outDir types "
+alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --outDir types "
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
