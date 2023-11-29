@@ -1,4 +1,4 @@
-vim.g.java_highlight_all = 1
+-- vim.g.java_highlight_all = 1
 
 --require 'rcfiles.plugins.nvim_jdtls-settings'
 -- Had to move this here because it was not loading on new files.
@@ -15,8 +15,8 @@ local config = {
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
 
-    -- '/usr/bin/jdtls'
-    '/home/matsu/Tools/jdtls/bin/jdtls'
+    '/usr/bin/jdtls'
+    -- '/home/matsu/Tools/jdtls/bin/jdtls'
 
     -- 'java', -- or '/path/to/java11_or_newer/bin/java'
     --        -- depends on if `java` is in your $PATH env variable and if it points to the right version.

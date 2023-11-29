@@ -59,4 +59,4 @@ lspconfig.lua_ls.setup {
     }
 }
 lspconfig.rust_analyzer.setup{ on_attach=on_attach_vim, capabilities = capabilities }
--- lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }
+lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }

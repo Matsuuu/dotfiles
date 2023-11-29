@@ -122,5 +122,8 @@ vim.cmd([[
     " Since I can't learn other than ISO layout
     nnoremap ' %
     vnoremap ' %
+
+    " Reload config 
+    nnoremap <Leader>rc :source ~/dotfiles/init.lua<CR>
 ]])
 require 'rcfiles.statusline'
