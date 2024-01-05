@@ -65,16 +65,8 @@ local config = {
         configuration = {
             -- runtimes = {
             --     {
-            --         name = "JavaSE-11",
-            --         path = "/usr/lib/jvm/java-11-openjdk"
-            --     },
-            --     {
-            --         name = "JavaSE-17",
-            --         path = "/home/matsu/Tools/jdk-17"
-            --     },
-            --     {
-            --         name = "JavaSE-19",
-            --         path = "/home/matsu/Tools/jdk-19"
+            --         name = "JavaSE-21",
+            --         path = "/home/matsu/.sdkman/candidates/java/current"
             --     }
             -- }
         },
