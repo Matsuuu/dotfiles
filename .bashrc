@@ -149,7 +149,7 @@ alias j!=jbang
 alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --outDir types "
 
 # Update neovim
-alias updateneovim="rm ~/nvim.appimage && wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
+alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
