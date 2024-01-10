@@ -32,10 +32,10 @@ shopt -s checkwinsize
 PS1='${debian_chroot:+($debian_chroot)}\[\033[38;5;208m\]\u\[$(tput sgr0)\]【=◈ ◡ ◈ =】\[$(tput sgr0)\]\[\033[38;5;87m\]\h\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;216m\]\w\[$(tput sgr0)\]'
 
 if [ "$SESSION_TYPE" != "local" ]; then
-    PS1="$PS1 \033[38;5;216m\][$SESSION_TYPE]$(tput sgr0)"
+    PS1="$PS1 \[$(tput setaf 155)\]\[[$SESSION_TYPE]\]\[$(tput sgr0)\]"
 fi
 
-PS1="$PS1\$ "
+PS1="$PS1$ "
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -113,7 +113,7 @@ fi
 # Software overrides
 alias python=python3.8
 alias realvim="vim"
-alias vim="~/nvim.appimage"
+alias vim="nvim"
 #
 # I forget about how to do stuff aliases
 alias filesize="du -sh"
