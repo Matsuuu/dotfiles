@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This is a helper that should be put to `/usr/local/bin/` to allow Slack to open it's desktop app from browser.
+# Might need expansion with other tools?
+
+if [[ "${1:-}" = slack://* ]]; then
+    exec /usr/lib/slack/slack --enable-crashpad "$1"
+fi
+
+exec /usr/bin/xdg-open "$@"
