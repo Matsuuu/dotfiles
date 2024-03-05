@@ -10,6 +10,7 @@ require 'rcfiles.plugins.telescope-settings'
 require 'rcfiles.plugins.treesitter-settings'
 require 'rcfiles.plugins.nvim_dap-settings'
 require 'rcfiles.plugins.nvim-tree-settings'
+require 'rcfiles.plugins.dap-vscode'
 
 require 'rcfiles.tabline'.Setup()
 require 'rcfiles.opts'

@@ -148,7 +148,7 @@ alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100
 alias j!=jbang
 
 # Types 
-alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --outDir types "
+alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --lib esnext,DOM --outDir types "
 
 # Update neovim
 alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
