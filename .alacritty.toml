@@ -1,0 +1,59 @@
+[colors.bright]
+black = "0xFAE8B6"
+blue = "0xeba4ac"
+cyan = "0x87c095"
+green = "0x9cd162"
+magenta = "0xd9bcef"
+red = "0xff38a2"
+white = "0xfff0f5"
+yellow = "0xffc85b"
+
+[colors.normal]
+black = "0xFAE8B6"
+blue = "0xeba4ac"
+cyan = "0x87c095"
+green = "0x9cd162"
+magenta = "0xd9bcef"
+red = "0xff38a2"
+white = "0xfff0f5"
+yellow = "0xffc85b"
+
+[colors.primary]
+background = "0x202330"
+foreground = "0xfae8b6"
+
+[font]
+size = 12
+
+[font.bold]
+family = "FantasqueSansMono Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "FantasqueSansMono Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "FantasqueSansMono Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+y = 1
+
+[shell]
+program = "/bin/bash"
+
+[window]
+opacity = 1
+
+[window.dimensions]
+columns = 100
+lines = 36
+
+[window.padding]
+x = 25
+y = 25
+
+[window.position]
+x = 1050
+y = 250
