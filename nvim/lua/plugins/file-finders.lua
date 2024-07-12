@@ -11,7 +11,32 @@ return  {
             "<C-F>",
             function() require("telescope.builtin").live_grep() end,
             "Live grep"
-        }
+        },
+        {
+            "<C-L>",
+            function() require("telescope.builtin").buffers() end,
+            "Show buffers"
+        },
+        {
+            "<C-H>",
+            function() require("telescope.builtin").oldfiles() end,
+            "Show Old files"
+        },
+        {
+            "gr",
+            function() require("telescope.builtin").lsp_references() end,
+            "Show LSP references"
+        },
+        {
+            "<Leader>gs",
+            function() require("telescope.builtin").git_status() end,
+            "Show Git status"
+        },
+        {
+            "<Leader>sd",
+            function() require("telescope.builtin").diagnostics() end,
+            "Show diagnostics"
+        },
     },
     -- change some options
     opts = {
