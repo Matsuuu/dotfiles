@@ -3,12 +3,12 @@ return  {
     keys = {
         {
             "<C-N>",
-            function() require("telescope.builtin").find_files({}) end,
+            function() require("telescope.builtin").find_files() end,
             desc = "Find files",
         },
         {
             "<C-F>",
-            function() require("telescope.builtin").live_grep({}) end,
+            function() require("telescope.builtin").live_grep() end,
             "Live grep"
         }
     },
