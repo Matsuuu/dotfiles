@@ -1,3 +1,4 @@
+-- If this module doesn't load, comment out the actions and theme accesses...
 return  {
     "nvim-telescope/telescope.nvim",
     keys = {
