@@ -1,7 +1,7 @@
 
 return {
     "matsuuu/pinkmare",
-    init = function() 
+    init = function()
     	vim.cmd [[colorscheme pinkmare]]
     end
 }
