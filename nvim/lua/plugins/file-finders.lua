@@ -1,6 +1,12 @@
 -- If this module doesn't load, comment out the actions and theme accesses...
 return  {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+        "nvim-telescope/telescope-ui-select.nvim"
+    },
+    init = function()
+        require("telescope").load_extension("ui-select")
+    end,
     keys = {
         {
             "<C-N>",
@@ -37,6 +43,11 @@ return  {
             function() require("telescope.builtin").diagnostics() end,
             "Show diagnostics"
         },
+        {
+            "<Leader>r",
+            function() require("teShow diagnosticslescope.builtin").resume() end,
+            "Resume previous query"
+        }
     },
     -- change some options
     opts = {
