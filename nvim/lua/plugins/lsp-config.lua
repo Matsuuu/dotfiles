@@ -12,8 +12,8 @@ return {
         local on_attach_vim = function(client)
             lsp_status.on_attach(client)
             capabilities = lsp_status.capabilities
-        end 
-            
+        end
+
         local lspconfig = require('lspconfig')
 
         lspconfig.tsserver.setup{ on_attach=on_attach_vim, capabilities = capabilities }

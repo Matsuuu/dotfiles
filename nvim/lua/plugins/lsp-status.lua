@@ -1,6 +1,6 @@
 return {
     "nvim-lua/lsp-status.nvim",
-    init = function () 
+    init = function ()
         local signs = {
             { name = "DiagnosticSignError", text = "🔥" },
             { name = "DiagnosticSignWarn", text = "🚧" },
