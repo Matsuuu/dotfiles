@@ -111,7 +111,7 @@ fi
 
 # ALIASES
 # Software overrides
-alias python=python3.8
+#alias python=python3.8
 alias realvim="vim"
 test -f ~/nvim.appimage && alias vim="~/nvim.appimage"
 [ ! -f ~/nvim.appimage ] && alias vim="nvim"

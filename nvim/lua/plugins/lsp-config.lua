@@ -35,5 +35,6 @@ return {
         }
         lspconfig.rust_analyzer.setup{ on_attach=on_attach_vim, capabilities = capabilities }
         -- lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }
+        lspconfig.pyright.setup{}
     end
 }
