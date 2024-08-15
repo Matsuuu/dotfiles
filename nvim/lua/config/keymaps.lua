@@ -8,11 +8,11 @@ vim.keymap.set("n", "<Leader>bl", ":bl<CR>")
 
 -- Undo breakpoints
 vim.keymap.set("i", ",", ",<c-g>u")
-vim.keymap.set("i", ".", ",<c-g>u")
-vim.keymap.set("i", "!", ",<c-g>u")
-vim.keymap.set("i", "?", ",<c-g>u")
-vim.keymap.set("i", ":", ",<c-g>u")
-vim.keymap.set("i", ";", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", "!", "!<c-g>u")
+vim.keymap.set("i", "?", "?<c-g>u")
+vim.keymap.set("i", ":", ":<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
