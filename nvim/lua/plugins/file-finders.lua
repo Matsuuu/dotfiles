@@ -19,6 +19,11 @@ return  {
             "Live grep"
         },
         {
+            "F",
+            function() require("telescope.builtin").resume() end,
+            "Resume"
+        },
+        {
             "<C-L>",
             function() require("telescope.builtin").buffers() end,
             "Show buffers"
