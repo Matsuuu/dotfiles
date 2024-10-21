@@ -89,7 +89,11 @@ return  {
             lsp_workspace_diagnostics = {
                 theme = "dropdown"
             },
+            oldfiles = {
+                layout_strategy = "vertical",
+            },
             find_files = {
+                layout_strategy = "vertical",
                 find_command = { "rg", "--files", "--hidden", "--ignore" }
             }
         },

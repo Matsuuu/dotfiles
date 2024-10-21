@@ -16,7 +16,7 @@ return {
 
         local lspconfig = require('lspconfig')
 
-        lspconfig.tsserver.setup{ on_attach=on_attach_vim, capabilities = capabilities }
+        lspconfig.ts_ls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
         lspconfig.jsonls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
         lspconfig.html.setup{ on_attach=on_attach_vim, capabilities = capabilities }
         lspconfig.cssls.setup{ on_attach=on_attach_vim, capabilities = capabilities }
@@ -36,5 +36,10 @@ return {
         lspconfig.rust_analyzer.setup{ on_attach=on_attach_vim, capabilities = capabilities }
         -- lspconfig.custom_elements_languageserver.setup { on_attach=on_attach_vim, capabilities = capabilities }
         lspconfig.pyright.setup{}
+        lspconfig.jdtls.setup{
+            jdtls = function()
+                return true --avoid duplicates
+            end,
+        }
     end
 }
