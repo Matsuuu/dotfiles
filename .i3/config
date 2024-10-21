@@ -137,8 +137,10 @@ bindsym $sup+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $sup+Shift+r restart
 # exit i3 (logs you out of your X session)
-#bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $sup+Shift+e exec "qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+# bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $sup+Shift+e exec "qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
+# using plasma's logout screen instead of i3's
+bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 bindsym $sup+$ctrl+h    resize shrink width 5 px or 5 ppt
 bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
@@ -175,9 +177,20 @@ for_window [class="Kmix"] floating enable; border none
 for_window [class="Klipper"] floating enable; border none
 for_window [class="Plasmoidviewer"] floating enable; border none
 for_window [class="(?i)*nextcloud*"] floating disable
-for_window [class="plasmashell" window_type="notification"] floating enable, border none
-for_window [window_role="pop-up"] floating enable border none 
 no_focus [class="plasmashell" window_type="notification"]
+# Plasma compatibility improvements
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+no_focus [class="plasmashell" window_type="notification"]
+
+# Kills the window
+for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
+
 
 #no_focus [class=”plasmashell”]
 
@@ -200,6 +213,5 @@ exec_always --no-startup-id picom
 #  ____) | | | | (_) | |  | || (__| |_| | |_ 
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
-bindsym $sup+r [title="Desktop - Plasma] kill
 bindsym $mod+space exec albert show
 bindsym $sup+Return exec alacritty
