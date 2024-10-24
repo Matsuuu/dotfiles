@@ -94,6 +94,7 @@ if [ "$SESSION_TYPE" != "remote/ssh" ]; then
 
     # Caps is esc
     setxkbmap -option caps:escape
+    setxkbmap fi
 
     source ~/.env
     #
