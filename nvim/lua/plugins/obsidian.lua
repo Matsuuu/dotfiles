@@ -19,15 +19,7 @@ return {
       {
         name = "work",
         path = "~/vaults/work",
-      },
-      {
-        name = "personal-win",
-        path = "/mnt/c/Users/MatiasHuhta/vaults/personal"
-      },
-      {
-        name = "work",
-        path = "/mnt/c/Users/MatiasHuhta/vaults/work"
-      },
+      }
     },
   },
     -- config = function(_, opts)
