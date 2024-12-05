@@ -146,10 +146,6 @@ StatusLine.inactive = function()
     return "%#ClearColor#"
 end
 
-StatusLine.short = function()
-    return ""
-end
-
 StatusLine.init = function()
     vim.opt.showmode = false
     vim.opt.laststatus = 3
@@ -170,17 +166,6 @@ StatusLine.init = function()
             group = StatusLineGroup
         }
     )
-
-    -- vim.api.nvim_create_autocmd(
-    --     { "BufLeave", "WinLeave",  },
-    --     {
-    --         pattern = "*",
-    --         callback = function()
-    --             vim.wo.statusline = StatusLine.inactive()
-    --         end,
-    --         group = StatusLineGroup
-    --     }
-    -- )
 end
 
 StatusLine.init()
