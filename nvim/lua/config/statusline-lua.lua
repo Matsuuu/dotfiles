@@ -21,6 +21,7 @@ local modes = {
 }
 
 vim.api.nvim_set_hl(0, "ClearColor", { fg = "", bg = "" })
+vim.api.nvim_set_hl(0, "LightBackground", { fg = "#fff0f5", bg = "#2d2f42" })
 vim.api.nvim_set_hl(0, "NormalColor", { fg = "#fff0f5", bg = "#2d2f42" })
 vim.api.nvim_set_hl(0, "VisualColor", { fg = "#202330", bg = "#fff0f5" })
 vim.api.nvim_set_hl(0, "InsertColor", { fg = "#fff0f5", bg = "#472541" })
@@ -69,6 +70,39 @@ local function get_filename()
     return filename .. " "
 end
 
+local function get_filetype()
+    return table.concat({
+        vim.bo.filetype,
+    })
+end
+
+local function get_line_info()
+    if vim.bo.filetype == "alpha" then
+        return ""
+    end
+    return table.concat({
+        "%l ",
+        "/ ",
+        "%L ",
+        "|",
+        " ",
+        "%c",
+    })
+end
+
+
+local function get_file_and_line_info()
+    return table.concat({
+        "%#LightBackground#",
+        " ",
+        get_filetype(),
+        " | " ,
+        get_line_info(),
+        " ",
+        "%#ClearColor#"
+    })
+end
+
 StatusLine = {}
 
 StatusLine.active = function()
@@ -81,7 +115,7 @@ StatusLine.active = function()
         get_filepath(),
         get_filename(),
         "%=", -- Above, center, below, right
-        "Foo"
+        get_file_and_line_info()
     })
 end
 
