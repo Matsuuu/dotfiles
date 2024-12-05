@@ -20,9 +20,35 @@ local modes = {
   ["t"] = "TERMINAL",
 }
 
+vim.api.nvim_set_hl(0, "ClearColor", { fg = "", bg = "" })
+vim.api.nvim_set_hl(0, "NormalColor", { fg = "#fff0f5", bg = "#2d2f42" })
+vim.api.nvim_set_hl(0, "VisualColor", { fg = "#202330", bg = "#fff0f5" })
+vim.api.nvim_set_hl(0, "InsertColor", { fg = "#fff0f5", bg = "#472541" })
+vim.api.nvim_set_hl(0, "CommandColor", { fg = "#fff0f5", bg = "#6d7a72" })
+
+
+
 local function get_mode()
     local current_mode = vim.api.nvim_get_mode().mode
     return string.format(" %s ", modes[current_mode]):upper()
+end
+
+local function get_mode_color()
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "n" or mode == "no" then
+        return "%#NormalColor#"
+    end
+    if mode == "v" or mode == "V" then
+        return "%#VisualColor#"
+    end
+    if mode == "i" or mode == "ic" then
+        return "%#InsertColor#"
+    end
+    if mode == "c"  then
+        return "%#CommandColor#"
+    end
+
+    return "%#NormalColor#"
 end
 
 local function get_filepath()
@@ -47,11 +73,15 @@ StatusLine = {}
 
 StatusLine.active = function()
     return table.concat({
+        get_mode_color(),
         get_mode(),
+        "%#ClearColor#",
+        "%="; -- Above, left side, below center
         "",
         get_filepath(),
         get_filename(),
-        ""
+        "%=", -- Above, center, below, right
+        "Foo"
     })
 end
 
@@ -64,25 +94,15 @@ StatusLine.short = function()
 end
 
 StatusLine.init = function()
-    -- vim.api.nvim_exec([[
-    --   augroup Statusline
-    --   au!
-    --   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-    --   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-    --   au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-    --   augroup END
-    -- ]], false)
     vim.opt.showmode = false
 
     local StatusLineGroup = vim.api.nvim_create_augroup("StatusLine", {})
+
     vim.api.nvim_create_autocmd(
-        { "WinEnter", "BufEnter", "FocusGained", "InsertLeave", "InsertEnter" },
+        { "ModeChanged", "WinEnter", "BufEnter", "FocusGained", "InsertLeave", "InsertEnter" },
         {
             pattern = "*",
             callback = function(ev)
-                print(string.format('event fired: %s', vim.inspect(ev)))
-                local current_mode = vim.api.nvim_get_mode().mode
-                print("Current mode: ", current_mode)
                 vim.wo.statusline = StatusLine.active()
             end,
             group = StatusLineGroup
