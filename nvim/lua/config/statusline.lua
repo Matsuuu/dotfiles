@@ -1,123 +1,188 @@
-vim.cmd([[
-    " ------ Statusline
+local modes = {
+  ["n"] = "NORMAL",
+  ["no"] = "NORMAL",
+  ["v"] = "VISUAL",
+  ["V"] = "VISUAL LINE",
+  [""] = "VISUAL BLOCK",
+  ["s"] = "SELECT",
+  ["S"] = "SELECT LINE",
+  ["i"] = "INSERT",
+  ["ic"] = "INSERT",
+  ["R"] = "REPLACE",
+  ["Rv"] = "VISUAL REPLACE",
+  ["c"] = "COMMAND",
+  ["cv"] = "VIM EX",
+  ["ce"] = "EX",
+  ["r"] = "PROMPT",
+  ["rm"] = "MOAR",
+  ["r?"] = "CONFIRM",
+  ["!"] = "SHELL",
+  ["t"] = "TERMINAL",
+}
 
-    set noshowmode
+vim.api.nvim_set_hl(0, "ClearColor", { fg = "", bg = "" })
+vim.api.nvim_set_hl(0, "LightBackground", { fg = "#fff0f5", bg = "#2d2f42" })
+vim.api.nvim_set_hl(0, "NormalColor", { fg = "#fff0f5", bg = "#2d2f42" })
+vim.api.nvim_set_hl(0, "VisualColor", { fg = "#202330", bg = "#fff0f5" })
+vim.api.nvim_set_hl(0, "InsertColor", { fg = "#fff0f5", bg = "#472541" })
+vim.api.nvim_set_hl(0, "CommandColor", { fg = "#fff0f5", bg = "#6d7a72" })
 
-    set laststatus=2
+local no_statusline_types = {
+    "NvimTree"
+}
 
-    set statusline=%9*
+local function no_statusline()
+    local filetype = vim.bo.filetype
+    for key, val in pairs(no_statusline_types) do
+        if val == filetype then
+            return true
+        end
+    end
+    return false
+end
 
-    "Status
-    set statusline+=%#StatusBalloonColor#
-    set statusline+=%#StatusBarColor#
-    set statusline+=\ \ 
-    set statusline+=%{StatuslineMode()}
-    set statusline+=%m
-    set statusline+=\ \ 
-    set statusline+=%#StatusBalloonColor#
-    set statusline+=%=
 
-    "Filename
-    set statusline+=%6*\ \ 
-    set statusline+=%.60F
-    set statusline+=%6*\ \ 
-    "Column
-    set statusline+=%=
-    set statusline+=%6*\ 
-    "Filetype
-    set statusline+=%{LspStatus()}
-    set statusline+=%6*\ 
-    set statusline+=%2*\ 
-    set statusline+=%{CheckFT(&filetype)}
-    set statusline+=%2*\ 
-    set statusline+=\|
-    set statusline+=%2*\ 
-    set statusline+=%l
-    set statusline+=:
-    set statusline+=%L
-    set statusline+=%2*\ 
-    set statusline+=\|
-    set statusline+=%2*\ 
-    set statusline+=%c
-    set statusline+=\ \ 
+local function get_mode()
+    local current_mode = vim.api.nvim_get_mode().mode
+    return string.format(" %s ", modes[current_mode]):upper()
+end
 
-    " Balloon
-    hi link User2 NormalColor
-    " Alt balloon
-    hi link User3 NormalAlt
-    " For rounders
-    hi link User4 NormalColorFG
-    " Alt rounders
-    hi link User5 NormalAltFG
-    hi link User6 FancyTextColor
-    hi link User7 FancyTextColorTwo
-    hi link User8 FancyTextColorThree
-    hi link User1 FancyTextColorThreeFG
-    " Clear
-    hi User9 guifg=white 
+local function get_mode_color()
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "n" or mode == "no" then
+        return "%#NormalColor#"
+    end
+    if mode == "v" or mode == "V" then
+        return "%#VisualColor#"
+    end
+    if mode == "i" or mode == "ic" then
+        return "%#InsertColor#"
+    end
+    if mode == "c"  then
+        return "%#CommandColor#"
+    end
 
-    hi FancyTextColor guifg=#cec09a guibg=#202330
-    hi FancyTextColorTwo guifg=#fff0f5 guibg=#2d2f42
-    hi FancyTextColorThree guifg=#f39305 guibg=#242021
-    hi FancyTextColorThreeFG guifg=#242021 
-    hi NormalColor guifg=#fff0f5 guibg=#2d2f42
-    hi NormalColorFG guifg=#2d2f42
-    hi NormalAlt guibg=#fe7c8e guifg=#000000
-    hi NormalAltFG guifg=#fe7c8e
-    hi VisualColor guibg=#fff0f5 guifg=#202330
-    hi VisualColorFG guifg=#fff0f5
-    hi InsertColor guibg=#472541 guifg=#fff0f5
-    hi InsertColorFG guifg=#472541
-    hi CommandColor guibg=#6d7a72 guifg=#fff0f5
-    hi CommandColorFG guifg=#6d7a72
+    return "%#NormalColor#"
+end
 
-    function! StatuslineMode()
-      let l:mode=mode()
-      if l:mode==#"n"
-        hi link StatusBarColor NormalColor
-        hi link StatusBalloonColor NormalColorFG
-        return "NORMAL"
-      elseif l:mode==?"v"
-        hi link StatusBarColor VisualColor
-        hi link StatusBalloonColor VisualColorFG
-        return "VISUAL"
-      elseif l:mode==#"i"
-        hi link StatusBarColor InsertColor
-        hi link StatusBalloonColor InsertColorFG
-        return "INSERT"
-      elseif l:mode==#"R"
-        return "REPLACE"
-      elseif l:mode==?"s"
-        return "SELECT"
-      elseif l:mode==#"t"
-        return "TERMINAL"
-      elseif l:mode==#"c"
-        hi link StatusBarColor CommandColor
-        hi link StatusBalloonColor CommandColorFG
-        return "COMMAND"
-      elseif l:mode==#"!"
-        return "SHELL"
-      endif
-    endfunction
+local function get_filepath()
+    local filepath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+    if filepath == "" or filepath == "." then
+        return " "
+    end
 
-    function! CheckFT(filetype)
-        if a:filetype == ''
-            return '-'
-        else 
-            "TODO: When this is lua, we can use nvim-web-devicons
-            ""let s = %{WebDevIconsGetFileTypeSymbol()}
-            let s = ""
-            let s .= " "
-            let s .= tolower(a:filetype)
-            return s
-        endif
-    endfunction
+    return string.format(" %%<%s/", filepath);
+end
 
-    function! LspStatus() abort
-      if luaeval('#vim.lsp.buf_get_clients() > 0')
-        return " " . luaeval("require('lsp-status').status()")
-      endif
+local function get_filename()
+    local filename = vim.fn.expand("%:t")
+    if filename == "" then
+        return ""
+    end
 
-      return ''
-    endfunction
-]])
+    return filename .. " "
+end
+
+local function get_filetype()
+    local icon = require("nvim-web-devicons").get_icon(vim.fn.expand("%:t"), vim.bo.filetype, { default = true })
+    return table.concat({
+        vim.bo.filetype,
+        " ",
+        icon
+    })
+end
+
+local function get_line_info()
+    if vim.bo.filetype == "alpha" then
+        return ""
+    end
+    return table.concat({
+        "%l ",
+        "/ ",
+        "%L ",
+        "|",
+        " ",
+        "%c",
+    })
+end
+
+
+local function get_file_and_line_info()
+    return table.concat({
+        "%#LightBackground#",
+        " ",
+        get_filetype(),
+        " | " ,
+        get_line_info(),
+        " ",
+        "%#ClearColor#"
+    })
+end
+
+local function get_lsp_status()
+    return table.concat({
+        require("lsp-status").status()
+    })
+end
+
+StatusLine = {}
+
+StatusLine.active = function()
+    return table.concat({
+        get_mode_color(),
+        get_mode(),
+        "%#ClearColor#",
+        "%="; -- Above, left side, below center
+        "",
+        get_filepath(),
+        get_filename(),
+        "%=", -- Above, center, below, right
+        get_lsp_status(),
+        get_file_and_line_info(),
+    })
+end
+
+StatusLine.inactive = function()
+    return "%#ClearColor#"
+end
+
+StatusLine.short = function()
+    return ""
+end
+
+StatusLine.init = function()
+    vim.opt.showmode = false
+    vim.opt.laststatus = 3
+
+    local StatusLineGroup = vim.api.nvim_create_augroup("StatusLine", {})
+
+    vim.api.nvim_create_autocmd(
+        { "ModeChanged", "WinEnter", "BufEnter", "FocusGained", "InsertLeave", "InsertEnter" },
+        {
+            pattern = "*",
+            callback = function(ev)
+                if no_statusline() then
+                    vim.wo.statusline = StatusLine.inactive()
+                else
+                    vim.wo.statusline = StatusLine.active()
+                end
+            end,
+            group = StatusLineGroup
+        }
+    )
+
+    -- vim.api.nvim_create_autocmd(
+    --     { "BufLeave", "WinLeave",  },
+    --     {
+    --         pattern = "*",
+    --         callback = function()
+    --             vim.wo.statusline = StatusLine.inactive()
+    --         end,
+    --         group = StatusLineGroup
+    --     }
+    -- )
+end
+
+StatusLine.init()
+
+return StatusLine
