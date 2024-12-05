@@ -36,6 +36,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-nvim-lua"
     },
     opts = function(_, opts)
         local cmp = require("cmp")
@@ -45,6 +46,7 @@ return {
                   { name = 'nvim_lsp' },
                   { name = 'luasnip' },
                   { name = 'buffer' },
+                  { name = 'nvim_lua' },
           })
 
         opts.snippet = {
