@@ -1,7 +1,11 @@
-console.log("Foo");
+console.log("Hello!");
 
 console.log(1 + 1);
 
 const foo = "bar";
 
-console.log("Foo " + foo);
+console.log(foo);
+
+let name = "Matsu";
+
+console.log("Hello " + name);
