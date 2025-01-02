@@ -107,7 +107,7 @@ return  {
         },
         {
             "<Leader>r",
-            function() require("teShow diagnosticslescope.builtin").resume() end,
+            function() require("telescope.builtin").resume() end,
             "Resume previous query"
         },
         {
