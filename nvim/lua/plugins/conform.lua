@@ -12,7 +12,9 @@ return {
             -- Conform will run the first available formatter
             javascript = { "prettierd", "prettier", stop_after_first = true },
             typescript = { "prettierd", "prettier", stop_after_first = true },
-            terraform = { "terraform_fmt" }
+            terraform = { "terraform_fmt" },
+            json = { "fixjson" },
+             lua = { "stylua" },
         }
     },
 }

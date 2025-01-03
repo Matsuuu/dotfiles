@@ -44,6 +44,9 @@ return  {
             lsp_workspace_diagnostics = {
                 theme = "dropdown"
             },
+            live_grep = {
+                layout_strategy = "vertical",
+            },
             oldfiles = {
                 layout_strategy = "vertical",
             },
