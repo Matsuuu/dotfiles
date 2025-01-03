@@ -15,5 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.10.3"
+  },
+  "dependencies": {
+    "node-localstorage": "^3.0.5"
   }
 }

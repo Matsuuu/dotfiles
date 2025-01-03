@@ -1,3 +1,4 @@
+import { LocalStorage } from "node-localstorage";
 import * as readline from "readline";
 import * as vm from "vm";
 
@@ -12,6 +13,7 @@ function createContext(existing) {
     return vm.createContext({
         console,
         process,
+        // localStorage: new LocalStorage("./cache/localstorage"),
         ...existing,
     });
 }
