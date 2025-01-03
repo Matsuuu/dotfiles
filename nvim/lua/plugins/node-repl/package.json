@@ -1,0 +1,19 @@
+{
+  "name": "virta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "repl.js",
+  "type": "module",
+  "scripts": {
+    "start": "node repl.js"
+  },
+  "bin": {
+    "virta": "./cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.10.3"
+  }
+}

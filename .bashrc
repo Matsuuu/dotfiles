@@ -153,6 +153,9 @@ alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDe
 # Update neovim
 alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
 
+# Remove capslock
+alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
