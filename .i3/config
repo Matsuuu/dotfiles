@@ -154,6 +154,7 @@ exec_always --no-startup-id wmctrl -c Plasma
 #for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [title="Desktop — Plasma"] kill
 for_window [class="Albert"] border none
+for_window [class="ulauncher"] border none
 
 # Avoid tiling popups, dropdown windows from plasma
 for_window [class="plasmashell"] floating enable
@@ -205,6 +206,7 @@ for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
 exec_always --no-startup-id picom
+exec_always --no-startup-id ulauncher
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
@@ -213,5 +215,6 @@ exec_always --no-startup-id picom
 #  ____) | | | | (_) | |  | || (__| |_| | |_ 
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
-bindsym $mod+space exec albert show
+# bindsym $mod+space exec albert show
+# bindsym $mod+space exec albert show
 bindsym $sup+Return exec alacritty
