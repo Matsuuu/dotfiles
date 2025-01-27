@@ -43,3 +43,10 @@ vim.opt_local.conceallevel = 2
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
+
+-- Autoread file changes
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = { "*" },
+})
