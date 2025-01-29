@@ -8,8 +8,7 @@ Here be dragons
 - Bat
 - Fzf
 - Alacritty
-- Albert
-- Polybar
+- Ulauncher
 - Picom
 - Tmux
 - i3
