@@ -1,0 +1,46 @@
+{
+    "name": "Matsuuu's snippets",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "html",
+                    "jade",
+                    "pug",
+                    "eruby",
+                    "javascriptreact",
+                    "htmldjango",
+                    "astro",
+                    "blade"
+                ],
+                "path": "./html.json"
+            },
+            {
+                "language": [
+                    "css",
+                    "scss",
+                    "sass",
+                    "less",
+                    "stylus"
+                ],
+                "path": "./css.json"
+            },
+            {
+                "language": [
+                    "javascript",
+                    "javascriptreact",
+                    "vue",
+                    "svelte"
+                ],
+                "path": "./javascript.json"
+            },
+            {
+                "language": "jsdoc",
+                "path": "./jsdoc.json"
+            }
+        ]
+    }
+}

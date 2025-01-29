@@ -35,3 +35,6 @@ vim.keymap.set("i", "<C-p>", vim.lsp.buf.signature_help)
 vim.keymap.set("n", "rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<Leader>ee", vim.diagnostic.open_float)
 vim.keymap.set("n", "<Leader>se", function() vim.diagnostic.goto_next({ wrap = true }) end)
+
+vim.keymap.set("n", "<Leader>y", '"+y')
+vim.keymap.set("v", "<Leader>y", '"+y')
