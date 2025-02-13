@@ -39,6 +39,16 @@ return {
 				},
 			}
 
+			local sign = vim.fn.sign_define
+
+			sign("DapBreakpoint", { text = "🔴", texthl = "DapBreakpoint", linehl = "", numhl = "" })
+			sign(
+				"DapBreakpointCondition",
+				{ text = "🔴", texthl = "DapBreakpointCondition", linehl = "", numhl = "" }
+			)
+			sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
+			sign("DapStopped", { text = "🔴", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+
 			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
 			vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
 			vim.keymap.set("n", "<space>dt", ui.toggle)
