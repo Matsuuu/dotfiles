@@ -82,7 +82,9 @@ return {
 
 			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
 			vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
-			vim.keymap.set("n", "<space>dt", ui.toggle)
+			vim.keymap.set("n", "<space>dt", function()
+				ui.toggle({ reset = true })
+			end)
 
 			vim.keymap.set("n", "<space>?", function()
 				require("dapui").eval(nil, { enter = true })
