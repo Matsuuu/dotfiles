@@ -6,12 +6,8 @@ return {
 	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-		local lsp_status = require("lsp-status")
 
-		local on_attach_vim = function(client)
-			lsp_status.on_attach(client)
-			capabilities = lsp_status.capabilities
-		end
+		local on_attach_vim = function(client) end
 
 		local lspconfig = require("lspconfig")
 
@@ -41,11 +37,12 @@ return {
 		lspconfig.rust_analyzer.setup({ on_attach = on_attach_vim, capabilities = capabilities })
 		-- lspconfig.custom_elements_ls.setup { on_attach=on_attach_vim, capabilities = capabilities }
 		lspconfig.pyright.setup({})
-		lspconfig.jdtls.setup({
-			jdtls = function()
-				return true --avoid duplicates
-			end,
-		})
+		-- lspconfig.jdtls.setup({
+		-- 	jdtls = function()
+		-- 		return true --avoid duplicates
+		-- 	end,
+		-- })
 		lspconfig.csharp_ls.setup({})
+		lspconfig.tailwindcss.setup({})
 	end,
 }
