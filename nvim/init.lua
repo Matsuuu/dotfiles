@@ -5,7 +5,3 @@ require("config.statusline")
 require("config.diagnostic")
 require("config.borders")
 require("snippets.init")
---require("plugins.node-repl.repl-connector")
---
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#202330" })
--- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#202330" })
