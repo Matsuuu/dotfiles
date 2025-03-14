@@ -151,7 +151,7 @@ alias j!=jbang
 alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --lib esnext,DOM --outDir types "
 
 # Update neovim
-alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
+alias updateneovim="wget https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
 
 # Remove capslock
 alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
