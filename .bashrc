@@ -69,8 +69,12 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modul
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 # export LC_ALL=en_US.UTF-8
-export VISUAL=vim
-export EDITOR="$VISUAL"
+#export VISUAL=vim
+
+test -f ~/nvim.appimage && export EDITOR="~/nvim.appimage"
+[ ! -f ~/nvim.appimage ] && export EDITOR="nvim"
+
+
 export NPM_PACKAGES="${HOME}/.npm-packages"
 export TERM=xterm-256color
 
