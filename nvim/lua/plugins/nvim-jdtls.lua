@@ -1,7 +1,6 @@
 java_filetypes = { "java" }
 
 -- https://www.lazyvim.org/extras/lang/java
-
 return {
 	"mfussenegger/nvim-jdtls",
 	dependencies = {
@@ -114,6 +113,38 @@ return {
 			-- Existing server will be reused if the root_dir matches.
 			require("jdtls").start_or_attach(config)
 			-- not need to require("jdtls.setup").add_commands(), start automatically adds commands
+			--
+			vim.keymap.set("n", "<Leader>tc", require("jdtls").test_class)
+			vim.keymap.set("n", "<Leader>tm", require("jdtls").test_nearest_method)
+			-- Organize imports
+			vim.keymap.set("n", "<Leader>oi", function()
+				require("jdtls").organize_imports()
+			end, { desc = "Organize imports" })
+
+			-- Extract variable (normal mode)
+			vim.keymap.set("n", "<Leader>ev", function()
+				require("jdtls").extract_variable()
+			end, { desc = "Extract variable" })
+
+			-- Extract variable (visual mode)
+			vim.keymap.set("v", "<Leader>ev", function()
+				require("jdtls").extract_variable(true)
+			end, { desc = "Extract variable with selection" })
+
+			-- Extract constant (normal mode)
+			vim.keymap.set("n", "<Leader>ec", function()
+				require("jdtls").extract_constant()
+			end, { desc = "Extract constant" })
+
+			-- Extract constant (visual mode)
+			vim.keymap.set("v", "<Leader>ec", function()
+				require("jdtls").extract_constant(true)
+			end, { desc = "Extract constant with selection" })
+
+			-- Extract method (visual mode)
+			vim.keymap.set("v", "<Leader>em", function()
+				require("jdtls").extract_method(true)
+			end, { desc = "Extract method with selection" })
 		end
 
 		-- Attach the jdtls for each java buffer. HOWEVER, this plugin loads

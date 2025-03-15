@@ -80,9 +80,9 @@ return {
 			sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" })
 			sign("DapStopped", { text = "🔴", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
-			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
-			vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
-			vim.keymap.set("n", "<space>dt", function()
+			vim.keymap.set("n", "<Leader>bb", dap.toggle_breakpoint)
+			vim.keymap.set("n", "<Leader>gb", dap.run_to_cursor)
+			vim.keymap.set("n", "<Leader>dt", function()
 				ui.toggle({ reset = true })
 			end)
 
