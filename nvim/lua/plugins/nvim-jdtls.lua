@@ -114,6 +114,8 @@ return {
 			-- Existing server will be reused if the root_dir matches.
 			require("jdtls").start_or_attach(config)
 			-- not need to require("jdtls.setup").add_commands(), start automatically adds commands
+            vim.keymap.set("n", "<Leader>jtc", require("jdtls").test_class)
+            vim.keymap.set("n", "<Leader>jtm", require("jdtls").test_nearest_method)
 		end
 
 		-- Attach the jdtls for each java buffer. HOWEVER, this plugin loads
