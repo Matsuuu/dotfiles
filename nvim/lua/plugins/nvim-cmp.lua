@@ -64,14 +64,11 @@ return {
 			end,
 		}
 		opts.window = {
-			completion = {
-				scrollbar = true,
-			},
-		}
-		opts.window = {
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		}
+		opts.window.completion.scrollbar = true
+
 		opts.mapping = {
 			["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 			["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
@@ -106,19 +103,19 @@ return {
 		}
 
 		-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-		-- cmp.setup.cmdline({ "/", "?" }, {
-		-- 	sources = {
-		-- 		{ name = "buffer" },
-		-- 	},
-		-- })
+		cmp.setup.cmdline({ "/", "?" }, {
+			sources = {
+				{ name = "buffer" },
+			},
+		})
 
 		-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-		-- cmp.setup.cmdline(":", {
-		-- 	sources = cmp.config.sources({
-		-- 		{ name = "path" },
-		-- 	}, {
-		-- 		{ name = "cmdline" },
-		-- 	}),
-		-- })
+		cmp.setup.cmdline(":", {
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
+		})
 	end,
 }
