@@ -11,6 +11,9 @@ return {
         "nvim-treesitter"
   },
   opts = {
+    ui = {
+        enable = false
+    },
     workspaces = {
       {
         name = "personal",

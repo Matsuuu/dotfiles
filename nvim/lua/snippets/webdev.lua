@@ -7,12 +7,6 @@ local extras = require("luasnip.extras")
 local rep = extras.rep
 local fmt = require("luasnip.extras.fmt").fmt
 
-
-local function get_filename(_, snip)
-  local filename = vim.fn.expand("%:t:r")
-  return filename
-end
-
 local function to_pascal_case(_, snip)
   local filename = vim.fn.expand("%:t:r")
   -- Convert kebab-case to PascalCase
