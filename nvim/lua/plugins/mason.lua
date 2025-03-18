@@ -13,14 +13,18 @@ local ensure_installed = {
     "css-lsp",
 }
 
+
+vim.api.nvim_create_user_command("MasonInstallAll", function()
+    for _, server in ipairs(ensure_installed) do
+        -- require("mason").install(server)
+        vim.cmd("MasonInstall " .. server)
+    end
+end, {})
+
 return {
 	"williamboman/mason.nvim",
 	config = function()
 		require("mason").setup({})
 
-        for _, server in ipairs(ensure_installed) do
-            -- require("mason").install(server)
-            vim.cmd("MasonInstall " .. server)
-        end
 	end,
 }
