@@ -13,7 +13,7 @@ return {
 			-- lspconfig which provides a function specifically for java projects.
 			-- root_dir = LazyVim.lsp.get_raw_config("jdtls").default_config.root_dir,
 			root_dir = function()
-				return vim.fs.root(0, { ".git", "mvnw", "gradlew" })
+				return vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
 			end,
 
 			-- How to find the project name for a given root dir.
@@ -60,6 +60,20 @@ return {
 					inlayHints = {
 						parameterNames = {
 							enabled = "all",
+						},
+					},
+					configuration = {
+						updateBuildConfiguration = "automatic",
+					},
+					maven = {
+						downloadSources = true,
+					},
+					autobuild = {
+						enabled = true,
+					},
+					import = {
+						maven = {
+							enabled = true,
 						},
 					},
 				},
