@@ -13,7 +13,8 @@ return {
 			-- lspconfig which provides a function specifically for java projects.
 			-- root_dir = LazyVim.lsp.get_raw_config("jdtls").default_config.root_dir,
 			root_dir = function()
-				return vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
+                return vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1])
+				-- return vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml" })
 			end,
 
 			-- How to find the project name for a given root dir.
@@ -123,6 +124,7 @@ return {
 				-- enable CMP capabilities
 				capabilities = require("cmp_nvim_lsp").default_capabilities() or nil,
 			}
+            print(vim.inspect(config.root_dir))
 
 			-- Existing server will be reused if the root_dir matches.
 			require("jdtls").start_or_attach(config)
