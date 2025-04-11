@@ -52,8 +52,16 @@ return {
 			end,
 
 			-- These depend on nvim-dap, but can additionally be disabled by setting false here.
-			dap = { hotcodereplace = "auto", config_overrides = {} },
-			-- dap = false,
+			dap = {
+                hotcodereplace = "auto",
+                config_overrides = {
+                    filters = {
+                        static = true,
+                        synthetic = true,
+                        names = { "this", "$$_hibernate_*", "handler", "interceptor" },
+                    }
+                },
+            },
 			dap_main = {},
 			test = true,
 			settings = {
@@ -124,7 +132,6 @@ return {
 				-- enable CMP capabilities
 				capabilities = require("cmp_nvim_lsp").default_capabilities() or nil,
 			}
-            print(vim.inspect(config.root_dir))
 
 			-- Existing server will be reused if the root_dir matches.
 			require("jdtls").start_or_attach(config)
@@ -169,24 +176,6 @@ return {
 			pattern = java_filetypes,
 			callback = attach_jdtls,
 		})
-
-		-- vim.api.nvim_create_autocmd("LspAttach", {
-		-- 	callback = function(args)
-		-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		-- 		if client and client.name == "jdtls" then
-		-- 			if opts.dap and mason_registry.is_installed("java-debug-adapter") then
-		-- 				-- custom init for Java debugger
-		-- 				require("jdtls").setup_dap(opts.dap)
-		-- 				require("jdtls.dap").setup_dap_main_class_configs(opts.dap_main)
-		-- 			end
-
-		-- 			-- User can set additional keymaps in opts.on_attach
-		-- 			if opts.on_attach then
-		-- 				opts.on_attach(args)
-		-- 			end
-		-- 		end
-		-- 	end,
-		-- })
 
 		-- Avoid race condition by calling attach the first time, since the autocmd won't fire.
 		attach_jdtls()
