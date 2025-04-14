@@ -39,7 +39,7 @@ vim.opt.cmdheight = 1
 vim.opt.updatetime = 50
 
 -- For obsidian
-vim.opt_local.conceallevel = 2
+-- vim.opt_local.conceallevel = 2
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")

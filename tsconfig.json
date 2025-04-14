@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
+
+        "experimentalDecorators": true, 
+        "useDefineForClassFields": false,
+
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": false
+
+    }
+}
