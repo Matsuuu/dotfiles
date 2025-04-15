@@ -1,0 +1,12 @@
+[alias]
+    lol = log --oneline --decorate
+    graph = log --oneline --graph --decorate
+[user]
+	email = huhta.matias@gmail.com
+	name = Matsuuu
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[push]
+	autoSetupRemote = true
