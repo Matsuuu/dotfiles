@@ -46,6 +46,7 @@ return {
 			{ name = "luasnip" },
 			{ name = "buffer" },
 			{ name = "nvim_lua" },
+            { name = "cmp_dadbod" },
 		})
 
 		opts.snippet = {
