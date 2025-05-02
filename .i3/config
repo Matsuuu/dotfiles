@@ -217,3 +217,10 @@ exec_always --no-startup-id picom
 # bindsym $mod+space exec albert show
 bindsym $mod+space exec ulauncher
 bindsym $sup+Return exec alacritty
+
+# Gaming mode
+
+mode "gaming" {
+    bindsym Scroll_Lock exec i3-msg mode "default"; exec notify-send "i3" "Exiting gaming mode"
+}
+bindsym Scroll_Lock exec i3-msg mode "gaming"; exec notify-send "i3" "Entering gaming mode"

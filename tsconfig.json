@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": true,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "lib": ["esnext", "dom"],
+
+        "experimentalDecorators": true, 
+        "useDefineForClassFields": false,
+
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": false,
+
+        "typeRoots": ["node_modules/@types"],
+        "paths": {
+            "@shared/*": ["../shared/src/*"]
+        }
+
+    },
+    "include": ["src/**/*.ts", "src/**/*.js"],
+    "exclude": ["node_modules", "dist"]
+}
