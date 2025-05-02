@@ -44,5 +44,18 @@ return {
 		-- })
 		lspconfig.csharp_ls.setup({})
 		lspconfig.tailwindcss.setup({})
+        lspconfig.sqls.setup({
+            settings = {
+                sqls = {
+                    connections = {
+                        {
+                            driver = "postgresql",
+                            dataSourceName = "host=127.0.0.1 port=5432 user=test password=test dbname=test_db sslmode=disable"
+                        }
+                    }
+                }
+            }
+        })
+
 	end,
 }

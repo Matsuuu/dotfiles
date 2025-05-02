@@ -7,21 +7,17 @@
         "moduleResolution": "bundler",
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "lib": ["esnext", "dom"],
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable"
+        ],
 
         "experimentalDecorators": true, 
         "useDefineForClassFields": false,
 
         "outDir": "dist",
         "sourceMap": true,
-        "declaration": false,
-
-        "typeRoots": ["node_modules/@types"],
-        "paths": {
-            "@shared/*": ["../shared/src/*"]
-        }
-
-    },
-    "include": ["src/**/*.ts", "src/**/*.js"],
-    "exclude": ["node_modules", "dist"]
+        "declaration": false
+    }
 }
