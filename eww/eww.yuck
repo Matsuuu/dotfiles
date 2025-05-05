@@ -4,6 +4,8 @@
 (defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
 (defpoll NETSTAT :interval "15s" `scripts/network.sh --stat`)
 
+(defvar power false)
+
 (defwidget bar []
   (centerbox :class "centerbox" :orientation "h"
     (leftside)
@@ -19,6 +21,7 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (powermenu)
     (wifi)
     (metric :label "🔊"
             :value volume
@@ -27,10 +30,11 @@
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (battery)
-    ; TODO: Charging status
-    time))
+    time
+    ))
 
 (defwidget battery []
+    ; TODO: Charging status
     (box :orientation "h" 
          :visible { EWW_BATTERY != "" } 
          :class "metric"
@@ -101,6 +105,47 @@
   )
 )
 
+(defwidget powermenu []
+	(eventbox	:onhover "${EWW_CMD} update power=true"
+				:onhoverlost "${EWW_CMD} update power=false"
+				:cursor "pointer"
+
+	(box	:orientation "h"
+			:space-evenly "false"
+			:vexpand "false"
+			:class "powermenu"
+
+	(revealer	:transition "slideleft"
+				:reveal power
+				:duration "550ms"
+
+	(box	:orientation "h"
+			:space-evenly "false"
+
+	(button	:style "background-image: url('images/enpass.png');"
+			:class "button-lock"
+			:tooltip "Lock Screen"
+			:onclick "qdbus org.kde.Shutdown /Shutdown logout")
+
+	(button :style "background-image: url('images/sys-sleep.png');"
+			:class "button-bspres"
+			:tooltip "Suspend computer"
+			:onclick "systemctl suspend")
+
+	(button	:style "background-image: url('images/sys-reboot.png');"
+			:class "button-reb"
+	  		:tooltip "Reboot"
+			:onclick "reboot")
+
+	(button	:style "background-image: url('images/sys-poweroff.png');"
+			:class "button-off"
+			:tooltip "Shutdown"
+			:onclick "shutdown now")))
+
+	(button	:style "background-image: url('images/sys-powermenu.png');"
+			:class "button-powermenu"
+			:tooltip "Power Menu"))))
+
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
@@ -111,7 +156,7 @@
    "scripts/workspaces.sh")
 
 (defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+  "date '+%b %d %Y - %H:%M'")
 
 (defwindow bar
   :monitor 0

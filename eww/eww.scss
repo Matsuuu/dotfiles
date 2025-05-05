@@ -18,6 +18,32 @@
   color: #D35D6E;
 }
 
+
+// Powermenu
+.powermenu {
+  font-family: Material Design Icons Desktop;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.powericons {
+  margin: 0.2rem 0 0.2rem 0;
+}
+
+
+.button-bspres,
+.button-reb,
+.button-lock,
+.button-quit,
+.button-powermenu,
+.button-off {
+  background-repeat: no-repeat;
+  background-size: 22px;
+  min-height: 1.4rem;
+  min-width: 22px;
+  margin: 0rem 0rem 0.5rem 9px;
+}
+
 .centerbox {
   background-color: #202330;
   margin: 10px 20px 0 20px;
