@@ -1,6 +1,5 @@
 * {
   all: unset; // Unsets everything so you can style everything from scratch
-  color: #fff0f5;
 }
 
 // Global Styles
@@ -8,6 +7,11 @@
   color: #fff0f5;
   padding: 10px 20px;
   border-radius: 10px;
+}
+
+
+.workspaces button:hover {
+  color: #D35D6E;
 }
 
 .centerbox {
@@ -52,6 +56,3 @@
   font-size: large;
 }
 
-.workspaces button:hover {
-  color: #D35D6E;
-}
