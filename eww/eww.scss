@@ -9,6 +9,10 @@
   border-radius: 10px;
 }
 
+.workspaces button.active {
+  color: #D35D6E;
+  font-weight: bold;
+}
 
 .workspaces button:hover {
   color: #D35D6E;
