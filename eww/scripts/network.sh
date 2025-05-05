@@ -1,37 +1,27 @@
 #!/bin/sh
-# =============================================================
-# gh0stzk
-# https://github.com/gh0stzk/dotfiles
-# Checks if you are connected to the internet and set values for eww bar.
-# 23.09.2023 13:39:59
-#
-# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
-# Licensed under GPL-3.0 license
-# =============================================================
 
-is_online() {
-	ping -c 1 -W 1 archlinux.org >/dev/null 2>&1
-}
+# Get the name of the currently active connection using nmcli
+active_connection=$(nmcli -t -f NAME,DEVICE,TYPE,STATE connection show --active | head -n1)
+device_type=$(echo "$active_connection" | cut -d: -f3)
+connection_state=$(echo "$active_connection" | cut -d: -f4)
 
-ID=$(ip link | awk '/state UP/ {print $2}' | tr -d :)
+# Parse out connection name, device type, and state
+if [[ "$connection_state" == "activated" ]]; then
+    CONNECTION_NAME=$(echo "$active_connection" | cut -d: -f1)
 
-ICON="images/no-wifi.png"
-STATUS="Offline"
+    if [[ "$device_type" == "wifi" ]]; then
+	    ICON="images/wifi.png"
+    fi
 
-if is_online; then
-	ICON="images/wifi.png"
-
-    case "$ID" in
-		e*) STATUS="$ID" ;;  # ethernet
-		*)
-			if command -v nmcli >/dev/null 2>&1; then
-				STATUS=$(nmcli -t -f active,ssid dev wifi show | sed -n '1{s/SSID: //p}')
-			fi
-			;;
-	esac
+    if [[ "$device_type" == *"ethernet" ]]; then
+	    ICON="images/internet.png"
+    fi
+else
+    CONNECTION_NAME="Disconnected"
+    ICON="images/no-wifi.png"
 fi
 
 case "$1" in
-    --stat) echo "$STATUS" ;;
+    --stat) echo "$CONNECTION_NAME" ;;
     --icon) echo "$ICON" ;;
 esac

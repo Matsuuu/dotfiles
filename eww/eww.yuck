@@ -23,7 +23,7 @@
     (metric :label "🔊"
             :value volume
             :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
+    (metric :label "💿"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
     (battery)
