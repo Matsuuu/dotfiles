@@ -1,0 +1,57 @@
+* {
+  all: unset; // Unsets everything so you can style everything from scratch
+  color: #fff0f5;
+}
+
+// Global Styles
+.bar {
+  color: #fff0f5;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.centerbox {
+  background-color: #202330;
+  margin: 10px 20px 0 20px;
+}
+
+.left-box > *:first-child {
+  padding: 0 10px 0 0;
+}
+
+.left-box > * {
+  padding: 0 10px;
+}
+
+.networkbutton {
+  margin: 0 1rem;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+  color: #ffd5cd;
+}
+
+.metric scale trough highlight {
+  background-color: #D35D6E;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.metric scale trough {
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.label-ram {
+  font-size: large;
+}
+
+.workspaces button:hover {
+  color: #D35D6E;
+}

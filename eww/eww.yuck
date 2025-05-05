@@ -1,0 +1,122 @@
+; TODO: Lift stuff from e.g. here https://github.com/gh0stzk/dotfiles/blob/4ac2722d8fedac96d1415d8d78883e03c0d797a7/config/bspwm/rices/z0mbi3/bar/eww.yuck
+
+;; Network
+(defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
+(defpoll NETSTAT :interval "15s" `scripts/network.sh --stat`)
+
+(defwidget bar []
+  (centerbox :class "centerbox" :orientation "h"
+    (leftside)
+    (music)
+    (sidestuff)))
+
+(defwidget leftside []
+  (box :space-evenly false :class "left-box"
+        (workspaces)
+        (systemtray)
+      )
+    )
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (wifi)
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (battery)
+    ; TODO: Charging status
+    time))
+
+(defwidget battery []
+    (box :orientation "h"
+         :visible { EWW_BATTERY != "" }
+             :class "metric"
+             :space-evenly false
+          (box :class "label" "🔋")
+          (scale :min 0
+                 :max 100
+                 :value {EWW_BATTERY == "" ? 0 : EWW_BATTERY}
+                 )))
+
+(defwidget wifi []
+	(box :orientation "v"
+		(eventbox :cursor "pointer"
+			(button
+					:class "trayicon"
+					:tooltip "${NETSTAT}"
+              (box :orientation "h" :class "networkbutton" :spacing 5 :space-evenly false
+                (image 
+                  :path WIFIICON 
+                  :image-width 16 
+                  :image-height 16)
+                NETSTAT
+              )
+			)
+		)
+	)
+)
+
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+       :spacing 10
+    (button :onclick "wmctrl -s 0" 1)
+    (button :onclick "wmctrl -s 1" 2)
+    (button :onclick "wmctrl -s 2" 3)
+    (button :onclick "wmctrl -s 3" 4)
+    (button :onclick "wmctrl -s 4" 5)
+    (button :onclick "wmctrl -s 5" 6)
+    (button :onclick "wmctrl -s 6" 7)
+    (button :onclick "wmctrl -s 7" 8)
+    (button :onclick "wmctrl -s 8" 9)))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "🎵 ${music}" : ""}))
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defwidget systemtray []
+  (box :orientation "v" :halign "start"
+    (systray :class "tray" :orientation "h" :icon-size 16 :spacing 5)
+  )
+)
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol.sh")
+
+(defpoll time :interval "10s"
+  "date '+%H:%M %b %d, %Y'")
+
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "0"
+                      :height "0"
+                      :anchor "top center")
+  :reserve (struts :side "top" :distance "4%")
+  (bar))
