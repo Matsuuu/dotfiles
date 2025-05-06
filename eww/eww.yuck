@@ -63,10 +63,8 @@
   )
 
 (defwidget power-win []
-  (box :space-evenly false :class "content-box power-box" :valign "center"
-        (powermenu)
-      )
-  )
+    (powermenu)
+)
 
 (defwidget datetime []
   (box :class "datetime" :orientation "v" :halign "start" :valign "center" :space-evenly false
@@ -221,7 +219,7 @@
     ))
 
 	(button	:style "background-image: url('images/power-button.png');"
-			:class "powermenu-button"
+			:class "powermenu-button powermenu-main-button"
 			:tooltip "Power Menu"
             :onclick "notify-send 'Power menu'"
       ))

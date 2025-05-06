@@ -110,6 +110,7 @@
 
 .powermenu-wrap {
   margin-top: 10px;
+  margin-right: 20px;
 }
 
 .powermenu-button {
@@ -118,8 +119,12 @@
   background-position: center;
   min-height: 1.4rem;
   min-width: 1.4rem;
-  margin: 0rem 0rem 0.5rem 9px;
-  padding: 0.6rem;
+  margin: 0rem 5px;
   background-color: #202330;
   border-radius: 10px;
+  padding: 10px 1rem;
+}
+
+.powermenu-main-button {
+  margin: 0;
 }
