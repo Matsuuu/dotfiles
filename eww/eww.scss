@@ -14,6 +14,10 @@
   font-size: 14px;
 }
 
+.power-box {
+  background: none;
+}
+
 .workspaces {
   font-size: 16px;
 }
@@ -41,20 +45,6 @@
 
 .powericons {
   margin: 0.2rem 0 0.2rem 0;
-}
-
-
-.button-bspres,
-.button-reb,
-.button-lock,
-.button-quit,
-.button-powermenu,
-.button-off {
-  background-repeat: no-repeat;
-  background-size: 22px;
-  min-height: 1.4rem;
-  min-width: 22px;
-  margin: 0rem 0rem 0.5rem 9px;
 }
 
 .left-box > *:first-child {
@@ -116,4 +106,20 @@
   min-height: 1.4rem;
   min-width: 18px;
   margin: 0 0.4rem;
+}
+
+.powermenu-wrap {
+  margin-top: 10px;
+}
+
+.powermenu-button {
+  background-repeat: no-repeat;
+  background-size: 24px;
+  background-position: center;
+  min-height: 1.4rem;
+  min-width: 1.4rem;
+  margin: 0rem 0rem 0.5rem 9px;
+  padding: 0.6rem;
+  background-color: #202330;
+  border-radius: 10px;
 }

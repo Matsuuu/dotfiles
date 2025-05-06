@@ -17,12 +17,13 @@
       :space-evenly false
       (workspace-win)
       (music-win)
-      (specs-win)
     )
     (box
       :space-evenly false
       :halign "end"
+      (specs-win)
       (date-win)
+      (power-win)
       )
   )
 )
@@ -58,6 +59,12 @@
 (defwidget date-win []
   (box :space-evenly false :class "content-box" :valign "center"
         (datetime)
+      )
+  )
+
+(defwidget power-win []
+  (box :space-evenly false :class "content-box power-box" :valign "center"
+        (powermenu)
       )
   )
 
@@ -175,13 +182,14 @@
 )
 
 (defwidget powermenu []
+  (box :orientation "v" :halign "start" :class "powermenu-wrap" :space-evenly false
 	(eventbox	:onhover "${EWW_CMD} update power=true"
 				:onhoverlost "${EWW_CMD} update power=false"
 				:cursor "pointer"
 
 	(box	:orientation "h"
-			:space-evenly "false"
-			:vexpand "false"
+			:space-evenly false
+			:vexpand false
 			:class "powermenu"
 
 	(revealer	:transition "slideleft"
@@ -189,31 +197,36 @@
 				:duration "550ms"
 
 	(box	:orientation "h"
-			:space-evenly "false"
+			:space-evenly false
 
-	(button	:style "background-image: url('images/enpass.png');"
-			:class "button-lock"
+	(button	:style "background-image: url('images/exit.png');"
+			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "qdbus org.kde.Shutdown /Shutdown logout")
+			:onclick "notify-send 'Exit'")
 
-	(button :style "background-image: url('images/sys-sleep.png');"
-			:class "button-bspres"
+	(button	:style "background-image: url('images/padlock.png');"
+			:class "powermenu-button"
+			:tooltip "Lock Screen"
+			:onclick "notify-send 'Lock'")
+
+	(button :style "background-image: url('images/moon.png');"
+			:class "powermenu-button"
 			:tooltip "Suspend computer"
-			:onclick "systemctl suspend")
+			:onclick "notify-send 'Suspend'")
 
-	(button	:style "background-image: url('images/sys-reboot.png');"
-			:class "button-reb"
+	(button	:style "background-image: url('images/restart.png');"
+			:class "powermenu-button"
 	  		:tooltip "Reboot"
-			:onclick "reboot")
+			:onclick "notify-send 'Reboot'")
+    ))
 
-	(button	:style "background-image: url('images/sys-poweroff.png');"
-			:class "button-off"
-			:tooltip "Shutdown"
-			:onclick "shutdown now")))
-
-	(button	:style "background-image: url('images/sys-powermenu.png');"
-			:class "button-powermenu"
-			:tooltip "Power Menu"))))
+	(button	:style "background-image: url('images/power-button.png');"
+			:class "powermenu-button"
+			:tooltip "Power Menu"
+            :onclick "notify-send 'Power menu'"
+      ))
+    )
+))
 
 ;;; Polls
 
