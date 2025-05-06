@@ -63,7 +63,7 @@
 
 (defwidget datetime []
   (box :class "datetime" :orientation "v" :halign "start" :valign "center" :space-evenly false
-    (label :class "datetime-time" :text "${time}" :halign "start")
+    (label :class "datetime-time" :text time :halign "start")
     (label :class "datetime-date" :text date :halign "start")
   ))
 
@@ -115,14 +115,44 @@
     ))
 
 (defwidget music []
-  (box :class "music"
-       :orientation "v"
-       :space-evenly false
-       :visible { music != ""}
-       :halign "start"
+  (box
+    :visible { music != ""}
+    :space-evenly false
+    (box :class "music"
+         :space-evenly false
+        (image :class "music-image" :path "images/compact-disc.png" :image-width 25 :valign "center")
+        (box 
+         :orientation "v"
+         :space-evenly false
+         :halign "start"
+        :valign "center"
+        (label :class "music-artist" :text "${music.artist}" :halign "start")
+        (label :class "music-title" :text "${music.title}" :truncate true :limit-width 30 :halign "start")
+      )
+    )
+    (box 
+      :class "music-controls" 
+      :space-evenly false
       :valign "center"
-      (label :class "music-artist" :text "${music.artist}" :halign "start")
-      (label :class "music-title" :text "${music.title}" :truncate true :limit-width 30 :halign "start")
+      (eventbox :cursor "pointer"
+        (button 
+              :class "music-control-button"
+              :style "background-image: url('images/rewind.png');"
+              :tooltip "Play"
+              :onclick "playerctl previous"))
+      (eventbox :cursor "pointer"
+        (button 
+              :class "music-control-button"
+              :style "background-image: url('images/play-button.png');"
+              :tooltip "Play"
+              :onclick "playerctl play-pause"))
+      (eventbox :cursor "pointer"
+        (button 
+              :class "music-control-button"
+              :style "background-image: url('images/fast-forward.png');"
+              :tooltip "Play"
+              :onclick "playerctl next"))
+      )
   )
 )
 
@@ -188,7 +218,7 @@
 ;;; Polls
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' || true")
+  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' --player=plasma-browser-integration || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol.sh")

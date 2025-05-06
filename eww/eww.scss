@@ -94,10 +94,26 @@
   font-size: large;
 }
 
+.music-image {
+  padding-right: 10px;
+}
+
 .music-artist {
   font-weight: 600;
 }
 
 .datetime-time {
   font-weight: 600;
+}
+
+.music-controls {
+  margin-left: 1rem;
+}
+
+.music-control-button {
+  background-repeat: no-repeat;
+  background-size: 18px;
+  min-height: 1.4rem;
+  min-width: 18px;
+  margin: 0 0.4rem;
 }
