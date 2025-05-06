@@ -36,7 +36,9 @@
   )
 
 (defwidget music-win []
-  (box :space-evenly false :class "content-box" :valign "center"
+  (box 
+    :visible { music != ""}
+    :space-evenly false :class "content-box" :valign "center"
         (music)
       )
   )
