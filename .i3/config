@@ -207,6 +207,8 @@ for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
 exec_always --no-startup-id picom
 
+exec_always --no-startup-id eww open bar
+
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
 # | (___ | |__   ___  _ __| |_ ___ _   _| |_ 

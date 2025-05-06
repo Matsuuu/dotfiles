@@ -200,28 +200,28 @@
 	(button	:style "background-image: url('images/exit.png');"
 			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "notify-send 'Exit'")
+			:onclick "qdbus org.kde.Shutdown /Shutdown logout")
 
 	(button	:style "background-image: url('images/padlock.png');"
 			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "notify-send 'Lock'")
+			:onclick "loginctl lock-session")
 
 	(button :style "background-image: url('images/moon.png');"
 			:class "powermenu-button"
 			:tooltip "Suspend computer"
-			:onclick "notify-send 'Suspend'")
+			:onclick "systemctl suspend")
 
 	(button	:style "background-image: url('images/restart.png');"
 			:class "powermenu-button"
 	  		:tooltip "Reboot"
-			:onclick "notify-send 'Reboot'")
+			:onclick "reboot")
     ))
 
 	(button	:style "background-image: url('images/power-button.png');"
 			:class "powermenu-button powermenu-main-button"
 			:tooltip "Power Menu"
-            :onclick "notify-send 'Power menu'"
+            :onclick "shutdown now"
       ))
     )
 ))
