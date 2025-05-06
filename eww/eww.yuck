@@ -199,15 +199,16 @@
 	(box	:orientation "h"
 			:space-evenly false
 
-	(button	:style "background-image: url('images/exit.png');"
-			:class "powermenu-button"
-			:tooltip "Lock Screen"
-			:onclick "qdbus org.kde.Shutdown /Shutdown logout")
+      ; Commented for now due to it being quite broken
+	; (button	:style "background-image: url('images/exit.png');"
+	; 		:class "powermenu-button"
+	; 		:tooltip "Log out"
+	; 		:onclick "qdbus org.kde.Shutdown /Shutdown logout")
 
 	(button	:style "background-image: url('images/padlock.png');"
 			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "loginctl lock-session")
+			:onclick "sudo -i loginctl lock-sessions")
 
 	(button :style "background-image: url('images/moon.png');"
 			:class "powermenu-button"

@@ -43,12 +43,10 @@ set $left h
 set $right l
 
 # use Mouse+$sup to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $sup
 
 # kill focused window
 bindsym $sup+Shift+q kill
-#TODO: Fix
-#bindsym $sup+x  xkill
 
 # change focus
 bindsym $sup+$left focus left
@@ -84,7 +82,6 @@ bindsym $sup+v split v
 bindsym $sup+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $sup+u layout stacking
 bindsym $sup+s layout stacking
 bindsym $sup+w layout tabbed
 bindsym $sup+e layout toggle split
@@ -94,6 +91,7 @@ bindsym $sup+d floating toggle
 
 # change focus between tiling / floating windows
 bindsym $sup+space focus mode_toggle
+
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -137,10 +135,9 @@ bindsym $sup+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $sup+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $sup+Shift+e exec "qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
 # using plasma's logout screen instead of i3's
-bindsym $mod+Shift+e exec --no-startup-id qdbus-qt5 org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
 
 bindsym $sup+$ctrl+h    resize shrink width 5 px or 5 ppt
 bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
@@ -207,7 +204,7 @@ for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
 exec_always --no-startup-id picom
 
-exec_always --no-startup-id eww open bar
+exec_always --no-startup-id eww open bar --screen 0
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
