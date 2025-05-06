@@ -2,11 +2,20 @@
   all: unset; // Unsets everything so you can style everything from scratch
 }
 
-// Global Styles
-.bar {
-  color: #fff0f5;
-  padding: 10px 20px;
+.content-box {
+  background-color: #202330;
+  margin: 10px 20px 0 20px;
   border-radius: 10px;
+  padding: 0px 20px;
+  color: #fff0f5;
+
+  min-width: 0px;
+  min-height: 40px;
+  font-size: 14px;
+}
+
+.workspaces {
+  font-size: 16px;
 }
 
 .workspaces button.active {
@@ -16,6 +25,10 @@
 
 .workspaces button:hover {
   color: #D35D6E;
+}
+
+.music, .datetime {
+  font-size: 11px;
 }
 
 
@@ -42,11 +55,6 @@
   min-height: 1.4rem;
   min-width: 22px;
   margin: 0rem 0rem 0.5rem 9px;
-}
-
-.centerbox {
-  background-color: #202330;
-  margin: 10px 20px 0 20px;
 }
 
 .left-box > *:first-child {
@@ -86,3 +94,10 @@
   font-size: large;
 }
 
+.music-artist {
+  font-weight: 600;
+}
+
+.datetime-time {
+  font-weight: 600;
+}

@@ -1,37 +1,71 @@
 ; TODO: Lift stuff from e.g. here https://github.com/gh0stzk/dotfiles/blob/4ac2722d8fedac96d1415d8d78883e03c0d797a7/config/bspwm/rices/z0mbi3/bar/eww.yuck
-
-;; Network
-(defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
-(defpoll NETSTAT :interval "15s" `scripts/network.sh --stat`)
+; And maybe https://github.com/adi1090x/widgets/blob/main/eww/arin/eww.yuck
 
 (defvar power false)
 
-(defwidget bar []
-  (centerbox :class "centerbox" :orientation "h"
-    (leftside)
-    (music)
-    (sidestuff)))
+(defwindow bar
+  :monitor 0
+  :windowtype "dock"
+  :stacking "fg"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "4%")
+  (box
+    (box
+      :halign "start"
+      :space-evenly false
+      (workspace-win)
+      (music-win)
+      (specs-win)
+    )
+    (box
+      :space-evenly false
+      :halign "end"
+      (date-win)
+      )
+  )
+)
 
-(defwidget leftside []
-  (box :space-evenly false :class "left-box"
+(defwidget workspace-win []
+  (box :space-evenly false :class "left-box content-box" :valign "center"
         (workspaces)
         (systemtray)
       )
-    )
+  )
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (powermenu)
+(defwidget music-win []
+  (box :space-evenly false :class "content-box" :valign "center"
+        (music)
+      )
+  )
+
+(defwidget specs-win []
+  (box :space-evenly false :class "content-box" :valign "center"
     (wifi)
     (metric :label "🔊"
             :value volume
+            :tooltip volume
             :onchange "amixer -D pulse sset Master {}%")
     (metric :label "💿"
             :value {EWW_RAM.used_mem_perc}
+            :tooltip "${round(EWW_RAM.used_mem / 1000000000, 2)} / ${round(EWW_RAM.total_mem / 1000000000, 2)}"
             :onchange "")
     (battery)
-    time
-    ))
+      )
+  )
+
+(defwidget date-win []
+  (box :space-evenly false :class "content-box" :valign "center"
+        (datetime)
+      )
+  )
+
+(defwidget datetime []
+  (box :class "datetime" :orientation "v" :halign "start" :valign "center" :space-evenly false
+    (label :class "datetime-time" :text "${time}" :halign "start")
+    (label :class "datetime-date" :text date :halign "start")
+  ))
 
 (defwidget battery []
     ; TODO: Charging status
@@ -75,24 +109,29 @@
         :cursor "pointer"
         (button 
           :class { ws.focused ? "active" : "inactive" }
-        :onclick "wmctrl -s ${ws.num - 1}" 
+          :onclick "wmctrl -s ${ws.num - 1}" 
         "${ws.num}"))
       )
     ))
 
 (defwidget music []
   (box :class "music"
-       :orientation "h"
+       :orientation "v"
        :space-evenly false
-       :halign "center"
-    {music != "" ? "🎵 ${music}" : ""}))
+       :visible { music != ""}
+       :halign "start"
+      :valign "center"
+      (label :class "music-artist" :text "${music.artist}" :halign "start")
+      (label :class "music-title" :text "${music.title}" :truncate true :limit-width 30 :halign "start")
+  )
+)
 
 
-(defwidget metric [label value onchange]
+(defwidget metric [label value tooltip onchange]
   (box :orientation "h"
        :class "metric"
        :space-evenly false
-    (box :class "label" label)
+    (box :class "label" :tooltip tooltip label)
     (scale :min 0
            :max 101
            :active {onchange != ""}
@@ -146,8 +185,10 @@
 			:class "button-powermenu"
 			:tooltip "Power Menu"))))
 
+;;; Polls
+
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol.sh")
@@ -155,16 +196,12 @@
 (defpoll currentworkspaces :interval "1s"
    "scripts/workspaces.sh")
 
-(defpoll time :interval "10s"
-  "date '+%b %d %Y - %H:%M'")
+(defpoll date :interval "10s"
+  "date '+%A, %d %B'")
 
-(defwindow bar
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "0"
-                      :height "0"
-                      :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
-  (bar))
+(defpoll time :interval "10s"
+  "date '+%H:%M'")
+
+;; Network
+(defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
+(defpoll NETSTAT :interval "15s" `scripts/network.sh --stat`)

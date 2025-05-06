@@ -13,6 +13,10 @@ if [[ "$connection_state" == "activated" ]]; then
 	    ICON="images/wifi.png"
     fi
 
+    if [[ "$device_type" == *"wireless" ]]; then
+	    ICON="images/wifi.png"
+    fi
+
     if [[ "$device_type" == *"ethernet" ]]; then
 	    ICON="images/internet.png"
     fi
