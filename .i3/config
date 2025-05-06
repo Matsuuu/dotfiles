@@ -134,10 +134,6 @@ bindsym $ctrl+Shift+0 move container to workspace number $ws10
 bindsym $sup+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $sup+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $sup+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# bindsym $sup+Shift+e exec "qdbus org.kde.ksmserver /KSMServer logout 0 3 3"
-# using plasma's logout screen instead of i3's
 
 bindsym $sup+$ctrl+h    resize shrink width 5 px or 5 ppt
 bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
