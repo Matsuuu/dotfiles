@@ -4,7 +4,7 @@
 
 .content-box {
   background-color: #202330;
-  margin: 10px 20px 0 20px;
+  margin: 10px 20px 5px 20px;
   border-radius: 10px;
   padding: 0px 20px;
   color: #fff0f5;
@@ -14,16 +14,47 @@
   font-size: 14px;
 }
 
-.power-box {
-  background: none;
+.shadow {
+  box-shadow: 0 5px 15px -3px rgba(71, 37, 65, 0.75);
+}
+
+.music-box,
+.tray-box {
+  padding: 2.5px 10px;
+  margin: 15px 20px 5px 20px;
+}
+
+.music-box {
+  padding: 2.5px 20px
 }
 
 .workspaces {
   font-size: 16px;
 }
 
-.workspaces-new {
+.workspace-icons > *{
+  margin: 0 0.2rem;
+}
 
+.workspace-box.focused {
+  border-bottom: 2px solid #D35D6E;
+  border-radius: 10px 10px 5px 5px;
+}
+
+.workspace-box {
+  background-color: rgba(32,35,48, 0.9);
+  border: 1px solid #202330;
+  margin: 10px 5px 0;
+  border-radius: 10px;
+  color: #fff0f5;
+
+  min-width: 0px;
+  min-height: 40px;
+  font-size: 14px;
+}
+
+.workspace-eventbox > * {
+  padding: 0px 10px;
 }
 
 .workspaces button.active {
@@ -36,6 +67,7 @@
 }
 
 .music, .datetime {
+  padding: 5px 0;
   font-size: 11px;
 }
 
@@ -126,7 +158,7 @@
 }
 
 .powermenu-wrap {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-right: 20px;
 }
 

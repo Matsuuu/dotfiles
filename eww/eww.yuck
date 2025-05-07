@@ -15,9 +15,9 @@
     (box
       :halign "start"
       :space-evenly false
-      (workspace-win)
+      (tray-win)
       (music-win)
-      (workspaces-new-win)
+      (workspaces-win)
     )
     (box
       :space-evenly false
@@ -29,28 +29,32 @@
   )
 )
 
-(defwidget workspaces-new-win []
-  (box :space-evenly false :class "workspaces workspaces-new" :valign "center"
+(defwidget workspaces-win []
+  (box :space-evenly false :class "workspaces" :valign "center"
     (for ws in workspace-data
-      (eventbox 
-        :class "content-box"
-        :cursor "pointer"
-        (button 
-          :class { ws.focused ? "active" : "inactive" }
-          :onclick "wmctrl -s ${ws.num - 1}" 
-        (box
-         "${ws.Name}"
-          (for app in {ws.Apps}
-            (image :path "${app.Instance}" :image-width 20 :image-height 20)
+      (box
+        :class `workspace-box shadow ${ws.Focused == true ? "focused" : ""}`
+        (eventbox 
+          :class "workspace-eventbox"
+          :cursor "pointer"
+          (button 
+            :onclick "wmctrl -s ${ws.Name - 1}" 
+            (box
+              :class "workspace-icons"
+             "${ws.Name}"
+              (for app in {ws.Apps}
+                (image :path "${app.Icon}" :image-width 16 :image-height 16)
+                )
+              )
             )
-          )))
+          )
+        )
       )
     )
   )
 
-(defwidget workspace-win []
-  (box :space-evenly false :class "left-box content-box" :valign "center"
-        (workspaces)
+(defwidget tray-win []
+  (box :space-evenly false :class "tray-box content-box shadow" :valign "center"
         (systemtray)
       )
   )
@@ -58,13 +62,13 @@
 (defwidget music-win []
   (box 
     :visible { music != ""}
-    :space-evenly false :class "content-box" :valign "center"
+    :space-evenly false :class "content-box music-box" :valign "center"
         (music)
       )
   )
 
 (defwidget specs-win []
-  (box :space-evenly false :class "content-box" :valign "center"
+  (box :space-evenly false :class "content-box shadow" :valign "center"
     (wifi)
     (metric :label "🔊"
             :value volume
@@ -79,7 +83,7 @@
   )
 
 (defwidget date-win []
-  (box :space-evenly false :class "content-box" :valign "center"
+  (box :space-evenly false :class "content-box shadow" :valign "center"
         (datetime)
       )
   )
@@ -259,7 +263,7 @@
 ;;; Polls
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' --player=plasma-browser-integration || true")
+  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' --player=plasma-browser-integration --player=chromium || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol.sh")

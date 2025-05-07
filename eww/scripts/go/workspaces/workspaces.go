@@ -20,15 +20,17 @@ var POSSIBLE_ICON_FORMATS = []string{
 }
 
 type Workspace struct {
-    ID      i3.NodeID
-    Name    string
-    Apps    []*App
+    ID          i3.NodeID
+    Number      int
+    Name        string
+    Focused     bool
+    Apps        []*App
 }
 
 type App struct {
-    Name    string
+    Name        string
     Instance    string
-    Icon    string
+    Icon        string
 }
 
 func GetWorkspaces() []Workspace {
@@ -81,8 +83,13 @@ func handleApp(node *i3.Node, workspaces *[]Workspace) {
         *workspaces = append(*workspaces, Workspace{
             ID: workspaceNode.ID,
             Name: workspaceNode.Name,
+            Focused: node.Focused,
         })
         workspace = &(*workspaces)[len(*workspaces)-1]
+    }
+
+    if (node.Focused) {
+        workspace.Focused = true
     }
     
     app := App{
@@ -113,11 +120,12 @@ func findWorkspaceById(id i3.NodeID, workspaces *[]Workspace) *Workspace {
 }
 
 func determineAppIcon(instance string) string {
+    iconPath := DEFAULT_APP_ICON
+
     filePath := "/usr/share/applications/" + instance + ".desktop"
     file, err := os.Open(filePath)
     if err != nil {
-        // fmt.Errorf("Could not find file ", filePath)
-        return ""
+        return iconPath
     }
     // Find the line containing the icon name
     scanner := bufio.NewScanner(file)
@@ -133,10 +141,10 @@ func determineAppIcon(instance string) string {
     }
     
     if (iconName == "") {
-        return ""
+        return iconPath
     }
 
-    iconPath := ""
+    // Test against known icon directories and file extensions
     for _, path := range POSSIBLE_ICON_PATHS {
         for _, ext := range POSSIBLE_ICON_FORMATS {
             filePath := path + iconName + ext
