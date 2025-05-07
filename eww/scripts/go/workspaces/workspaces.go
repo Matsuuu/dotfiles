@@ -64,6 +64,8 @@ func handleApp(node *i3.Node, workspaces *[]Workspace) {
         workspace = &(*workspaces)[len(*workspaces)-1]
     }
     
+    // TODO: Read through the desktop files, get the icon names, and then find the icon from
+    // /usr/share/icons/hicolor or /usr/share/pixmaps
     app := App{
         Name: node.Name,
         Instance: node.WindowProperties.Instance,

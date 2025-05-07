@@ -17,6 +17,7 @@
       :space-evenly false
       (workspace-win)
       (music-win)
+      (workspaces-new-win)
     )
     (box
       :space-evenly false
@@ -27,6 +28,25 @@
       )
   )
 )
+
+(defwidget workspaces-new-win []
+  (box :space-evenly false :class "workspaces workspaces-new" :valign "center"
+    (for ws in workspace-data
+      (eventbox 
+        :class "content-box"
+        :cursor "pointer"
+        (button 
+          :class { ws.focused ? "active" : "inactive" }
+          :onclick "wmctrl -s ${ws.num - 1}" 
+        (box
+         "${ws.Name}"
+          (for app in {ws.Apps}
+            (image :path "${app.Instance}" :image-width 20 :image-height 20)
+            )
+          )))
+      )
+    )
+  )
 
 (defwidget workspace-win []
   (box :space-evenly false :class "left-box content-box" :valign "center"
@@ -246,6 +266,9 @@
 
 (defpoll currentworkspaces :interval "1s"
    "scripts/workspaces.sh")
+
+(defpoll workspace-data :interval "1s"
+  "scripts/go/workspaces/workspaces")
 
 (defpoll date :interval "10s"
   "date '+%A'")
