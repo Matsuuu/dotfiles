@@ -1,8 +1,23 @@
 package main
 
 import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+
 	"go.i3wm.org/i3/v4"
 )
+
+var DEFAULT_APP_ICON = ""
+var POSSIBLE_ICON_PATHS = []string{
+    "/usr/share/icons/hicolor/128x128/apps/",
+    "/usr/share/pixmaps/",
+}
+var POSSIBLE_ICON_FORMATS = []string{
+    ".png",
+    ".svg",
+}
 
 type Workspace struct {
     ID      i3.NodeID
@@ -17,6 +32,7 @@ type App struct {
 }
 
 func GetWorkspaces() []Workspace {
+    fmt.Println("")
     var workspaces []Workspace
 
     tree, err := i3.GetTree()
@@ -55,6 +71,11 @@ func handleApp(node *i3.Node, workspaces *[]Workspace) {
     }
 
     workspaceNode := findAppWorkspace(node)
+
+    if workspaceNode.Type == i3.Root {
+        return;
+    }
+
     workspace := findWorkspaceById(workspaceNode.ID, workspaces)
     if workspace == nil {
         *workspaces = append(*workspaces, Workspace{
@@ -64,12 +85,10 @@ func handleApp(node *i3.Node, workspaces *[]Workspace) {
         workspace = &(*workspaces)[len(*workspaces)-1]
     }
     
-    // TODO: Read through the desktop files, get the icon names, and then find the icon from
-    // /usr/share/icons/hicolor or /usr/share/pixmaps
     app := App{
         Name: node.Name,
         Instance: node.WindowProperties.Instance,
-        Icon: "/usr/share/applications/" + node.WindowProperties.Instance + ".desktop",
+        Icon: determineAppIcon(node.WindowProperties.Instance),
     }
 
     workspace.Apps = append(workspace.Apps, &app)
@@ -77,7 +96,7 @@ func handleApp(node *i3.Node, workspaces *[]Workspace) {
 
 func findAppWorkspace(node *i3.Node) *i3.Node {
     parent := node.FindParent()
-    for parent.Type != i3.WorkspaceNode || parent == nil {
+    for parent != nil && parent.Type != i3.WorkspaceNode && parent.Type != i3.Root {
         parent = parent.FindParent()
     }
 
@@ -91,4 +110,43 @@ func findWorkspaceById(id i3.NodeID, workspaces *[]Workspace) *Workspace {
         }
     }
     return nil
+}
+
+func determineAppIcon(instance string) string {
+    filePath := "/usr/share/applications/" + instance + ".desktop"
+    file, err := os.Open(filePath)
+    if err != nil {
+        // fmt.Errorf("Could not find file ", filePath)
+        return ""
+    }
+    // Find the line containing the icon name
+    scanner := bufio.NewScanner(file)
+    searchText := "Icon"
+
+    iconName := ""
+    for scanner.Scan() {
+        line := scanner.Text()
+        if strings.Contains(line, searchText) {
+            iconName = strings.Replace(line, "Icon=", "", 1)
+            break;
+        }
+    }
+    
+    if (iconName == "") {
+        return ""
+    }
+
+    iconPath := ""
+    for _, path := range POSSIBLE_ICON_PATHS {
+        for _, ext := range POSSIBLE_ICON_FORMATS {
+            filePath := path + iconName + ext
+
+            if _, err := os.Stat(filePath); err == nil {
+                iconPath = filePath
+                break;
+            }
+        }
+    }
+
+    return iconPath
 }
