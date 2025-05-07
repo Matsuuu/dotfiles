@@ -69,9 +69,16 @@
 )
 
 (defwidget datetime []
-  (box :class "datetime" :orientation "v" :halign "start" :valign "center" :space-evenly false
-    (label :class "datetime-time" :text time :halign "start")
-    (label :class "datetime-date" :text date :halign "start")
+  (box :class "datetime" :orientation "h" :halign "start" :valign "center" :space-evenly false
+    (box :class "datetime-time" :orientation "v" :space-evenly false
+        (label :class "datetime-hour" :text hours :halign "start")
+        (label :class "datetime-minute" :text minutes :halign "start")
+      )
+
+    (box :class "datetime-date" :orientation "v" :space-evenly false
+        (label :class "datetime-day" :text date :halign "start")
+        (label :class "" :text datemonth :halign "start")
+      )
   ))
 
 (defwidget battery []
@@ -241,10 +248,16 @@
    "scripts/workspaces.sh")
 
 (defpoll date :interval "10s"
-  "date '+%A, %d %B'")
+  "date '+%A'")
 
-(defpoll time :interval "10s"
-  "date '+%H:%M'")
+(defpoll datemonth :interval "10s"
+  "date '+%d. %B'")
+
+(defpoll hours :interval "1m"
+  "date '+%H'")
+
+(defpoll minutes :interval "10s"
+  "date '+%M'")
 
 ;; Network
 (defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
