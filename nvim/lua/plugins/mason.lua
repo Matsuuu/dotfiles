@@ -11,6 +11,7 @@ local ensure_installed = {
     "typescript-language-server",
     "html-lsp",
     "css-lsp",
+    "gopls"
 }
 
 
