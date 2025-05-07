@@ -1,4 +1,4 @@
-package ws
+package main
 
 import (
 	"go.i3wm.org/i3/v4"
