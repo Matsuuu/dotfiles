@@ -110,12 +110,14 @@
     (box :orientation "h" 
          :visible { EWW_BATTERY != "" } 
          :class "metric"
+		 :tooltip "${EWW_BATTERY}"
          :space-evenly false
           (box :class "label" "🔋")
           (scale :min 0
                  :max 100
-                 :value {EWW_BATTERY == "" ? 0 : EWW_BATTERY}
-                 )))
+                 :value {EWW_BATTERY.BAT0.capacity == "" ? 0 : EWW_BATTERY.BAT0.capacity}
+                 )
+      ))
 
 (defwidget wifi []
 	(box :orientation "v"

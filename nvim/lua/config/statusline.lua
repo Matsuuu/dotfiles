@@ -27,6 +27,9 @@ vim.api.nvim_set_hl(0, "VisualColor", { fg = "#202330", bg = "#fff0f5" })
 vim.api.nvim_set_hl(0, "InsertColor", { fg = "#fff0f5", bg = "#472541" })
 vim.api.nvim_set_hl(0, "CommandColor", { fg = "#fff0f5", bg = "#6d7a72" })
 
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "", bg = "" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "", bg = "" })
+
 local no_statusline_types = {
 	"NvimTree",
 }
