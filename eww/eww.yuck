@@ -265,7 +265,7 @@
 ;;; Polls
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' --player=plasma-browser-integration || true")
+  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' || true")
 
 (defpoll volume :interval "1s"
   "scripts/getvol.sh")
