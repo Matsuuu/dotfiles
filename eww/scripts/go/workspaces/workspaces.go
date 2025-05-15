@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"go.i3wm.org/i3/v4"
@@ -11,8 +12,10 @@ import (
 
 var DEFAULT_APP_ICON = ""
 var POSSIBLE_ICON_PATHS = []string{
+    "/usr/share/icons/hicolor/256x256/apps/",
     "/usr/share/icons/hicolor/128x128/apps/",
     "/usr/share/pixmaps/",
+    "/usr/share/icons/hicolor/scalable/apps/",
 }
 var POSSIBLE_ICON_FORMATS = []string{
     ".png",
@@ -121,38 +124,57 @@ func findWorkspaceById(id i3.NodeID, workspaces *[]Workspace) *Workspace {
 
 func determineAppIcon(instance string) string {
     iconPath := DEFAULT_APP_ICON
+    dir := "/usr/share/applications/"
 
-    filePath := "/usr/share/applications/" + instance + ".desktop"
-    file, err := os.Open(filePath)
-    if err != nil {
-        return iconPath
-    }
-    // Find the line containing the icon name
-    scanner := bufio.NewScanner(file)
-    searchText := "Icon"
+    var icon string
 
-    iconName := ""
-    for scanner.Scan() {
-        line := scanner.Text()
-        if strings.Contains(line, searchText) {
-            iconName = strings.Replace(line, "Icon=", "", 1)
-            break;
+    filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+        if err != nil || info.IsDir() || !strings.HasSuffix(info.Name(), ".desktop") {
+            return nil
         }
-    }
-    
-    if (iconName == "") {
-        return iconPath
-    }
+
+        file, err := os.Open(path)
+        if err != nil {
+            return nil
+        }
+        defer file.Close()
+
+        scanner := bufio.NewScanner(file)
+        match := false
+
+        for scanner.Scan() {
+            line := scanner.Text()
+
+            if strings.HasPrefix(line, "StartupWMClass=") && strings.Contains(strings.ToLower(line), strings.ToLower(instance)) {
+                match = true
+            }
+            if strings.HasPrefix(line, "Exec=") && strings.Contains(strings.ToLower(line), strings.ToLower(instance)) {
+                match = true
+            }
+            if strings.HasPrefix(line, "Icon=") {
+                icon = strings.TrimPrefix(line, "Icon=")
+            }
+        }
+
+        if match {
+            return filepath.SkipDir // stop searching
+        }
+
+        return nil
+    })
 
     // Test against known icon directories and file extensions
     for _, path := range POSSIBLE_ICON_PATHS {
         for _, ext := range POSSIBLE_ICON_FORMATS {
-            filePath := path + iconName + ext
+            filePath := path + icon + ext
 
             if _, err := os.Stat(filePath); err == nil {
                 iconPath = filePath
                 break;
             }
+        }
+        if iconPath != "" {
+            break;
         }
     }
 

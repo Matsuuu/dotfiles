@@ -4,7 +4,7 @@
 (defvar power false)
 
 (defwindow bar
-  :monitor 0
+  :monitor '["primary", "HDMI-0", 0]'
   :windowtype "dock"
   :stacking "fg"
   :geometry (geometry :x "0%"
@@ -274,7 +274,7 @@
    "scripts/workspaces.sh")
 
 (defpoll workspace-data :interval "1s"
-  "scripts/go/workspaces/workspaces")
+  "scripts/go/workspaces/main")
 
 (defpoll date :interval "10s"
   "date '+%A'")

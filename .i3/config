@@ -202,7 +202,7 @@ exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
 exec_always --no-startup-id picom
 
-exec_always --no-startup-id eww open bar --screen 0
+exec_always --no-startup-id eww open bar
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
