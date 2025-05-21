@@ -114,6 +114,9 @@ fi
 
 ## IF SSH END
 
+# Commands
+eval "$(fzf --bash)"
+
 # ALIASES
 # Software overrides
 #alias python=python3.8
