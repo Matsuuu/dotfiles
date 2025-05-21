@@ -88,7 +88,7 @@ function mp4towebp() {
     ffmpeg -i "$1" -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -loop 0 -preset ${2:-default} -an -compression_level 6 -vsync 0 "${1/mp4/webp}"
 }
 
-### IF SSH START
+### IF NOT SSH START
 
 if [ "$SESSION_TYPE" != "remote/ssh" ]; then
     # Tmux on startup
@@ -99,6 +99,9 @@ if [ "$SESSION_TYPE" != "remote/ssh" ]; then
     # Caps is esc
     setxkbmap -option caps:escape
     setxkbmap fi
+
+    # Commands
+    eval "$(fzf --bash)"
 
     source ~/.env
     #
@@ -112,10 +115,7 @@ if [ "$SESSION_TYPE" != "remote/ssh" ]; then
     if [ -f '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc' ]; then . '/home/matsu/Tools/google-cloud-sdk/completion.bash.inc'; fi
 fi
 
-## IF SSH END
-
-# Commands
-eval "$(fzf --bash)"
+## IF NOT SSH END
 
 # ALIASES
 # Software overrides

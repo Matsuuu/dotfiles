@@ -70,10 +70,11 @@
 (defwidget specs-win []
   (box :space-evenly false :class "content-box shadow" :valign "center"
     (wifi)
-    (metric :label "🔊"
+    (metric :label "${muted == "[on]" ? "🔊" : "🔇"}"
             :value volume
             :tooltip volume
             :onchange "amixer -D pulse sset Master {}%")
+    
     (metric :label "💿"
             :value {EWW_RAM.used_mem_perc}
             :tooltip "${round(EWW_RAM.used_mem / 1000000000, 2)} / ${round(EWW_RAM.total_mem / 1000000000, 2)}"
@@ -253,6 +254,9 @@
 
 (defpoll volume :interval "1s"
   "scripts/getvol.sh")
+
+(defpoll muted :interval "1s"
+  "scripts/getmuted.sh")
 
 (defpoll currentworkspaces :interval "1s"
    "scripts/workspaces.sh")
