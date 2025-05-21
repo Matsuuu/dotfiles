@@ -43,7 +43,7 @@
               :class "workspace-icons"
              "${ws.Name}"
               (for app in {ws.Apps}
-                (image :path "${app.Icon}" :image-width 16 :image-height 16)
+                (image :path "${app.Icon}" :image-width 24 :image-height 24)
                 )
               )
             )
@@ -115,7 +115,7 @@
           (box :class "label" "🔋")
           (scale :min 0
                  :max 100
-                 :value {EWW_BATTERY.BAT0.capacity == "" ? 0 : EWW_BATTERY.BAT0.capacity}
+                 :value {EWW_BATTERY.BAT1.capacity == "" ? 0 : EWW_BATTERY.BAT1.capacity}
                  )
       ))
 
@@ -128,8 +128,8 @@
               (box :orientation "h" :class "networkbutton" :spacing 5 :space-evenly false
                 (image 
                   :path WIFIICON 
-                  :image-width 16 
-                  :image-height 16)
+                  :image-width 24 
+                  :image-height 24)
                 NETSTAT
               )
 			)
@@ -137,22 +137,6 @@
 	)
 )
 
-
-(defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "h"
-       :space-evenly true
-       :halign "start"
-       :spacing 10
-    (for ws in currentworkspaces
-      (eventbox 
-        :cursor "pointer"
-        (button 
-          :class { ws.focused ? "active" : "inactive" }
-          :onclick "wmctrl -s ${ws.num - 1}" 
-        "${ws.num}"))
-      )
-    ))
 
 (defwidget music []
   (box
@@ -210,7 +194,7 @@
 
 (defwidget systemtray []
   (box :orientation "v" :halign "start"
-    (systray :class "tray" :orientation "h" :icon-size 16 :spacing 5)
+    (systray :class "tray" :orientation "h" :icon-size 24 :spacing 5)
   )
 )
 

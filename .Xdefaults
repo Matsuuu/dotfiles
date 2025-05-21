@@ -1,5 +1,5 @@
 !--------------------xdefaults
-Xft.dpi: 90
+Xft.dpi: 150
 Xft*antialias: true
 Xft*hinting: true
 Xft*hintstyle: hintfull
