@@ -1,6 +1,3 @@
-; TODO: Lift stuff from e.g. here https://github.com/gh0stzk/dotfiles/blob/4ac2722d8fedac96d1415d8d78883e03c0d797a7/config/bspwm/rices/z0mbi3/bar/eww.yuck
-; And maybe https://github.com/adi1090x/widgets/blob/main/eww/arin/eww.yuck
-
 (defvar power false)
 
 (defwindow bar
