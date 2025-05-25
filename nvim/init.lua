@@ -1,6 +1,7 @@
 require("config.opts")
 require("config.keymaps")
 require("config.lazy")
+require("config.hover")
 require("config.statusline")
 require("config.diagnostic")
 require("config.borders")

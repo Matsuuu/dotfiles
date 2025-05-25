@@ -146,6 +146,7 @@ bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
 exec_always --no-startup-id wmctrl -c Plasma
 #for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [title="Desktop — Plasma"] kill
+for_window [class="ksplash"] kill
 for_window [class="Albert"] border none
 for_window [class="ulauncher"] border none
 
