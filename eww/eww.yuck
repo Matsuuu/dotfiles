@@ -142,7 +142,7 @@
     :space-evenly false
     (box :class "music"
          :space-evenly false
-        (image :class "music-image" :path "images/compact-disc.png" :image-width 25 :valign "center")
+        (image :class "music-image" :path "images/compact-disc.png" :image-height 50 :valign "center")
         (box 
          :orientation "v"
          :space-evenly false
@@ -160,7 +160,7 @@
         (button 
               :class "music-control-button"
               :style "background-image: url('images/rewind.png');"
-              :tooltip "Play"
+              :tooltip "Previous"
               :onclick "playerctl previous"))
       (eventbox :cursor "pointer"
         (button 
@@ -172,7 +172,7 @@
         (button 
               :class "music-control-button"
               :style "background-image: url('images/fast-forward.png');"
-              :tooltip "Play"
+              :tooltip "Next"
               :onclick "playerctl next"))
       )
   )
