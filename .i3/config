@@ -222,3 +222,10 @@ mode "gaming" {
     bindsym Scroll_Lock exec i3-msg mode "default"; exec notify-send "i3" "Exiting gaming mode"
 }
 bindsym Scroll_Lock exec i3-msg mode "gaming"; exec notify-send "i3" "Entering gaming mode"
+
+# layout
+
+workspace 1 output DisplayPort-8
+workspace 2 output DisplayPort-8
+workspace 3 output DisplayPort-10
+workspace 4 output DisplayPort-10
