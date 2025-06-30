@@ -1,7 +1,7 @@
 (defvar power false)
 
 (defwindow bar
-  :monitor '["primary", "HDMI-0", 0]'
+  :monitor '["primary", "DisplayPort-8", 0]'
   :windowtype "dock"
   :stacking "fg"
   :geometry (geometry :x "0%"

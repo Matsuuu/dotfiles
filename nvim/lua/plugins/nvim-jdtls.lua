@@ -98,23 +98,26 @@ return {
 		if mason_registry then
 			if opts.dap and dap_installed and mason_registry.is_installed("java-debug-adapter") then
 				local java_dbg_pkg = mason_registry.get_package("java-debug-adapter")
-				local java_dbg_path = java_dbg_pkg:get_install_path()
-				local jar_patterns = {
-					java_dbg_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar",
-				}
-				-- java-test also depends on java-debug-adapter.
-				if opts.test and mason_registry.is_installed("java-test") then
-					local java_test_pkg = mason_registry.get_package("java-test")
-					local java_test_path = java_test_pkg:get_install_path()
-					vim.list_extend(jar_patterns, {
-						java_test_path .. "/extension/server/*.jar",
-					})
-				end
-				for _, jar_pattern in ipairs(jar_patterns) do
-					for _, bundle in ipairs(vim.split(vim.fn.glob(jar_pattern), "\n")) do
-						table.insert(bundles, bundle)
-					end
-				end
+                -- TODO(matsu): For some reason this is broke atm.
+                if type(java_dbg_pkg.get_install_path) == "function" then
+                    local java_dbg_path = java_dbg_pkg:get_install_path()
+                    local jar_patterns = {
+                        java_dbg_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar",
+                    }
+                    -- java-test also depends on java-debug-adapter.
+                    if opts.test and mason_registry.is_installed("java-test") then
+                        local java_test_pkg = mason_registry.get_package("java-test")
+                        local java_test_path = java_test_pkg:get_install_path()
+                        vim.list_extend(jar_patterns, {
+                            java_test_path .. "/extension/server/*.jar",
+                        })
+                    end
+                    for _, jar_pattern in ipairs(jar_patterns) do
+                        for _, bundle in ipairs(vim.split(vim.fn.glob(jar_pattern), "\n")) do
+                            table.insert(bundles, bundle)
+                        end
+                    end
+                end
 			end
 		end
 
