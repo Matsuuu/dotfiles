@@ -40,7 +40,7 @@
               :class "workspace-icons"
              "${ws.Name}"
               (for app in {ws.Apps}
-                (image :path "${app.Icon}" :image-width 24 :image-height 24)
+                (button	:style "background-image: url('${app.Icon}');")
                 )
               )
             )

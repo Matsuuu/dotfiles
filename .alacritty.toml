@@ -26,21 +26,21 @@ foreground = "0xfae8b6"
 size = 12
 
 [font.bold]
-family = "FantasqueSansMono Nerd Font Mono"
+family = "FantasqueSansM Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "FantasqueSansMono Nerd Font Mono"
+family = "FantasqueSansM Nerd Font Mono"
 style = "Italic"
 
 [font.normal]
-family = "FantasqueSansMono Nerd Font Mono"
+family = "FantasqueSansM Nerd Font Mono"
 style = "Regular"
 
 [font.offset]
 y = 1
 
-[shell]
+[terminal.shell]
 program = "/bin/bash"
 
 [window]
@@ -57,3 +57,5 @@ y = 25
 [window.position]
 x = 1050
 y = 250
+
+[terminal]

@@ -1,0 +1,1 @@
+/home/matsu/dotfiles/.i3/
