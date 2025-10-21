@@ -35,7 +35,7 @@
           :class "workspace-eventbox"
           :cursor "pointer"
           (button 
-            :onclick "wmctrl -s ${ws.Name - 1}" 
+            :onclick "scripts/switch_workspace_by_name.sh \"${ws.Name}\""
             (box
               :class "workspace-icons"
              "${ws.Name}"
