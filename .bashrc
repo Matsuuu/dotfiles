@@ -163,6 +163,10 @@ alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stab
 # Remove capslock
 alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary("libX11.so.6"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
+# Random passwords
+alias randompassword="openssl rand -hex 32"
+alias randomkey="openssl rand -base64 32"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

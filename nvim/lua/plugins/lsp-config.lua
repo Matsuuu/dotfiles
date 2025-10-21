@@ -57,5 +57,9 @@ return {
             }
         })
 
+        lspconfig.csharp_ls.setup({})
+        lspconfig.astro.setup({})
+
+
 	end,
 }

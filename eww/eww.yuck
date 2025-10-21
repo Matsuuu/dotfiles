@@ -67,10 +67,14 @@
 (defwidget specs-win []
   (box :space-evenly false :class "content-box shadow" :valign "center"
     (wifi)
-    (metric :label "${muted == "[on]" ? "🔊" : "🔇"}"
-            :value volume
-            :tooltip volume
-            :onchange "amixer -D pulse sset Master {}%")
+    (button
+      :onclick "scripts/togglemute.sh"
+      (metric :label "${muted == "[on]" ? "🔊" : "🔇"}"
+              :value volume
+              :tooltip volume
+              :onchange "amixer -D pulse sset Master {}%"
+        )
+      )
     
     (metric :label "💿"
             :value {EWW_RAM.used_mem_perc}
@@ -267,7 +271,7 @@
 (defpoll datemonth :interval "10s"
   "date '+%d. %B'")
 
-(defpoll hours :interval "1m"
+(defpoll hours :interval "10s"
   "date '+%H'")
 
 (defpoll minutes :interval "10s"
