@@ -227,7 +227,7 @@
 	(button	:style "background-image: url('images/padlock.png');"
 			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "sudo -i loginctl lock-sessions")
+			:onclick "scripts/lock.sh")
 
 	(button :style "background-image: url('images/moon.png');"
 			:class "powermenu-button"
@@ -242,7 +242,7 @@
 
 	(button	:style "background-image: url('images/power-button.png');"
 			:class "powermenu-button powermenu-main-button"
-			:tooltip "Power Menu"
+			:tooltip "Shutdown"
             :onclick "shutdown now"
       ))
     )
