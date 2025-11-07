@@ -11,15 +11,14 @@ return {
 
 		local lspconfig = require("lspconfig")
 
-		lspconfig.ts_ls.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.jsonls.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.html.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.cssls.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.clojure_lsp.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.gopls.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		lspconfig.lua_ls.setup({
-			on_attach = on_attach_vim,
-			capabilities = capabilities,
+        vim.lsp.enable("ts_ls")
+        vim.lsp.enable("jsonls")
+        vim.lsp.enable("html")
+        vim.lsp.enable("cssls")
+        vim.lsp.enable("clojure_lsp")
+        vim.lsp.enable("gopls")
+
+        vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -34,17 +33,12 @@ return {
 				},
 			},
 		})
-		lspconfig.rust_analyzer.setup({ on_attach = on_attach_vim, capabilities = capabilities })
-		-- lspconfig.custom_elements_ls.setup { on_attach=on_attach_vim, capabilities = capabilities }
-		lspconfig.pyright.setup({})
-		-- lspconfig.jdtls.setup({
-		-- 	jdtls = function()
-		-- 		return true --avoid duplicates
-		-- 	end,
-		-- })
-		lspconfig.csharp_ls.setup({})
-		lspconfig.tailwindcss.setup({})
-        lspconfig.sqls.setup({
+        vim.lsp.enable("lua_ls")
+        vim.lsp.enable("rust_analyzer")
+        vim.lsp.enable("pyright")
+        vim.lsp.enable("tailwindcss")
+
+        vim.lsp.config("sqls", {
             settings = {
                 sqls = {
                     connections = {
@@ -56,9 +50,8 @@ return {
                 }
             }
         })
-
-        lspconfig.csharp_ls.setup({})
-        lspconfig.astro.setup({})
+        vim.lsp.enable("sqls")
+        vim.lsp.enable("astro")
 
 
 	end,

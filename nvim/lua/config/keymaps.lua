@@ -27,6 +27,8 @@ vim.keymap.set("v", "'", "%")
 vim.keymap.set("n", "<Leader>rc", ":source ~/.config/nvim/init.lua<CR>")
 
 vim.keymap.set("n", "<Leader><CR>", vim.lsp.buf.code_action)
+-- Typescript action
+vim.keymap.set("n", "<Leader>ta", ":LspTypescriptSourceAction<CR>")
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gy", vim.lsp.buf.type_definition)
