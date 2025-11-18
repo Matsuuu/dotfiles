@@ -48,6 +48,9 @@ floating_modifier $sup
 # kill focused window
 bindsym $sup+Shift+q kill
 
+# Autorandr
+bindsym $sup+$ctrl+p exec autorandr --change
+
 # change focus
 bindsym $sup+$left focus left
 bindsym $sup+$down focus down

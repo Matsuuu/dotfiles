@@ -150,6 +150,8 @@ alias fixkdebar="cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/
 # Screenkey
 alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+50%+120% -p fixed"
 
+# Todo
+alias todo="vim ~/vaults/todo.md && cd ~/vaults/ && ./sync && cd -"
 
 # Add JBang to environment
 alias j!=jbang

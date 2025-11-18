@@ -8,11 +8,18 @@ return {
 	},
 	lazy = false,
 	config = function()
-		require("oil").setup({
+        local oil = require("oil")
+		oil.setup({
 			columns = { "icon" },
 			view_options = {
 				show_hidden = true,
 			},
+
+            -- keymaps
+              keymaps = {
+                -- ['<C-t>'] = oil.select({ close = true, tab = true }),
+              },
+
 			-- Configuration for the file preview window
 			preview_win = {
 				-- Whether the preview window is automatically updated when the cursor is moved
@@ -47,6 +54,5 @@ return {
                 }
             })
         end)
-		vim.keymap.set("n", "<leader>-", oil.toggle_float)
 	end,
 }
