@@ -41,7 +41,7 @@ style = "Regular"
 y = 1
 
 [terminal.shell]
-program = "/bin/bash"
+program = "/bin/zsh"
 
 [window]
 opacity = 1

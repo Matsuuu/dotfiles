@@ -1,0 +1,140 @@
+#############################################################
+# SHARED SHELL SETTINGS (Used by both bash and zsh)
+#############################################################
+
+# Only run in interactive shells
+[[ $- != *i* ]] && return
+
+#############################################################
+# Detect local vs SSH session
+#############################################################
+SESSION_TYPE=local
+if [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
+    SESSION_TYPE=remote/ssh
+fi
+
+#############################################################
+# Environment Variables
+#############################################################
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore-vcs -g "!{node_modules,.git,.idea,target,dist,out-tsc}"'
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export TERM=xterm-256color
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export SDKMAN_DIR="$HOME/.sdkman"
+export NPM_PACKAGES="$HOME/.npm-packages"
+
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+# Add pnpm to PATH if not present
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+#############################################################
+# Tmux
+#############################################################
+#
+# Auto-attach tmux if:
+# - not already in tmux
+# - tmux exists
+# - we are in an interactive shell
+ if command -v tmux >/dev/null 2>&1; then
+     if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+        tmux attach -t default || tmux new -s default
+     fi
+ fi
+
+#############################################################
+# Editor selection
+#############################################################
+if [[ -f ~/nvim.appimage ]]; then
+    export EDITOR="~/nvim.appimage"
+else
+    export EDITOR="nvim"
+fi
+
+#############################################################
+# External tools
+#############################################################
+[ -f ~/.env ] && source ~/.env
+
+#############################################################
+# Functions
+#############################################################
+catclip() {
+    cat "$1" | xclip -selection clipboard $OUTPUT
+}
+
+mp4towebp() {
+    ffmpeg -i "$1" -vcodec libwebp \
+        -filter:v fps=fps=20 \
+        -lossless 0 \
+        -loop 0 \
+        -preset "${2:-default}" \
+        -an \
+        -compression_level 6 \
+        -vsync 0 \
+        "${1/mp4/webp}"
+}
+
+#############################################################
+# Aliases (shell agnostic)
+#############################################################
+
+# Software
+alias realvim="vim"
+test -f ~/nvim.appimage && alias vim="~/nvim.appimage"
+[ ! -f ~/nvim.appimage ] && alias vim="nvim"
+
+# Frequent commands
+alias filesize="du -sh"
+alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
+alias tmus="tmux"
+
+# Dev aliases
+alias devserver="npx @web/dev-server --node-resolve --watch"
+alias gentypes="tsc --declaration --emitDeclarationOnly --allowJs"
+
+# Git
+alias prettylog="git log --graph --decorate --oneline"
+alias whathaveibeenupto="git log --author=\"$(git config user.email)\" --pretty=format:\"%C(magenta)%an%Creset %C(green)%<(20)%ar%Creset  %C(blue) %s %Creset\" --no-merges"
+
+# Vim helpers
+alias vimplugins="vim ~/.config/nvim/rcfiles/plugins.lua"
+alias vimrc="vim ~/dotfiles/init.lua"
+
+# Misc
+alias nrb="npm run build"
+alias fixkdebar="cp ~/.config/plasma-org.kde.plasma.desktop-appletsrc ~/.config/plasma-org.kde.plasma.desktop-appletsrc.backup"
+alias screenkeystream="screenkey -s small --timeout 0.3 --opacity 0.6 -g 500x100+50%+120% -p fixed"
+alias todo="vim ~/vaults/todo.md && cd ~/vaults/ && ./sync && cd -"
+alias j!=jbang
+alias tsctypes="npx -p typescript tsc --declaration --checkJs --allowJs --emitDeclarationOnly --lib esnext,DOM --outDir types "
+alias updateneovim="wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage -O ~/nvim.appimage && chmod +x ~/nvim.appimage"
+alias randompassword="openssl rand -hex 32"
+alias randomkey="openssl rand -base64 32"
+alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
+
+#############################################################
+# Smart ls aliases (logo-ls or fallback)
+#############################################################
+if command -v logo-ls &> /dev/null; then
+    alias ll='logo-ls -al'
+    alias la='logo-ls -A'
+    alias l='logo-ls'
+    alias ls='logo-ls'
+else
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
+
+#############################################################
+# Google Cloud SDK (shared if available)
+#############################################################
+[ -f '/tmp/google-cloud-sdk/path.inc' ] && source '/tmp/google-cloud-sdk/path.inc'
+[ -f '/tmp/google-cloud-sdk/completion.inc' ] && source '/tmp/google-cloud-sdk/completion.inc'

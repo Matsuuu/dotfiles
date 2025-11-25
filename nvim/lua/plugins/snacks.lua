@@ -38,7 +38,17 @@ return {
             },
 
         },
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+            sources = {
+                files = {
+                    hidden = true
+                },
+                grep = {
+                    hidden = true
+                }
+            }
+        },
         notifier = { enabled = true },
         gh = { enabled = true },
         rename = { enabled = true },

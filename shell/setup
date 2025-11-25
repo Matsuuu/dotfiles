@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ln -sf $PWD/.shell_common $HOME/.shell_common
+ln -sf $PWD/.bashrc $HOME/.bashrc
+ln -sf $PWD/.zshrc $HOME/.zshrc
+ln -sf $PWD/.zsh_setup $HOME/.zsh_setup
+ln -sf $PWD/.env $HOME/.env
