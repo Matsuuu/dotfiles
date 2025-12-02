@@ -90,6 +90,9 @@ alias realvim="vim"
 test -f ~/nvim.appimage && alias vim="~/nvim.appimage"
 [ ! -f ~/nvim.appimage ] && alias vim="nvim"
 
+test -f ~/nvim.appimage && alias nvim="~/nvim.appimage"
+[ ! -f ~/nvim.appimage ] && alias nvim="nvim"
+
 # Frequent commands
 alias filesize="du -sh"
 alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"

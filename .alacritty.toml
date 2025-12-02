@@ -26,15 +26,15 @@ foreground = "0xfae8b6"
 size = 12
 
 [font.bold]
-family = "FantasqueSansM Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "FantasqueSansM Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "FantasqueSansM Nerd Font Mono"
+family = "FantasqueSansM Nerd Font"
 style = "Regular"
 
 [font.offset]

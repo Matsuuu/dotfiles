@@ -49,7 +49,7 @@ floating_modifier $sup
 bindsym $sup+Shift+q kill
 
 # Autorandr
-bindsym $sup+$ctrl+p exec autorandr --change
+bindsym $sup+$ctrl+p exec autorandr --cycle
 
 # change focus
 bindsym $sup+$left focus left

@@ -19,6 +19,7 @@ return {
 			json = { "prettierd", "prettier", stop_after_first = true },
 			yaml = { "prettierd", "prettier", stop_after_first = true },
 			go = { "gofmt", stop_after_first = true },
+			templ = { "templ", stop_after_first = true },
 
 			terraform = { "terraform_fmt" },
 			lua = { "stylua" },
