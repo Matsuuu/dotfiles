@@ -93,6 +93,9 @@ test -f ~/nvim.appimage && alias vim="~/nvim.appimage"
 test -f ~/nvim.appimage && alias nvim="~/nvim.appimage"
 [ ! -f ~/nvim.appimage ] && alias nvim="nvim"
 
+# Open fugitive from shell
+alias :G="nvim -c :G"
+
 # Frequent commands
 alias filesize="du -sh"
 alias whoisusingports="sudo lsof -i -P -n | grep LISTEN"
