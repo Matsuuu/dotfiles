@@ -217,7 +217,7 @@ exec_always --no-startup-id eww open bar
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
 # bindsym $mod+space exec albert show
-bindsym $mod+space exec ulauncher
+bindsym $mod+space exec ulauncher-toggle
 bindsym $sup+Return exec alacritty
 
 # Gaming mode
