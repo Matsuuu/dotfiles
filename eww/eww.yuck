@@ -2,12 +2,15 @@
 
 (defwindow bar
   :monitor '["primary", "DisplayPort-8", 0]'
-  :windowtype "dock"
-  :stacking "fg"
+  :layer "top"
+  :exclusive true
+  :exclusive-zone 32
+  :focusable false
+  :anchor "top center"
   :geometry (geometry :x "0%"
                       :y "0%"
+                      :width "100%"
                       :anchor "top left")
-  :reserve (struts :side "top" :distance "4%")
   (box
     (box
       :halign "start"

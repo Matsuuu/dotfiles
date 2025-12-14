@@ -4,34 +4,17 @@ set $mod Mod1
 set $ctrl Control
 
 set $inner 20
-set $outerTop 0
+set $outerTop 48
 set $outerBottom 0
-set $radius 6
+set $radius 12
+
+corner_radius $radius
+
 
 gaps inner $inner
 gaps top $outerTop
 gaps bottom $outerBottom
 focus_follows_mouse no
-smart_borders on
-#border_radius $radius
-
-#set $borderSize 3
-set $borderSize 0
-set $focusBorder #FE7C8E
-set $unFocusBorder #7658a8
-set $bg #ed6f81
-set $fg #FFFFFF
-
-for_window [class="^.*"] border pixel $borderSize
-
-# Borders
-# CLASS                 BORDER                  BACK            TEXT            INDICATOR
-client.focused          $focusBorder            $focusBorder    $focusBorder    $bg
-client.focused_inactive $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-client.unfocused        $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-client.urgent           $unFocusBorder          $unFocusBorder  $unFocusBorder  $unFocusBorder
-
-font pango:monospace 8
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
@@ -136,62 +119,14 @@ bindsym $ctrl+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $sup+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $sup+Shift+r restart
 
 bindsym $sup+$ctrl+h    resize shrink width 5 px or 5 ppt
 bindsym $sup+$ctrl+j    resize shrink height 5 px or 5 ppt
 bindsym $sup+$ctrl+k    resize grow height 5 px or 5 ppt
 bindsym $sup+$ctrl+l    resize grow width 5 px or 5 ppt
 
-# >>> Plasma Integration <<<
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace
-# and hides everythiing)
-exec_always --no-startup-id wmctrl -c Plasma
-#for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [title="Desktop — Plasma"] kill
-for_window [class="ksplash"] kill
 for_window [class="Albert"] border none
-for_window [class="ulauncher"] border none
 
-# Avoid tiling popups, dropdown windows from plasma
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable
-for_window [class="krunner"] floating enable
-for_window [class="Kmix"] floating enable
-for_window [class="Klipper"] floating enable
-for_window [class="Plasmoidviewer"] floating enable
-for_window [class="spectacle"] floating enable
-
-# >>> Window Rules <<<
-
-# From wiki https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-for_window [title="Desktop — Plasma"] kill; floating enable; border none
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
-for_window [class="(?i)*nextcloud*"] floating disable
-no_focus [class="plasmashell" window_type="notification"]
-# Plasma compatibility improvements
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-
-for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
-for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
-no_focus [class="plasmashell" window_type="notification"]
-
-# Kills the window
-for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
-
-
-#no_focus [class=”plasmashell”]
 
 #  ________   ________ _____ 
 # |  ____\ \ / /  ____/ ____|
@@ -204,7 +139,7 @@ for_window [title="Desktop @ QRect.*"] kill; floating enable; border none
 exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
-exec_always --no-startup-id feh --bg-fill /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg
+exec_always --no-startup-id swaybg -i /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg -m fill
 exec_always --no-startup-id picom
 
 exec_always --no-startup-id eww open bar
@@ -233,3 +168,64 @@ workspace 1 output DisplayPort-8
 workspace 2 output DisplayPort-8
 workspace 3 output DisplayPort-10
 workspace 4 output DisplayPort-10
+
+
+# Includes
+include ~/.config/sway/outputs
+include ~/.config/sway/workspaces
+
+
+input * {
+    xkb_layout "fi"
+
+    xkb_options caps:escape
+}
+
+input type:pointer {
+    accel_profile flat
+    pointer_accel 0.3
+}
+
+# Borders
+default_border none
+default_floating_border none
+
+############################
+# SwayFX: Shadows / Glow
+############################
+
+shadows enable
+shadow_blur_radius 14
+shadow_color #473a407f
+
+
+# Shadow offset (negative = up/left)
+shadow_offset -3 -4
+
+
+############################
+# Opacity / Transparency
+############################
+
+default_dim_inactive 0.1
+
+
+############################
+# Exclusions (Picom shadow-exclude)
+############################
+
+# Notifications
+for_window [title="Notification"] shadow disable
+
+# App exclusions
+for_window [class="ulauncher"] border none shadow disable
+for_window [app_id="conky"] shadow disable
+for_window [app_id="eww"] shadow disable
+
+# Panels / bars
+for_window [app_id="polybar"] shadow disable
+
+# GTK CSD windows
+for_window [shell="gtk"] shadow disable
+
+
