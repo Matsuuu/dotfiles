@@ -140,7 +140,6 @@ exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 
 exec_always --no-startup-id swaybg -i /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg -m fill
-exec_always --no-startup-id picom
 
 exec_always --no-startup-id eww open bar
 
@@ -174,6 +173,11 @@ workspace 4 output DisplayPort-10
 include ~/.config/sway/outputs
 include ~/.config/sway/workspaces
 
+# Screens
+
+output * adaptive_sync off
+
+#
 
 input * {
     xkb_layout "fi"

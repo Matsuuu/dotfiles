@@ -1,11 +1,12 @@
 #!/bin/bash
 
-# Usage: ./switch_workspace_by_name.sh "Workspace Name"
+# Usage: ./switch_workspace_by_name.sh "workspace-name-or-number"
 
 name="$1"
-index=$(wmctrl -d | awk -v n="$name" '$0 ~ n {print $1}')
-if [ -z "$index" ]; then
-  echo "Workspace '$name' not found."
+
+if [ -z "$name" ]; then
   exit 1
 fi
-wmctrl -s "$index"
+
+swaymsg workspace "$name" >/dev/null
+
