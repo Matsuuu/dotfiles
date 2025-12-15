@@ -133,8 +133,8 @@
               (box :orientation "h" :class "networkbutton" :spacing 5 :space-evenly false
                 (image 
                   :path WIFIICON 
-                  :image-width 24 
-                  :image-height 24)
+                  :image-width 18 
+                  :image-height 18)
                 NETSTAT
               )
 			)
@@ -149,7 +149,7 @@
     :space-evenly false
     (box :class "music"
          :space-evenly false
-        (image :class "music-image" :path "images/compact-disc.png" :image-height 50 :valign "center")
+        (image :class "music-image" :path "images/compact-disc.png" :image-height 30 :valign "center")
         (box 
          :orientation "v"
          :space-evenly false
@@ -199,7 +199,7 @@
 
 (defwidget systemtray []
   (box :orientation "v" :halign "start"
-    (systray :class "tray" :orientation "h" :icon-size 24 :spacing 5)
+    (systray :class "tray" :orientation "h" :icon-size 18 :spacing 5)
   )
 )
 
