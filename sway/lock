@@ -1,0 +1,33 @@
+#!/bin/sh
+
+swaylock \
+  --daemonize \
+  --screenshots \
+  --clock \
+  --indicator \
+  --fade-in 0.25 \
+  --effect-blur 12x12 \
+  --effect-vignette 0.25:0.5 \
+  --indicator-radius 90 \
+  --indicator-thickness 8 \
+  --ring-color 3b4252cc \
+  --key-hl-color 88c0d0ff \
+  --line-color 00000000 \
+  --inside-color 2e3440cc \
+  --separator-color 00000000 \
+  --text-color eceff4ff \
+  --text-clear-color a3be8cff \
+  --text-caps-lock-color ebcb8bff \
+  --text-ver-color 81a1c1ff \
+  --text-wrong-color bf616aff \
+  --ring-clear-color a3be8bff \
+  --ring-caps-lock-color ebcb8bff \
+  --ring-ver-color 81a1c1ff \
+  --ring-wrong-color bf616aff \
+  --inside-clear-color a3be8bcc \
+  --inside-caps-lock-color ebcb8bcc \
+  --inside-ver-color 81a1c1cc \
+  --inside-wrong-color bf616acc \
+  --datestr "%A, %d %B" \
+  --timestr "%H:%M" \
+  --font "JetBrains Mono"

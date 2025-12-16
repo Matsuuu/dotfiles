@@ -236,3 +236,9 @@ for_window [shell="gtk"] shadow disable
 # Cursor
 seat seat0 xcursor_theme Bibata-Modern-Ice 14
 
+# Sway Locking
+
+exec swayidle -w \
+  timeout 300 '~/.config/sway/lock' \
+  before-sleep '~/.config/sway/lock'
+

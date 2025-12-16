@@ -85,7 +85,8 @@ func walkNode(node *sway.Node, currentWorkspace *sway.Node, workspaces *[]Worksp
 	}
 
 	// App container
-	if node.Type == "con" && node.AppID != nil && currentWorkspace != nil {
+	if node.Type == "con" && currentWorkspace != nil &&
+		(node.AppID != nil || node.WindowProperties != nil) {
 		handleApp(node, currentWorkspace, workspaces)
 	}
 
@@ -110,10 +111,16 @@ func handleApp(node *sway.Node, workspaceNode *sway.Node, workspaces *[]Workspac
 	}
 
 	inst := ""
+
 	if node.AppID != nil {
 		inst = *node.AppID
+	} else if node.WindowProperties != nil {
+		if node.WindowProperties.Class != "" {
+			inst = node.WindowProperties.Class
+		} else if node.WindowProperties.Instance != "" {
+			inst = node.WindowProperties.Instance
+		}
 	}
-
 	icon := determineAppIcon(inst)
 
 	app := App{

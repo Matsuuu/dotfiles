@@ -227,10 +227,15 @@
 	; 		:tooltip "Log out"
 	; 		:onclick "qdbus org.kde.Shutdown /Shutdown logout")
 
+	(button	:style "background-image: url('images/exit.png');"
+			:class "powermenu-button"
+			:tooltip "Log out"
+			:onclick "swaymsg exit")
+
 	(button	:style "background-image: url('images/padlock.png');"
 			:class "powermenu-button"
 			:tooltip "Lock Screen"
-			:onclick "scripts/lock.sh")
+			:onclick "~/.config/sway/lock")
 
 	(button :style "background-image: url('images/moon.png');"
 			:class "powermenu-button"

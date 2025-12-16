@@ -34,6 +34,17 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+if [[ -v TMUX ]]; then
+    # inside tmux, we don't know if Sway got restarted
+    swaymsg(){
+        export SWAYSOCK=$XDG_RUNTIME_DIR/sway-ipc.$UID.$(pgrep -x sway).sock
+        command swaymsg "$@"
+    }
+
+    # Also run it at start
+    export SWAYSOCK=$XDG_RUNTIME_DIR/sway-ipc.$UID.$(pgrep -x sway).sock
+fi
+
 #############################################################
 # Tmux
 #############################################################
