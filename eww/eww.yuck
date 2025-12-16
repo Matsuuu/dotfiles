@@ -78,7 +78,12 @@
               :onchange "amixer -D pulse sset Master {}%"
         )
       )
-    
+
+    (metric :label "⚙️"
+            :value {round(EWW_CPU.avg, 0)}
+            :tooltip "${round(EWW_CPU.avg, 0)}%"
+            :onchange "")
+
     (metric :label "💿"
             :value {EWW_RAM.used_mem_perc}
             :tooltip "${round(EWW_RAM.used_mem / 1000000000, 2)} / ${round(EWW_RAM.total_mem / 1000000000, 2)}"
@@ -111,16 +116,15 @@
   ))
 
 (defwidget battery []
-    ; TODO: Charging status
     (box :orientation "h" 
          :visible { EWW_BATTERY != "" } 
          :class "metric"
 		 :tooltip "${EWW_BATTERY}"
          :space-evenly false
-          (box :class "label" "🔋")
+          (box :class "label" {EWW_BATTERY.BAT1.capacity == 100 || EWW_BATTERY.BAT1.status == "Charging" ? "🔌" : "🔋"})
           (scale :min 0
                  :max 100
-                 :value {EWW_BATTERY.BAT1.capacity == "" ? 0 : EWW_BATTERY.BAT1.capacity}
+                 :value {EWW_BATTERY.BAT1.capacity == "" ? 100 : EWW_BATTERY.BAT1.capacity}
                  )
       ))
 

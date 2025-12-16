@@ -2,6 +2,18 @@
   all: unset; // Unsets everything so you can style everything from scratch
 }
 
+tooltip {
+  background-color: #222;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+tooltip label {
+  color: #fff;
+}
+
 .content-box {
   background-color: #202330;
   margin: 0.625rem 1.25rem 0.3125rem 1.25rem;

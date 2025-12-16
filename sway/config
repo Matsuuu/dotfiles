@@ -177,7 +177,7 @@ include ~/.config/sway/workspaces
 
 output * adaptive_sync off
 
-#
+# Inputs
 
 input * {
     xkb_layout "fi"
@@ -188,6 +188,10 @@ input * {
 input type:pointer {
     accel_profile flat
     pointer_accel 0.3
+}
+
+input type:touchpad {
+    click_method clickfinger
 }
 
 # Borders
