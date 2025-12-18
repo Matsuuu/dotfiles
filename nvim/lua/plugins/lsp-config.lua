@@ -52,7 +52,7 @@ return {
         })
         vim.lsp.enable("sqls")
         vim.lsp.enable("astro")
-        vim.lsp.enable("wc")
+        vim.lsp.enable("wc_language_server")
 
 
 	end,

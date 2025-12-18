@@ -1,0 +1,23 @@
+output "Dell Inc. DELL P2419H 87V1Y9C61T5T" {
+    mode 1920x1080@60
+    position 0,0
+    scale 1
+    alias $OFFICE_1
+}
+
+output "Dell Inc. DELL P2419H CM4XR13" {
+    mode 1920x1080@60
+    position 1920,0
+    scale 1
+    alias $OFFICE_2
+}
+
+profile undocked {
+    output eDP-1 enable scale 1
+}
+
+profile office_docked {
+    output eDP-1 disable
+    output $OFFICE_1 enable
+    output $OFFICE_2 enable
+}

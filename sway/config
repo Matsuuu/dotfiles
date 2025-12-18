@@ -20,6 +20,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
 
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+
 set $up k
 set $down j
 set $left h
@@ -79,6 +83,10 @@ bindsym $sup+d floating toggle
 # change focus between tiling / floating windows
 bindsym $sup+space focus mode_toggle
 
+# Screenshot
+bindsym $sup+Shift+s exec sway-screenshot -m region
+
+
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -136,12 +144,10 @@ for_window [class="Albert"] border none
 # |______/_/ \_\______\_____|
 #                                                        
 
-exec --no-startup-id /usr/lib/pam_kwallet_init
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
-
+exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec_always --no-startup-id swaybg -i /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg -m fill
-
 exec_always --no-startup-id eww open bar
+exec_always kanshi
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
@@ -154,19 +160,30 @@ exec_always --no-startup-id eww open bar
 bindsym $mod+space exec ulauncher
 bindsym $sup+Return exec alacritty
 
-# Gaming m
+# Displays
+# Disable laptop screen when lid is closed
+bindswitch --locked lid:on output eDP-1 disable
 
-mode "gaming" {
-    bindsym Scroll_Lock exec i3-msg mode "default"; exec notify-send "i3" "Exiting gaming mode"
+# Re-enable laptop screen when lid is opened
+bindswitch --locked lid:off output eDP-1 enable
+
+#Query the lid state and apply the correct output state every reload.
+exec_always {
+    if grep -q closed /proc/acpi/button/lid/*/state; then
+        swaymsg output eDP-1 disable
+    fi
 }
-bindsym Scroll_Lock exec i3-msg mode "gaming"; exec notify-send "i3" "Entering gaming mode"
 
 # layout
+workspace 1 output eDP-1 
+workspace 2 output eDP-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
 
-workspace 1 output DisplayPort-8
-workspace 2 output DisplayPort-8
-workspace 3 output DisplayPort-10
-workspace 4 output DisplayPort-10
+workspace 1 output DP-9
+workspace 2 output DP-9
+workspace 3 output DP-11
+workspace 4 output DP-11
 
 
 # Includes
@@ -226,12 +243,9 @@ default_dim_inactive 0.1
 for_window [title="Notification"] shadow disable
 
 # App exclusions
-for_window [class="ulauncher"] border none shadow disable
+for_window [app_id="ulauncher"] border none shadow disable
 for_window [app_id="conky"] shadow disable
 for_window [app_id="eww"] shadow disable
-
-# Panels / bars
-for_window [app_id="polybar"] shadow disable
 
 # GTK CSD windows
 for_window [shell="gtk"] shadow disable
@@ -241,8 +255,11 @@ for_window [shell="gtk"] shadow disable
 seat seat0 xcursor_theme Bibata-Modern-Ice 14
 
 # Sway Locking
-
 exec swayidle -w \
   timeout 300 '~/.config/sway/lock' \
   before-sleep '~/.config/sway/lock'
+
+
+# Sway notifications
+exec swaync
 
