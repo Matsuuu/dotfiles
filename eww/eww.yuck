@@ -1,7 +1,7 @@
 (defvar power false)
 
 (defwindow bar
-  :monitor '["primary", "DisplayPort-8", 0]'
+  :monitor '["primary", "eDP-1", "DisplayPort-8", 0]'
   :layer "top"
   :exclusive true
   :exclusive-zone 32

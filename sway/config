@@ -250,6 +250,11 @@ for_window [app_id="eww"] shadow disable
 # GTK CSD windows
 for_window [shell="gtk"] shadow disable
 
+# Floating windows
+for_window [app_id="google-chrome" title="^Meet –"] floating enable, \
+    resize set 800 450, \
+    move position 1000 40
+
 
 # Cursor
 seat seat0 xcursor_theme Bibata-Modern-Ice 14
