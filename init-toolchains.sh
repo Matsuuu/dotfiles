@@ -1,3 +1,5 @@
+# This toolchain setup is mostly for ubuntu -based servers
+
 sudo apt update 
 
 sudo apt install build-essential
