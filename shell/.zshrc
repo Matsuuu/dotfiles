@@ -2,14 +2,18 @@
 # ZSH ONLY
 #############################################################
 
-# Load shared config
-[ -f ~/.shell_common ] && source ~/.shell_common
-[ -f ~/.zsh_setup ] && source ~/.zsh_setup
+# Autoload compinit before anything else
+autoload -Uz compinit
+compinit
 
 # Also enable brew if on mac
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Load shared config
+[ -f ~/.shell_common ] && source ~/.shell_common
+[ -f ~/.zsh_setup ] && source ~/.zsh_setup
 
 #############################################################
 # Enable completion system

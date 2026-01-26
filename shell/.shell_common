@@ -77,7 +77,6 @@ fi
 # Functions
 #############################################################
 catclip() {
-    #cat "$1" | xclip -selection clipboard $OUTPUT
     cat "$1" | wl-copy
 }
 

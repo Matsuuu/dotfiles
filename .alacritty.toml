@@ -23,7 +23,7 @@ background = "0x202330"
 foreground = "0xfae8b6"
 
 [font]
-size = 12
+size = 16
 
 [font.bold]
 family = "FantasqueSansM Nerd Font"
@@ -46,8 +46,11 @@ program = "/bin/zsh"
 [window]
 opacity = 1
 
+# OSX
+option_as_alt = "OnlyLeft"
+
 [window.dimensions]
-columns = 100
+columns = 120
 lines = 36
 
 [window.padding]
