@@ -1,0 +1,26 @@
+- name: Install NVM, NPM and Node
+  hosts: all
+
+  vars:
+      new_user: "{{ lookup('env', 'USER') }}"
+      node_version: "lts/*"
+
+  tasks:
+      - name: Install NVM
+        become: false
+        become_user: "{{ new_user }}"
+        shell: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+        args:
+            creates: "/home/{{ new_user }}/.nvm/nvm.sh"
+
+      - name: Install Node.js via NVM
+        become: false
+        become_user: "{{ new_user }}"
+        shell: |
+            source ~/.nvm/nvm.sh
+            nvm install {{ node_version }}
+            nvm alias default {{ node_version }}
+            nvm use default
+        args:
+            executable: /bin/bash

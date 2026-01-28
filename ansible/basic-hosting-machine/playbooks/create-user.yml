@@ -1,0 +1,27 @@
+- name: Create user with sudo and SSH access
+  hosts: all
+  become: true
+
+  vars:
+      new_user: "{{ lookup('env', 'USER') }}"
+
+  tasks:
+      - name: Ensure user exists
+        user:
+            name: "{{ new_user }}"
+            shell: /bin/bash
+            create_home: yes
+
+      - name: Allow user to use sudo without password
+        copy:
+            dest: "/etc/sudoers.d/{{ new_user }}"
+            content: "{{ new_user }} ALL=(ALL) NOPASSWD:ALL\n"
+            owner: root
+            group: root
+            mode: "0440"
+
+      - name: Add SSH public key to authorized_keys
+        authorized_key:
+            user: "{{ new_user }}"
+            state: present
+            key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"

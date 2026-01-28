@@ -28,7 +28,7 @@ ls.add_snippets("javascript", {
     s("LitElemTW", {
           t('import { html, LitElement } from "lit";'), t({"", ""}),
           t('import { customElement, property } from "lit/decorators.js";'), t({"", ""}),
-          t('import { withTailwind } from "@shared/css/tailwind";'), t({"", "", ""}),
+          t('import { withTailwind } from "../css/tailwind";'), t({"", "", ""}),
           t('@customElement("'), f(to_custom_element), t('")'), t({"", ""}),
           t('@withTailwind'), t({"", ""}),
           t('export class '), f(to_pascal_case), t(' extends LitElement {'), t({"", "    "}),

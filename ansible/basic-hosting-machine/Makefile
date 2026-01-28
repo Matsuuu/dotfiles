@@ -1,0 +1,9 @@
+apt:
+	ansible-playbook ./playbooks/apt.yml --user root -i ./inventory/hosts
+create-user:
+	ansible-playbook ./playbooks/create-user.yml --user root -i ./inventory/hosts
+docker:
+	ansible-playbook ./playbooks/docker.yml -i ./inventory/hosts
+npm:
+	ansible-playbook ./playbooks/nvm-npm.yml -i ./inventory/hosts
+	
