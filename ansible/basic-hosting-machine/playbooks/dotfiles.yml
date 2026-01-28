@@ -1,0 +1,67 @@
+- name: Clone dotfiles and set them up
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+      repo_url: "https://github.com/Matsuuu/dotfiles.git"
+      repo_dest: "/home/{{ new_user }}/dotfiles"
+      new_user: "{{ lookup('env', 'USER') }}"
+      nvim_url: "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage"
+      nvim_dest: "/home/{{ new_user }}/nvim.appimage"
+
+  tasks:
+      - name: Ensure git is installed
+        ansible.builtin.package:
+            name: git
+            state: present
+
+      - name: Clone dotfiles repo
+        ansible.builtin.git:
+            repo: "{{ repo_url }}"
+            dest: "{{ repo_dest }}"
+            version: "HEAD"
+            update: yes
+        become_user: "{{ new_user }}"
+        environment:
+            HOME: "/home/{{ new_user }}"
+
+      - name: Ensure config directory exists
+        ansible.builtin.file:
+            path: "/home/{{ new_user }}/.config"
+            state: directory
+            mode: "0755"
+
+      - name: Symlink configurations
+        ansible.builtin.file:
+            src: "{{ item.src }}"
+            dest: "{{ item.dest }}"
+            state: link
+            force: yes
+        loop:
+            - src: "/home/{{ new_user }}/dotfiles/nvim"
+              dest: "/home/{{ new_user }}/.config/nvim"
+
+            - src: "/home/{{ new_user }}/dotfiles/.npm_completion"
+              dest: "/home/{{ new_user }}/.npm_completion"
+
+            - src: "/home/{{ new_user }}/dotfiles/shell/.shell_common"
+              dest: "/home/{{ new_user }}/.shell_common"
+
+            - src: "/home/{{ new_user }}/dotfiles/shell/.bashrc"
+              dest: "/home/{{ new_user }}/.bashrc"
+
+      - name: Download Neovim AppImage
+        ansible.builtin.get_url:
+            url: "{{ nvim_url }}"
+            dest: "{{ nvim_dest }}"
+            mode: "0755"
+        become_user: "{{ new_user }}"
+        environment:
+            HOME: "/home/{{ new_user }}"
+
+      - name: Ensure Neovim AppImage is executable
+        ansible.builtin.file:
+            path: "{{ nvim_dest }}"
+            mode: "0755"
+        become_user: "{{ new_user }}"

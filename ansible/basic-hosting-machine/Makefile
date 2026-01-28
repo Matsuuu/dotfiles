@@ -10,4 +10,6 @@ docker:
 	ansible-playbook ./playbooks/docker.yml -i ./inventory/hosts
 npm:
 	ansible-playbook ./playbooks/nvm-npm.yml -i ./inventory/hosts
+dotfiles:
+	ansible-playbook ./playbooks/dotfiles.yml -i ./inventory/hosts
 	

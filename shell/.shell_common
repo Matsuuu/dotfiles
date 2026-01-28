@@ -50,11 +50,12 @@ fi
 #############################################################
 #
 # Auto-attach tmux if:
+# - not in an ssh connection
 # - not already in tmux
 # - tmux exists
-# - we are in an interactive shell
- if command -v tmux >/dev/null 2>&1; then
-     if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+# Auto-start tmux only for local interactive shells
+if [[ -z "$TMUX" && -z "$SSH_CLIENT" && -z "$SSH_TTY" ]]; then
+     if command -v tmux >/dev/null 2>&1; then
         tmux attach -t default || tmux new -s default
      fi
  fi
