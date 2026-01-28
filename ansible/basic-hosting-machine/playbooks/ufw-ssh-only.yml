@@ -1,0 +1,31 @@
+- name: Enable UFW and only allow SSH
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+      - name: Install UFW
+        ansible.builtin.apt:
+            name: ufw
+            state: present
+            update_cache: yes
+        when: ansible_facts.os_family == "Debian"
+
+      - name: Set default incoming policy to deny
+        community.general.ufw:
+            direction: incoming
+            default: deny
+
+      - name: Set default outgoing policy to allow
+        community.general.ufw:
+            direction: outgoing
+            default: allow
+
+      - name: Allow SSH (OpenSSH profile)
+        community.general.ufw:
+            rule: allow
+            name: OpenSSH
+
+      - name: Enable UFW
+        community.general.ufw:
+            state: enabled

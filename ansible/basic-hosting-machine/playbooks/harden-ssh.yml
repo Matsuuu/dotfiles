@@ -1,0 +1,63 @@
+- name: Disable root SSH login and disable password authentication
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+      sshd_config_path: /etc/ssh/sshd_config
+
+  tasks:
+      - name: Backup sshd_config once
+        ansible.builtin.copy:
+            src: "{{ sshd_config_path }}"
+            dest: "{{ sshd_config_path }}.bak"
+            remote_src: true
+            owner: root
+            group: root
+            mode: "0644"
+            force: false
+
+      - name: Disable root SSH login
+        ansible.builtin.lineinfile:
+            path: "{{ sshd_config_path }}"
+            regexp: '^\s*#?\s*PermitRootLogin\s+'
+            line: "PermitRootLogin no"
+            create: false
+
+      - name: Disable SSH password authentication
+        ansible.builtin.lineinfile:
+            path: "{{ sshd_config_path }}"
+            regexp: '^\s*#?\s*PasswordAuthentication\s+'
+            line: "PasswordAuthentication no"
+            create: false
+
+      - name: Disable keyboard-interactive authentication
+        ansible.builtin.lineinfile:
+            path: "{{ sshd_config_path }}"
+            regexp: '^\s*#?\s*KbdInteractiveAuthentication\s+'
+            line: "KbdInteractiveAuthentication no"
+            create: false
+
+      - name: Disable challenge-response authentication (older OpenSSH)
+        ansible.builtin.lineinfile:
+            path: "{{ sshd_config_path }}"
+            regexp: '^\s*#?\s*ChallengeResponseAuthentication\s+'
+            line: "ChallengeResponseAuthentication no"
+            create: false
+
+      - name: Ensure public key authentication is enabled
+        ansible.builtin.lineinfile:
+            path: "{{ sshd_config_path }}"
+            regexp: '^\s*#?\s*PubkeyAuthentication\s+'
+            line: "PubkeyAuthentication yes"
+            create: false
+
+      - name: Restart SSH
+        ansible.builtin.service:
+            name: ssh
+            state: restarted
+
+      - name: Lock the root account password (disables password-based root login)
+        ansible.builtin.user:
+            name: root
+            password_lock: true
