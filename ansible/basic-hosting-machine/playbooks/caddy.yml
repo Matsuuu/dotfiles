@@ -1,0 +1,40 @@
+- name: Install Caddy dockerized
+  hosts: all
+  become: true
+  gather_facts: true
+
+  vars:
+      infra_root: /opt/infra
+      caddy_dir: "{{ infra_root }}/caddy"
+
+  tasks:
+      - name: Ensure caddy stack directory exists
+        ansible.builtin.file:
+            path: "{{ caddy_dir }}"
+            state: directory
+            mode: "0755"
+
+      - name: Ensure proxy docker network exists
+        ansible.builtin.shell: |
+            docker network inspect proxy >/dev/null 2>&1 || docker network create proxy
+        args:
+            executable: /bin/bash
+        changed_when: false
+
+      - name: Copy Caddy compose file
+        ansible.builtin.copy:
+            src: "caddy/compose.yml"
+            dest: "{{ caddy_dir }}/compose.yml"
+            mode: "0644"
+
+      - name: Copy Caddyfile
+        ansible.builtin.copy:
+            src: "caddy/Caddyfile"
+            dest: "{{ caddy_dir }}/Caddyfile"
+            mode: "0644"
+
+      - name: Start Caddy stack
+        ansible.builtin.shell: docker compose up -d
+        args:
+            chdir: "{{ caddy_dir }}"
+            executable: /bin/bash

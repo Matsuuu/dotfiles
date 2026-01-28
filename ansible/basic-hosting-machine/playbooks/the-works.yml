@@ -1,0 +1,16 @@
+- name: Install the works
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+      - name: Install CLI tools and compilers
+        ansible.builtin.apt:
+            name:
+                - fzf
+                - ripgrep
+                - btop
+                - gcc
+                - clang
+                - build-essential
+            state: present

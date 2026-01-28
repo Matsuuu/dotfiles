@@ -12,4 +12,8 @@ npm:
 	ansible-playbook ./playbooks/nvm-npm.yml -i ./inventory/hosts
 dotfiles:
 	ansible-playbook ./playbooks/dotfiles.yml -i ./inventory/hosts
+works:
+	ansible-playbook ./playbooks/the-works.yml -i ./inventory/hosts
+caddy:
+	ansible-playbook ./playbooks/caddy.yml -i ./inventory/hosts
 	
