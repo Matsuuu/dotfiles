@@ -54,6 +54,8 @@ return {
         vim.lsp.enable("astro")
         vim.lsp.enable("wc_language_server")
 
+        vim.lsp.enable("eslint")
+
 
 	end,
 }

@@ -13,6 +13,39 @@ if [[ -n "$SSH_CLIENT" || -n "$SSH_TTY" ]]; then
     SESSION_TYPE=remote/ssh
 fi
 
+
+
+#############################################################
+# NVM
+#############################################################
+
+# --- Fast Node/NPM + lazy nvm (macOS zsh) ---
+export NVM_DIR="$HOME/.nvm"
+
+# Read the default npm version from .nvm aliases instead of waiting for nvm to inform us.
+# e.g. alias/default contains: v24.2.0
+if [[ -r "$NVM_DIR/alias/default" ]]; then
+  _nvm_def="$(<"$NVM_DIR/alias/default")"
+  if [[ -d "$NVM_DIR/versions/node/$_nvm_def/bin" ]]; then
+    export PATH="$NVM_DIR/versions/node/$_nvm_def/bin:$PATH"
+  fi
+  unset _nvm_def
+fi
+
+# Lazy-load nvm only when you explicitly call `nvm` (keeps new shells fast)
+_nvm_lazy_load() {
+  unset -f nvm
+  [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
+  [[ -s "$NVM_DIR/bash_completion" ]] && . "$NVM_DIR/bash_completion"
+}
+
+nvm() { _nvm_lazy_load; nvm "$@"; }
+
+#############################################################
+# NPM
+#############################################################
+source ~/.npm_completion
+
 #############################################################
 # Environment Variables
 #############################################################
@@ -137,6 +170,10 @@ alias randompassword="openssl rand -hex 32"
 alias randomkey="openssl rand -base64 32"
 alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
+# Shorthands
+alias gs="git status"
+alias nr="npm run"
+
 #############################################################
 # Smart ls aliases (logo-ls or fallback)
 #############################################################
@@ -156,3 +193,12 @@ fi
 #############################################################
 [ -f '/tmp/google-cloud-sdk/path.inc' ] && source '/tmp/google-cloud-sdk/path.inc'
 [ -f '/tmp/google-cloud-sdk/completion.inc' ] && source '/tmp/google-cloud-sdk/completion.inc'
+
+
+############################################################
+# Testcontainer support with colima
+############################################################
+export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+export TESTCONTAINERS_HOST_OVERRIDE=127.0.0.1
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+export TESTCONTAINERS_RYUK_DISABLED=true

@@ -47,7 +47,7 @@ program = "/bin/zsh"
 opacity = 1
 
 # OSX
-option_as_alt = "OnlyLeft"
+option_as_alt = "OnlyRight"
 
 [window.dimensions]
 columns = 120
