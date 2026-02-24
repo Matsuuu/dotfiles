@@ -55,6 +55,7 @@ return {
         vim.lsp.enable("wc_language_server")
 
         vim.lsp.enable("eslint")
+        vim.lsp.enable("gh_actions_ls")
 
 
 	end,

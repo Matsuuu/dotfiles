@@ -2,9 +2,22 @@
 # ZSH ONLY
 #############################################################
 
-# Autoload compinit before anything else
+### --- completions: fast path ---
 autoload -Uz compinit
-compinit
+
+# Use a stable, versioned dump file (prevents churn)
+ZCOMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+
+# Ensure cache dir exists
+mkdir -p "${ZCOMPDUMP:h}"
+
+# If dump is missing, or older than 24h, rebuild; otherwise use cache
+if [[ ! -f "$ZCOMPDUMP" || $(find "$ZCOMPDUMP" -mtime +1 -print 2>/dev/null) ]]; then
+  compinit -d "$ZCOMPDUMP"
+else
+  compinit -C -d "$ZCOMPDUMP"
+fi
+###
 
 # Also enable brew if on mac
 if [[ -f "/opt/homebrew/bin/brew" ]] then
@@ -16,11 +29,8 @@ fi
 [ -f ~/.zsh_setup ] && source ~/.zsh_setup
 
 #############################################################
-# Enable completion system
+# Bindings
 #############################################################
-autoload -Uz compinit
-compinit
-
 bindkey -e 
 
 bindkey "^[[1;5D" backward-word
