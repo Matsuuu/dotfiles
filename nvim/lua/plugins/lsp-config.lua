@@ -56,6 +56,7 @@ return {
 
         vim.lsp.enable("eslint")
         vim.lsp.enable("gh_actions_ls")
+        vim.lsp.enable('htmx')
 
 
 	end,

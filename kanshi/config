@@ -26,6 +26,12 @@ output "Dell Inc. DELL P2419H DHKQH73" {
     alias $HOME_SECONDARY
 }
 
+output "Samsung Electric Company Q90A 0x01000E0" {
+    mode 1920x1080@60
+    position 1920,0
+    scale 2
+}
+
 output "BOE NE135A1M-NY1 Unknown" {
     mode 2880x1920@120
     position 0,0
@@ -38,13 +44,13 @@ profile undocked {
 }
 
 profile office_docked {
-    output eDP-1 disable
+    #output eDP-1 disable
     output $OFFICE_1 enable
     output $OFFICE_2 enable
 }
 
 profile home_docked {
-    output eDP-1 disable
+    #output eDP-1 disable
     output $HOME_MAIN enable
     output $HOME_SECONDARY enable
 }
