@@ -41,16 +41,19 @@ output "BOE NE135A1M-NY1 Unknown" {
 
 profile undocked {
     output eDP-1 enable scale 1.75
+    output * enable
 }
 
 profile office_docked {
     #output eDP-1 disable
     output $OFFICE_1 enable
     output $OFFICE_2 enable
+    output * enable
 }
 
 profile home_docked {
     #output eDP-1 disable
     output $HOME_MAIN enable
     output $HOME_SECONDARY enable
+    output * enable
 }
