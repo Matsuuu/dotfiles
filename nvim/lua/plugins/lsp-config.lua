@@ -5,12 +5,8 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	config = function()
-		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-		local on_attach_vim = function(client) end
-
-		local lspconfig = require("lspconfig")
-
+        vim.lsp.enable('htmx')
         vim.lsp.enable("ts_ls")
         vim.lsp.enable("jsonls")
         vim.lsp.enable("html")
@@ -56,7 +52,6 @@ return {
 
         vim.lsp.enable("eslint")
         vim.lsp.enable("gh_actions_ls")
-        vim.lsp.enable('htmx')
 
 
 	end,
