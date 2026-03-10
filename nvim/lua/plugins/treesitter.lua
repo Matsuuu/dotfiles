@@ -33,6 +33,14 @@ return {
 
       ts.install(languages)
 
+        local extra_languages = {
+            "typescriptreact",
+        }
+
+        for k,v in ipairs(extra_languages) do
+            table.insert(languages, v)
+        end
+
       ------------------------------------------------------------------------
       -- Enable Tree-sitter highlighting
       ------------------------------------------------------------------------

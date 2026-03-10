@@ -26,12 +26,6 @@ output "Dell Inc. DELL P2419H DHKQH73" {
     alias $HOME_SECONDARY
 }
 
-output "Samsung Electric Company Q90A 0x01000E0" {
-    mode 1920x1080@60
-    position 1920,0
-    scale 2
-}
-
 output "BOE NE135A1M-NY1 Unknown" {
     mode 2880x1920@120
     position 0,0
@@ -40,20 +34,31 @@ output "BOE NE135A1M-NY1 Unknown" {
 }
 
 profile undocked {
-    output eDP-1 enable scale 1.75
-    output * enable
+    output $LAPTOP enable
 }
 
 profile office_docked {
-    #output eDP-1 disable
+    output $LAPTOP disable
     output $OFFICE_1 enable
     output $OFFICE_2 enable
     output * enable
 }
 
 profile home_docked {
-    #output eDP-1 disable
+    output $LAPTOP disable
     output $HOME_MAIN enable
     output $HOME_SECONDARY enable
     output * enable
+}
+
+# Fallback: laptop + exactly one unknown external display
+profile mobile_external {
+    output $LAPTOP enable
+    output * enable position 1646,0 scale 1
+}
+
+# Fallback: laptop + any number of extra displays
+profile mobile_multi {
+    output $LAPTOP enable
+    ...output * enable
 }

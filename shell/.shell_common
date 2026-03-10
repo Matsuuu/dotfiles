@@ -170,6 +170,10 @@ alias randompassword="openssl rand -hex 32"
 alias randomkey="openssl rand -base64 32"
 alias removecapslock="python -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); X11.XOpenDisplay.restype = POINTER(c_ubyte); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
+# Sway
+alias sway_outputs="swaymsg -t get_outputs"
+alias sway_outputs="swaymsg -t get_outputs"
+
 # Shorthands
 alias gs="git status"
 alias nr="npm run"
