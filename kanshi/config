@@ -41,14 +41,17 @@ profile office_docked {
     output $LAPTOP disable
     output $OFFICE_1 enable
     output $OFFICE_2 enable
-    output * enable
 }
 
 profile home_docked {
     output $LAPTOP disable
     output $HOME_MAIN enable
     output $HOME_SECONDARY enable
-    output * enable
+}
+
+profile desktop {
+    output $HOME_MAIN enable
+    output $HOME_SECONDARY enable
 }
 
 # Fallback: laptop + exactly one unknown external display
