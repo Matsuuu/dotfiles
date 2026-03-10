@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Patches htmx-lsp to 0.2.0 when using mason and neovim
+
+VERSION="htmx-lsp-linux-x64"
+INSTALL_DIR="/home/matsu/.local/share/nvim/mason/packages/htmx-lsp/bin"
+
+cd /tmp
+wget https://github.com/ThePrimeagen/htmx-lsp/releases/download/0.2.0/$VERSION
+mv ./htmx-lsp-linux-x64 $INSTALL_DIR/htmx-lsp
+chmod +x $INSTALL_DIR/htmx-lsp
