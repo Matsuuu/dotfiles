@@ -29,6 +29,9 @@ return {
         "css",
         "markdown",
         "markdown_inline",
+        "vue",
+        "css",
+        "scss",
       }
 
       ts.install(languages)
