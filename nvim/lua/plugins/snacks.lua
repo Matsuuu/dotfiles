@@ -69,6 +69,7 @@ return {
         { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
         { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
         { "<C-H>", function() Snacks.picker.recent() end, desc = "Recent" },
+        { "<leader>re", function() Snacks.picker.resume() end, desc = "Resume" },
 
         -- LSP
         { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
