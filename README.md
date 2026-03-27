@@ -25,7 +25,8 @@
 - Ulauncher
 - Picom
 - Tmux
-- i3
+- sway
+- And a lot more
 
 ### Example
 
