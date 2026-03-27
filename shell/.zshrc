@@ -64,3 +64,24 @@ if command -v fzf &> /dev/null; then
     eval "$(fzf --zsh)"
 fi
 
+
+#############################################################
+# Automatically update tmux workspace to reflect branch
+#############################################################
+
+_tmux_rename_from_git() {
+  [[ -n "$TMUX" ]] || return
+
+  local base branch
+  base="$(tmux display-message -p '#{session_name}' | sed 's/ @.*$//')"
+  branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+
+  if [[ -n "$branch" ]]; then
+    tmux rename-session "${base} @${branch}" 2>/dev/null
+  else
+    tmux rename-session "${base}" 2>/dev/null
+  fi
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _tmux_rename_from_git
