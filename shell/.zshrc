@@ -74,6 +74,8 @@ _tmux_rename_from_git() {
 
   local base branch
   base="$(tmux display-message -p '#{session_name}' | sed 's/ @.*$//')"
+  [[ "$base" == "default" ]] && return
+
   branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
 
   if [[ -n "$branch" ]]; then
