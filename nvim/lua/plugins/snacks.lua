@@ -80,5 +80,8 @@ return {
         -- Show symbols
         { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
         { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+
+        -- Diagnostics
+        { "sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Show Diagnostics" },
     },
 }
