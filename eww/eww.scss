@@ -1,5 +1,15 @@
+$bubble-bg: #202330;
+$bubble-radius: 10px;
+$bubble-margin-top: 0.625rem;
+$bubble-margin-bottom: 0.3125rem;
+$bubble-margin-side: 1.25rem;
+$bubble-min-height: 2.5rem;
+$bubble-padding-x: 1.25rem;
+$accent: #D35D6E;
+$text: #fff0f5;
+
 * {
-  all: unset; // Unsets everything so you can style everything from scratch
+  all: unset;
 }
 
 tooltip {
@@ -14,15 +24,21 @@ tooltip label {
   color: #fff;
 }
 
-.content-box {
-  background-color: #202330;
-  margin: 0.625rem 1.25rem 0.3125rem 1.25rem;
-  padding: 0px 1.25rem;
-  border-radius: 10px;
-  color: #fff0f5;
+%bubble-vertical {
+  margin-top: $bubble-margin-top;
+  margin-bottom: $bubble-margin-bottom;
+  min-height: $bubble-min-height;
+}
 
-  min-width: 0px;
-  min-height: 2.5rem;
+.content-box {
+  @extend %bubble-vertical;
+  background-color: $bubble-bg;
+  margin-left: $bubble-margin-side;
+  margin-right: $bubble-margin-side;
+  padding: 0 $bubble-padding-x;
+  border-radius: $bubble-radius;
+  color: $text;
+  min-width: 0;
   font-size: 0.875rem;
 }
 
@@ -32,8 +48,14 @@ tooltip label {
 
 .music-box,
 .tray-box {
-  padding: 0.125rem 0.625rem;
-  margin: 0.625rem 1.25rem 0.3125rem 1.5rem;
+  @extend %bubble-vertical;
+  background-color: $bubble-bg;
+  margin-left: 1.5rem;
+  margin-right: 1.25rem;
+  padding: 0 0.625rem;
+  border-radius: $bubble-radius;
+  color: $text;
+  min-width: 0;
 }
 
 .tray-box {
@@ -41,60 +63,65 @@ tooltip label {
 }
 
 .music-box {
-  padding: 0.125rem 1.25rem;
+  padding: 0 1.25rem;
 }
 
 .workspaces {
   font-size: 2rem;
-  min-height: 2.5rem;
+  min-height: $bubble-min-height;
 }
 
 .workspace-icons > * {
   margin: 0 0.2rem;
-  min-height: 2.5rem;
+  min-height: $bubble-min-height;
   min-width: 1.6rem;
   background-size: 1.3rem;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.workspace-box.focused {
-  border-bottom: 2px solid #D35D6E;
-  border-radius: 10px 10px 5px 5px;
-}
-
 .workspace-box {
-  background-color: rgba(32,35,48, 0.9);
-  border: 1px solid #202330;
-  margin: 10px 5px 0;
-  border-radius: 10px;
-  color: #fff0f5;
-
-  min-width: 0px;
-  min-height: 40px;
+  @extend %bubble-vertical;
+  background-color: rgba(32, 35, 48, 0.9);
+  border: 1px solid $bubble-bg;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: $bubble-radius;
+  color: $text;
+  min-width: 0;
   font-size: 1rem;
+
+  &.focused {
+    border-bottom: 2px solid $accent;
+    border-radius: $bubble-radius $bubble-radius 5px 5px;
+  }
 }
 
 .workspace-eventbox > * {
-  padding: 0px 10px;
+  padding: 0 10px;
 }
 
 .workspaces button.active {
-  color: #D35D6E;
+  color: $accent;
   font-weight: bold;
 }
 
 .workspaces button:hover {
-  color: #D35D6E;
+  color: $accent;
 }
 
-.music, .datetime {
+.music,
+.datetime {
   padding: 5px 0;
   font-size: 0.75rem;
 }
 
-
 // Powermenu
+.powermenu-wrap {
+  @extend %bubble-vertical;
+  margin-right: 1.25rem;
+}
+
 .powermenu {
   font-family: Material Design Icons Desktop;
   font-size: 1.4em;
@@ -117,16 +144,20 @@ tooltip label {
   margin: 0 1rem;
 }
 
-// Styles on classes (see eww.yuck for more information)
+.vpn-indicator {
+  margin: 0 0.5rem 0 0;
+  font-size: 1rem;
+}
 
+// Styles on classes (see eww.yuck for more information)
 .sidestuff slider {
   color: #ffd5cd;
 }
 
 .metric scale trough highlight {
-  background-color: #D35D6E;
-  color: #000000;
-  border-radius: 10px;
+  background-color: $accent;
+  color: #000;
+  border-radius: $bubble-radius;
 }
 
 .metric scale trough {
@@ -179,20 +210,15 @@ tooltip label {
   margin: 0 0.4rem;
 }
 
-.powermenu-wrap {
-  margin-top: 0.675rem;
-  margin-right: 1.5rem;
-}
-
 .powermenu-button {
   background-repeat: no-repeat;
   background-size: 1.4rem;
   background-position: center;
   min-height: 1.6rem;
   min-width: 1.4rem;
-  margin: 0rem 5px;
-  background-color: #202330;
-  border-radius: 10px;
+  margin: 0 5px;
+  background-color: $bubble-bg;
+  border-radius: $bubble-radius;
   padding: 0.5rem 0.625rem;
 }
 

@@ -142,7 +142,7 @@ for_window [class="Albert"] border none
 
 exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK
 exec_always --no-startup-id swaybg -i /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg -m fill
-exec_always --no-startup-id eww open bar
+exec_always --no-startup-id systemctl --user restart eww.service
 exec_always kanshi
 
 #   _____ _                _             _   

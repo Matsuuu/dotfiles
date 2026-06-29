@@ -12,8 +12,10 @@
                       :width "100%"
                       :anchor "top left")
   (box
+    :space-evenly false
     (box
       :halign "start"
+      :hexpand true
       :space-evenly false
       (tray-win)
       (music-win)
@@ -129,22 +131,18 @@
       ))
 
 (defwidget wifi []
-	(box :orientation "v"
-		(eventbox :cursor "pointer"
-			(button
-					:class "trayicon"
-					:tooltip "${NETSTAT}"
-              (box :orientation "h" :class "networkbutton" :spacing 5 :space-evenly false
-                (image 
-                  :path WIFIICON 
-                  :image-width 18 
-                  :image-height 18)
-                NETSTAT
-              )
-			)
-		)
-	)
-)
+  (eventbox :cursor "pointer"
+    (button
+      :class "trayicon"
+      :tooltip NETSTAT
+      :onclick "command -v nm-connection-editor >/dev/null && nm-connection-editor &"
+      (box :orientation "h" :class "networkbutton" :spacing 5 :space-evenly false
+        (image :path WIFIICON :image-width 18 :image-height 18)
+        NETSTAT))))
+
+(defwidget vpn-indicator []
+  (box :visible {VPNSTAT != ""} :class "vpn-indicator" :tooltip "VPN active"
+    "🛡"))
 
 
 (defwidget music []
@@ -208,12 +206,13 @@
 )
 
 (defwidget powermenu []
-  (box :orientation "v" :halign "start" :class "powermenu-wrap" :space-evenly false
+  (box :orientation "v" :halign "end" :hexpand false :class "powermenu-wrap" :space-evenly false
 	(eventbox	:onhover "${EWW_CMD} update power=true"
 				:onhoverlost "${EWW_CMD} update power=false"
 				:cursor "pointer"
 
 	(box	:orientation "h"
+			:halign "end"
 			:space-evenly false
 			:vexpand false
 			:class "powermenu"
@@ -263,32 +262,33 @@
 ;;; Polls
 
 (deflisten music :initial ""
-  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' || true")
+  "playerctl --follow metadata --format '{ \"artist\": \"{{ artist }}\", \"title\": \"{{ title }}\", \"image\": \"{{ mpris:artUrl }}\"  }' 2>/dev/null || true")
 
-(defpoll volume :interval "1s"
+(defpoll volume :interval "1s" :initial "0"
   "scripts/getvol.sh")
 
-(defpoll muted :interval "1s"
+(defpoll muted :interval "1s" :initial "[on]"
   "scripts/getmuted.sh")
 
-(defpoll currentworkspaces :interval "1s"
+(defpoll currentworkspaces :interval "1s" :initial "[]"
    "scripts/workspaces.sh")
 
-(defpoll workspace-data :interval "1s"
-  "scripts/go/workspaces/main")
+(defpoll workspace-data :interval "1s" :initial "[]"
+  "scripts/go/workspaces/main 2>/dev/null || echo '[]'")
 
-(defpoll date :interval "10s"
+(defpoll date :interval "10s" :initial ""
   "date '+%A'")
 
-(defpoll datemonth :interval "10s"
+(defpoll datemonth :interval "10s" :initial ""
   "date '+%d. %B'")
 
-(defpoll hours :interval "10s"
+(defpoll hours :interval "10s" :initial ""
   "date '+%H'")
 
-(defpoll minutes :interval "10s"
+(defpoll minutes :interval "10s" :initial ""
   "date '+%M'")
 
 ;; Network
-(defpoll WIFIICON :interval "15s" `scripts/network.sh --icon`)
-(defpoll NETSTAT :interval "15s" `scripts/network.sh --stat`)
+(defpoll WIFIICON :interval "15s" :initial "" `scripts/network.sh --icon`)
+(defpoll NETSTAT  :interval "15s" :initial "" `scripts/network.sh --stat`)
+(defpoll VPNSTAT  :interval "15s" :initial "" `scripts/network.sh --vpn`)
