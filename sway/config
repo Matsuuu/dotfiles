@@ -153,7 +153,7 @@ exec_always kanshi
 # |_____/|_| |_|\___/|_|   \__\___|\__,_|\__|
 #                                            
 # bindsym $mod+space exec albert show
-bindsym $mod+space exec ulauncher
+bindsym $mod+space exec busctl --user call net.launchpad.ulauncher /net/launchpad/ulauncher net.launchpad.ulauncher toggle_window
 bindsym $sup+Return exec alacritty
 
 # Displays
