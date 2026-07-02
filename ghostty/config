@@ -40,6 +40,4 @@ window-padding-y = 25
 # --- Shell ---
 command = /bin/zsh
 
-# --- macOS ---
-macos-option-as-alt = right
-
+window-colorspace = display-p3
