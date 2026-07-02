@@ -7,7 +7,7 @@ font-family-bold = FantasqueSansM Nerd Font
 font-style-bold = Bold
 font-family-italic = FantasqueSansM Nerd Font
 font-style-italic = Italic
-font-size = 16
+font-size = 20
 
 # --- Colors ---
 # Your alacritty config had identical normal/bright colors,
