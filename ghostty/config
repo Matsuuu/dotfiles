@@ -1,0 +1,45 @@
+# Migrated from Alacritty config
+
+# --- Font ---
+font-family = FantasqueSansM Nerd Font
+font-style = Regular
+font-family-bold = FantasqueSansM Nerd Font
+font-style-bold = Bold
+font-family-italic = FantasqueSansM Nerd Font
+font-style-italic = Italic
+font-size = 16
+
+# --- Colors ---
+# Your alacritty config had identical normal/bright colors,
+# so palette entries 0-7 and 8-15 are the same here too.
+background = 202330
+foreground = fae8b6
+
+palette = 0=#FAE8B6
+palette = 1=#ff38a2
+palette = 2=#9cd162
+palette = 3=#ffc85b
+palette = 4=#eba4ac
+palette = 5=#d9bcef
+palette = 6=#87c095
+palette = 7=#fff0f5
+palette = 8=#FAE8B6
+palette = 9=#ff38a2
+palette = 10=#9cd162
+palette = 11=#ffc85b
+palette = 12=#eba4ac
+palette = 13=#d9bcef
+palette = 14=#87c095
+palette = 15=#fff0f5
+
+# --- Window ---
+background-opacity = 1
+window-padding-x = 25
+window-padding-y = 25
+
+# --- Shell ---
+command = /bin/zsh
+
+# --- macOS ---
+macos-option-as-alt = right
+
