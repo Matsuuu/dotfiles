@@ -144,6 +144,7 @@ exec_always systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESK
 exec_always --no-startup-id swaybg -i /home/matsu/Pictures/alena-aenami-far-from-tomorrow-1080px.jpg -m fill
 exec_always --no-startup-id systemctl --user restart eww.service
 exec_always kanshi
+exec ulauncher --hide-window
 
 #   _____ _                _             _   
 #  / ____| |              | |           | |  
@@ -236,15 +237,15 @@ default_dim_inactive 0.1
 ############################
 
 # Notifications
-for_window [title="Notification"] shadow disable
+for_window [title="Notification"] shadows disable
 
 # App exclusions
-for_window [app_id="ulauncher"] border none shadow disable
-for_window [app_id="conky"] shadow disable
-for_window [app_id="eww"] shadow disable
+for_window [app_id="ulauncher"] border none shadows disable
+for_window [app_id="conky"] shadows disable
+for_window [app_id="eww"] shadows disable
 
 # GTK CSD windows
-for_window [shell="gtk"] shadow disable
+for_window [shell="gtk"] shadows disable
 
 # Floating windows
 for_window [app_id="google-chrome" title="^Meet –"] floating enable, \
