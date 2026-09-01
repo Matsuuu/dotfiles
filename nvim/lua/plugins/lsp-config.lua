@@ -5,9 +5,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "hrsh7th/cmp-nvim-lsp" },
 	config = function()
-		-- vim.lsp.enable("htmx")
-		--vim.lsp.enable("ts_ls")
-		vim.lsp.enable("tsgo")
+		vim.lsp.enable("tsc")
 		vim.lsp.enable("jsonls")
 		vim.lsp.enable("html")
 		vim.lsp.enable("cssls")

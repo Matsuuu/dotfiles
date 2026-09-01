@@ -9,6 +9,8 @@ font-family-italic = FantasqueSansM Nerd Font
 font-style-italic = Italic
 font-size = 20
 
+font-feature = -liga
+
 # --- Colors ---
 # Your alacritty config had identical normal/bright colors,
 # so palette entries 0-7 and 8-15 are the same here too.

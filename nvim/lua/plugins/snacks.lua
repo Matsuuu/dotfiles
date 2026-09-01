@@ -83,5 +83,8 @@ return {
 
         -- Diagnostics
         { "sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Show Diagnostics" },
+
+        -- Lazygit
+        { "<leader>lg", function() Snacks.lazygit() end, desc = "Show LazyGit" }
     },
 }
