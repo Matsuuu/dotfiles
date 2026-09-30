@@ -87,3 +87,9 @@ _tmux_rename_from_git() {
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _tmux_rename_from_git
+
+# Added by git-ai installer on Wed Sep  2 11:13:24 EEST 2026
+export PATH="/Users/matsu/.git-ai/bin:$PATH"
+
+# cubic
+export PATH="/Users/matsu/.cubic/bin":$PATH

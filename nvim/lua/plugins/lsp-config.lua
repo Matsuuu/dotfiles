@@ -49,6 +49,7 @@ return {
 		-- vim.lsp.enable("wc_language_server")
 
 		vim.lsp.enable("eslint")
+		vim.lsp.enable("oxlint")
 		vim.lsp.enable("gh_actions_ls")
 
 		local vue_language_server_path = vim.fn.stdpath("data")

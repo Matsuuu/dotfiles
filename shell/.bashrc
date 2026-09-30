@@ -48,3 +48,6 @@ bind 'set show-all-if-ambiguous on'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(fzf --bash)"
 
+
+# Added by git-ai installer on Wed Sep  2 11:13:24 EEST 2026
+export PATH="/Users/matsu/.git-ai/bin:$PATH"

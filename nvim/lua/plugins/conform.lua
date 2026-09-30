@@ -5,7 +5,7 @@
 -- 	end,
 -- })
 
-local frontend_formatters = { "prettier", "prettierd", "biome", stop_after_first = false }
+local frontend_formatters = { "prettier", "prettierd", "biome", stop_after_first = true }
 
 return {
 	"stevearc/conform.nvim",
@@ -23,6 +23,7 @@ return {
 			typescriptreact = frontend_formatters,
 			css = frontend_formatters,
 			html = frontend_formatters,
+			vue = frontend_formatters,
 			json = { "prettier" },
 			yaml = frontend_formatters,
 			go = { "gofmt", stop_after_first = true },

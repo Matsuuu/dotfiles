@@ -10,6 +10,8 @@ font-style-italic = Italic
 font-size = 20
 
 font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
 
 # --- Colors ---
 # Your alacritty config had identical normal/bright colors,

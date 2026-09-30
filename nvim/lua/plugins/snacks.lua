@@ -82,7 +82,8 @@ return {
         { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
 
         -- Diagnostics
-        { "sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Show Diagnostics" },
+        { "sD", function() Snacks.picker.diagnostics() end, desc = "Show Diagnostics" },
+        { "sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Show Diagnostics (buffer)" },
 
         -- Lazygit
         { "<leader>lg", function() Snacks.lazygit() end, desc = "Show LazyGit" }
