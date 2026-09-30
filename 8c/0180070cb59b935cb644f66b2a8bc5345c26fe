@@ -1,0 +1,19 @@
+ghostty/config
+  s_4d4515bb8fac55::t_26f585185337e7 13-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8c0180070cb59b935cb644f66b2a8bc5345c26fe",
+  "prompts": {},
+  "sessions": {
+    "s_4d4515bb8fac55": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f14552f87ffereMDSk0BMf7UFE",
+        "model": "openai/gpt-5.6-sol"
+      },
+      "human_author": "Matsuuu <huhta.matias@gmail.com>"
+    }
+  }
+}
